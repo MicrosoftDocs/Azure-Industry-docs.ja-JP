@@ -6,12 +6,12 @@ ms.date: 07/16/2018
 ms.topic: article
 ms.service: industry
 description: この記事では、オンプレミスから Azure に eコマース インフラストラクチャを移行する各フェーズについて説明します。
-ms.openlocfilehash: 847950673475f7f59a0c8c8c8bfc821414b2cc77
-ms.sourcegitcommit: 76f2862adbec59311b5888e043a120f89dc862af
+ms.openlocfilehash: a440eabad6a1367ed8219c01424d21d22e441b16
+ms.sourcegitcommit: 20b001b9fb51b944ae82bf55d2d670aa852fa64b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "51654269"
+ms.lasthandoff: 11/26/2018
+ms.locfileid: "52297955"
 ---
 # <a name="migrating-your-e-commerce-solution-to-azure-overview"></a>eコマース ソリューションの Azure への移行の概要
 
