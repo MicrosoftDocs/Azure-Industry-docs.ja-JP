@@ -7,12 +7,12 @@ manager: gmarchet
 ms.service: industry
 ms.topic: article
 ms.date: 09/26/2018
-ms.openlocfilehash: 79f6829d80bea2cf05bc11b613476f64dad900ef
-ms.sourcegitcommit: 76f2862adbec59311b5888e043a120f89dc862af
+ms.openlocfilehash: e3a2f19fa584cfefa72a6b8bf3eabfe1c3af3521
+ms.sourcegitcommit: c4eb2665df40d0449bd037e7500222fc38bc53ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "51654409"
+ms.lasthandoff: 12/03/2018
+ms.locfileid: "52820770"
 ---
 # <a name="extracting-actionable-insights-from-iot-data"></a>IoT データからアクションにつながる分析情報を抽出する
 
@@ -119,8 +119,7 @@ Microsoft の Azure IoT 参照アーキテクチャでは、ラムダ アーキ�
 -   バッチ レイヤーは "サービス レイヤー" にフィードし、サービス レイヤーはクエリに応答します。 バッチ レイヤーは、効率的なクエリのためにバッチ ビューにインデックスを付けます。 速度レイヤーは、最新のデータに基づく増分更新でサービス レイヤーを更新します。
 
 次の図では、変換のステージを表す 5 つのブロックを示します。 最初のブロックはデータ ストリームであり、スピード レイヤーとバッチ レイヤーの両方に並列でフィードします。 どちらのレイヤーもサービス レイヤーにフィードします。スピード レイヤーとサービス レイヤーはどちらも、分析クライアントにフィードします。
-
-![ラムダ アーキテクチャ概略図。](assets/extracting-insights-from-iot/lambda-schematic.png)
+![ラムダ アーキテクチャ。](assets/extracting-insights-from-iot/lambda-schematic.png)
 
  Azure プラットフォームでは、アーキテクチャの実装に使用できるさまざまなサービスが提供されています。 次の図では、それらのサービスを実装のためにマップする方法を示します。 図では、変換の 5 つのステージが示されており、各ステージに関連する Azure テクノロジが含まれます。 暗色のボックスは、これらのタスクを実行するのに複数のオプションを使用できることを表します。
 
