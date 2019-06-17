@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: cff221055e76d7334793782d19eadd0960712a1f
+ms.sourcegitcommit: 461c520509d53bae1021eebf9733a98edbf71e4d
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "66716856"
+---
 # <a name="enabling-the-financial-services-risk-lifecycle-with-azure-and-r"></a>Azure と R を使用して金融サービスのリスク ライフサイクルを有効にする
 
 
@@ -63,7 +71,7 @@
 MSFT 株式をベースに、株式先渡の潜在的将来エクスポージャーを計算することにします。 前述のように、株価をモデル化するためには、モデルを過去データに較正できるように MSFT 株式の過去価格が必要です。 過去の株価を取得するには多くの方法があります。 この例では、外部のサービス事業者 [Quandl](https://www.quandl.com/) の株価サービスの無料版を使用します。
 
 
-> 注: この例で使用しているのは、概念の学習用途に使用できる [WIKI Prices データセット](https://www.quandl.com/databases/WIKIP)です。 実際の米国株式データを使用する場合、Quandl では [End of Day US Stock Prices (米国株価終値) データセット](https://www.quandl.com/data/EOD-End-of-Day-US-Stock-Prices)の使用を推奨しています。
+> 注:この例で使用しているのは、概念の学習用途に使用できる [WIKI Prices データセット](https://www.quandl.com/databases/WIKIP)です。 実際の米国株式データを使用する場合、Quandl では [End of Day US Stock Prices (米国株価終値) データセット](https://www.quandl.com/data/EOD-End-of-Day-US-Stock-Prices)の使用を推奨しています。
 
 データを処理して株式に関連するリスクを定義するには、次のことを行う必要があります:
 
@@ -421,7 +429,7 @@ plot(as.numeric(df$term[df$statistic == 'PFE']) / 365, df$result[df$statistic ==
 ### <a name="tutorials"></a>チュートリアル
 
 
--   R 開発者: [Azure Batch での並列 R シミュレーションの実行](https://docs.microsoft.com/azure/batch/tutorial-r-doazureparallel?WT.mc_id=fsiriskmodelr-docs-scseely)
+-   R 開発者: [Azure Batch で並列 R シミュレーションを実行する](https://docs.microsoft.com/azure/batch/tutorial-r-doazureparallel?WT.mc_id=fsiriskmodelr-docs-scseely)
 
 -   [基本的な R コマンドと RevoScaleR 関数: 25 の一般的な例](https://docs.microsoft.com/machine-learning-server/r/tutorial-r-to-revoscaler?WT.mc_id=fsiriskmodelr-docs-scseely)
 
