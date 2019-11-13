@@ -1,17 +1,17 @@
 ---
 title: AI 用の Azure ブループリントを実装する
-author: dastarr
+author: dstarr
 ms.author: dastarr
-ms.date: 08/24/2018
+ms.date: 11/07/2019
 ms.topic: article
 ms.service: industry
 description: この記事では、AI 用の Microsoft Azure ブループリントに関するガイダンスを提供します。
-ms.openlocfilehash: f7c9290e6bbc0d500a9f7774c2020f78b5e94aca
-ms.sourcegitcommit: 76f2862adbec59311b5888e043a120f89dc862af
+ms.openlocfilehash: 845ec2a1da335336375d90c789e0fa89bc70d23a
+ms.sourcegitcommit: 385e99900bc20950f02a63c885facc1cf62c49df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "51654349"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73845629"
 ---
 # <a name="implementing-the-azure-blueprint-for-ai"></a>AI 用の Azure ブループリントを実装する
 
@@ -61,7 +61,7 @@ IaaS モデルはこの記事の範囲外です。この記事では、このブ
 
 主要なリソースは次のとおりです。
 
-1. [PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/powershell-scripting?WT.mc_id=ms-docs-dastarr) スクリプト (デプロイ、構成、およびその他のタスク用)。
+1. [PowerShell](https://docs.microsoft.com/powershell/scripting/powershell-scripting?WT.mc_id=ms-docs-dastarr) スクリプト (デプロイ、構成、およびその他のタスク用)。
 2. [インストールについての詳細な手順](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/deployment.md) (インストール スクリプトの使用方法を含む)。
 3. [包括的なよくある質問](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/faq.md)。
 
@@ -81,7 +81,7 @@ IaaS モデルはこの記事の範囲外です。この記事では、このブ
 
 このブループリントは、技術スタッフのための優れたガイダンスと手順について説明し、完全に機能するインストールの作成に役立つ成果物も含まれています。 これらの他の成果物は、次のとおりです。
 
-1. [脅威モデル](https://servicetrust.microsoft.com/ViewPage/HIPAABlueprint?command=Download&downloadType=Document&downloadId=01828de2-9555-4bac-a2a0-44e9ed2eeeaf&docTab=d7c399a0-2b92-11e8-9910-13dc07d708f7_Data_Analytics&WT.mc_id=ms-docs-dastarr)。[Microsoft Threat Modeling Tool](https://www.microsoft.com/en-us/download/details.aspx?id=49168&WT.mc_id=ms-docs-dastarr) で使用できます。 この脅威モデルは、ソリューションのコンポーネント、その間のデータ フロー、および信頼境界を示しています。 このツールは、基本のブループリントを拡張しようとしているものによって脅威モデリングのために使用したり、セキュリティの観点からシステムアーキテクチャについて学習するために使用したりできます。
+1. [脅威モデル](https://servicetrust.microsoft.com/ViewPage/HIPAABlueprint?command=Download&downloadType=Document&downloadId=01828de2-9555-4bac-a2a0-44e9ed2eeeaf&docTab=d7c399a0-2b92-11e8-9910-13dc07d708f7_Data_Analytics&WT.mc_id=ms-docs-dastarr)。[Microsoft Threat Modeling Tool](https://www.microsoft.com/download/details.aspx?id=49168&WT.mc_id=ms-docs-dastarr) で使用できます。 この脅威モデルは、ソリューションのコンポーネント、その間のデータ フロー、および信頼境界を示しています。 このツールは、基本のブループリントを拡張しようとしているものによって脅威モデリングのために使用したり、セキュリティの観点からシステムアーキテクチャについて学習するために使用したりできます。
 
 2. [HITRUST お客様の責任マトリックス](https://servicetrust.microsoft.com/ViewPage/HIPAABlueprint?command=Download&downloadType=Document&downloadId=eab85244-b9ab-490a-9e2a-611153f7d3af&docTab=d7c399a0-2b92-11e8-9910-13dc07d708f7_Data_Analytics&WT.mc_id=ms-docs-dastarr)。Excel ブック内にあります。  これは、マトリックス内の要件ごとに、お客様が提供する必要があるものと Microsoft が提供する必要があるものを示しています。 この責任マトリックスについての詳細は、この記事では、このドキュメントの「セキュリティとコンプライアンス」の「ブループリントの責任マトリックス」のセクションに記載されています。
 
@@ -123,7 +123,7 @@ IaaS モデルはこの記事の範囲外です。この記事では、このブ
 
 1. 変更なしでインストール スクリプトをもう一度実行します。 インストーラーは、既に割り当てられているリソースをチェックし、必要なもののみをインストールします。 この手法は適切に機能しますが、インストール スクリプトが既存のリソースを割り当てようとするというリスクがあります。 これによりエラーが発生する可能性があり、インストールは失敗します。
 
-2. deploy.ps1 スクリプトは引き続き実行できますが、ブループリント サービスをアンインストールするために別の引数を渡します。 
+2. deploy.ps1 スクリプトは引き続き実行できますが、ブループリント サービスをアンインストールするために別の引数を渡します。
 
 ```powershell
 .\deploy.ps1 -clearDeploymentPrefix <prefix> `
@@ -154,7 +154,7 @@ Key Vault は「論理的な削除」として保持され、ポータルには�
 
 ![ブループリントのインストーラー](assets/sg-healthcare-ai-blueprint-assets/blueprint-installer.png)
 
-さらに、AAD との緊密な統合のため、このインストールは MSDN サブスクリプションを使用するようには設計されていません。 標準の Azure アカウントを使用する必要があります。 必要に応じて、ブループリント ソリューションのインストールとそのデモの実行に使用できるクレジットで[無料試用版を入手](https://azure.microsoft.com/en-us/free/?WT.mc_id=ms-docs-dastarr)してください。
+さらに、AAD との緊密な統合のため、このインストールは MSDN サブスクリプションを使用するようには設計されていません。 標準の Azure アカウントを使用する必要があります。 必要に応じて、ブループリント ソリューションのインストールとそのデモの実行に使用できるクレジットで[無料試用版を入手](https://azure.microsoft.com/free/?WT.mc_id=ms-docs-dastarr)してください。
 
 ## <a name="adding-other-resources"></a>その他のリソースの追加
 
@@ -162,7 +162,7 @@ Azure ブループリントのインストールには、AI/ML ユース ケー�
 
 その他の Azure 機能が必要な場合は、[Cosmos DB](/azure/cosmos-db/introduction?WT.mc_id=ms-docs-dastarr) や新しい [Azure Functions](/azure/azure-functions/functions-overview?WT.mc_id=ms-docs-dastarr) などの新しいリソースをソリューションに追加することもできます。 新しいリソースやサービスを追加する場合は、規制やポリシーの準拠を維持するため、確実にセキュリティとプライバシー ポリシーを満たすように構成してください。
 
-新しいリソースやサービスは、[Azure REST API](https://docs.microsoft.com/en-us/rest/api/?view=Azure&WT.mc_id=ms-docs-dastarr)、[Azure PowerShell スクリプト](https://docs.microsoft.com/en-us/powershell/azure/get-started-azureps?view=azurermps-6.6.0&WT.mc_id=ms-docs-dastarr)、または [Azure portal](http://portal.azure.com/?WT.mc_id=ms-docs-dastarr) を使用して作成することもできます。
+新しいリソースやサービスは、[Azure REST API](https://docs.microsoft.com/rest/api/?view=Azure&WT.mc_id=ms-docs-dastarr)、[Azure PowerShell スクリプト](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-6.6.0&WT.mc_id=ms-docs-dastarr)、または [Azure portal](http://portal.azure.com/?WT.mc_id=ms-docs-dastarr) を使用して作成することもできます。
 
 ## <a name="using-machine-learning-with-the-blueprint"></a>ブループリントでの機械学習の使用
 
@@ -318,12 +318,11 @@ Azure のリソースを削除するとき、キー コンテナーは一意で�
 
 - 詳細については、[Azure のヘルス データと AI のブループリント](/azure/security/blueprints/azure-health?WT.mc_id=ms-docs-dastarr)に関するページを参照してください。
 - [こちらの GitHub リポジトリ](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/deployment.md)をダウンロード、複製、またはフォークを実行してください。
-- [Machine Learning Studio](/azure/machine-learning/studio/?WT.mc_id=ms-docs-dastarr) は、データ サイエンティストが Machine Learning の実験の作成に使用するワークスペースおよびツールです。 これにより、組み込みのアルゴリズム、専用のウィジェット、および Python スクリプトと R スクリプトを使用できます。
+- [Machine Learning Studio](/azure/machine-learning/?WT.mc_id=ms-docs-dastarr) は、データ サイエンティストが Machine Learning の実験の作成に使用するワークスペースおよびツールです。 これにより、組み込みのアルゴリズム、専用のウィジェット、および Python スクリプトと R スクリプトを使用できます。
 - シークレット、証明書、およびその他のプライベート データは、[Azure Key Vault](/azure/key-vault/key-vault-whatis?WT.mc_id=ms-docs-dastarr) に保持されます。
 - スクリプト言語 PowerShell は、ブループリントの設定に役立ちます。ただし、必要なコマンドはインストール手順に示されています。
-- [Azure AI ギャラリー](https://docs.microsoft.com/en-us/powershell/scripting/powershell-scripting?WT.mc_id=ms-docs-dastarr)には、お客様に役立つ業種別の AI/ML ソリューションのレシピ ボックスがあります。 データ サイエンティストと医療業界のその他のエキスパートによって公開されたいくつかのソリューションがあります。
+- [Azure AI ギャラリー](https://gallery.azure.ai/)には、お客様に役立つ業種別の AI/ML ソリューションのレシピ ボックスがあります。 データ サイエンティストと医療業界のその他のエキスパートによって公開されたいくつかのソリューションがあります。
 - [Azure Security Center](/azure/security-center/?WT.mc_id=ms-docs-dastarr) は、アプリケーションの動作、脆弱性、および対応策の手法に関する洞察を提供します。
-- [Microsoft Threat Modeling Tool](/azure/security/blueprints/azure-health?WT.mc_id=ms-docs-dastarr) は、システム環境に対する脅威の計画を立てて予測するために使用します。 ブループリントに含まれている脅威モデルを確認する必要があります。
 
 ## <a name="wrapping-up"></a>まとめ
 
