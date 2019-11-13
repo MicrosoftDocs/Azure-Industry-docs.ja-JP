@@ -1,17 +1,17 @@
 ---
 title: AI 用の Azure ブループリントを実装する
-author: dastarr
+author: dstarr
 ms.author: dastarr
-ms.date: 08/24/2018
+ms.date: 11/07/2019
 ms.topic: article
 ms.service: industry
 description: この記事では、AI 用の Microsoft Azure ブループリントについて取り上げます。
-ms.openlocfilehash: 454c08c58b644995d8484b420a074dce173e0efd
-ms.sourcegitcommit: 76f2862adbec59311b5888e043a120f89dc862af
+ms.openlocfilehash: bcf8ff2f7a84f1b5d4848d6eb77ba51dec114f27
+ms.sourcegitcommit: 385e99900bc20950f02a63c885facc1cf62c49df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "51654019"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73845611"
 ---
 # <a name="implementing-the-azure-blueprint-for-ai"></a>AI 用の Azure ブループリントを実装する
 
