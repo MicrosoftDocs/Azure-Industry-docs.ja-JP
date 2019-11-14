@@ -1,10 +1,17 @@
 ---
-ms.openlocfilehash: cff221055e76d7334793782d19eadd0960712a1f
-ms.sourcegitcommit: 461c520509d53bae1021eebf9733a98edbf71e4d
+title: モバイル バンクでの不正行為ソリューション ガイド
+description: 不正なトランザクションが 2 秒以内にどのように検出されるかについて説明します
+author: mauiguitar
+ms.author: sihiga
+ms.service: industry
+ms.topic: overview
+ms.date: 10/31/2019
+ms.openlocfilehash: c5ea4384d02548e4d681b1c13fd81066a955d6a2
+ms.sourcegitcommit: f42a60539bec2a7769b42b6574f09eed4d1b6c79
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2019
-ms.locfileid: "66716856"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73750530"
 ---
 # <a name="enabling-the-financial-services-risk-lifecycle-with-azure-and-r"></a>Azure と R を使用して金融サービスのリスク ライフサイクルを有効にする
 
@@ -19,7 +26,7 @@ ms.locfileid: "66716856"
 
 これらのプロセスを通じて、リスクのモデリングに関連した次のような共通のニーズがあります:
 
-1.  保険会社のアクチュアリー、投資会社のクォンツといったリスク アナリストによるアドホックのリスク関連実験の必要性。
+1. 保険会社のアクチュアリー、投資会社のクォンツといったリスク アナリストによるアドホックのリスク関連実験の必要性。
     これらのアナリストは通常、それぞれの分野で人気のあるコードおよびモデリング ツールである R や Python を業務に使用します。 多くの大学の金融工学および MBA コースで、R または Python のトレーニングがカリキュラムに含まれています。
     どちらの言語も、一般的なリスク計算をサポートする幅広いオープン ソース ライブラリを提供しています。 多くの場合、アナリストは適切なツールに加えて、次のものにアクセスする必要があります:
 
@@ -33,40 +40,40 @@ ms.locfileid: "66716856"
 
     e.  インタラクティブなデータの迅速な調査を可能にする計算容量。
 
-2.  アドホックな機械学習アルゴリズムを値付けや市場戦略の決定に利用することもできます。
+2. アドホックな機械学習アルゴリズムを値付けや市場戦略の決定に利用することもできます。
 
-3.  商品計画、取引戦略、類似の議論に使用するためにデータを視覚化して提示する必要性。
+3. 商品計画、取引戦略、類似の議論に使用するためにデータを視覚化して提示する必要性。
 
-4.  値付け、評価、市場リスクのための、アナリストによって構成された定義済みモデルの迅速な実行。 評価では、専用のリスク モデリング、市場リスク ツール、およびカスタム コードの組み合わせを使用します。 分析はバッチで実行され、夜間、毎週、毎月、四半期に 1 回、および年次の変動する計算によりワークロードの急増が発生します。
+4. 値付け、評価、市場リスクのための、アナリストによって構成された定義済みモデルの迅速な実行。 評価では、専用のリスク モデリング、市場リスク ツール、およびカスタム コードの組み合わせを使用します。 分析はバッチで実行され、夜間、毎週、毎月、四半期に 1 回、および年次の変動する計算によりワークロードの急増が発生します。
 
-5.  総合的なリスク報告のために、その他の企業レベルのリスク基準とデータを統合。 より大規模な組織では、より低レベルのリスク予測を企業のリスク モデリングおよびレポート ツールに移転できます。
+5. 総合的なリスク報告のために、その他の企業レベルのリスク基準とデータを統合。 より大規模な組織では、より低レベルのリスク予測を企業のリスク モデリングおよびレポート ツールに移転できます。
 
-6.  投資家や規制上の要件を満たすために、定義された形式かつ義務付けられた間隔で結果を報告する必要があります。
+6. 投資家や規制上の要件を満たすために、定義された形式かつ義務付けられた間隔で結果を報告する必要があります。
 
 マイクロソフトでは、Azure のサービスと、パートナーが [Azure Marketplace](https://azuremarketplace.microsoft.com/?WT.mc_id=fsiriskmodelr-docs-scseely) で提供するサービスを組み合わせることによって、上記の懸念事項をサポートします。 この記事では、R を使用してアドホックの実験を実行する方法の実用的な例を示します。1 台のマシンで実験を実行する方法、[Azure Batch](https://docs.microsoft.com/azure/batch/?WT.mc_id=fsiriskmodelr-docs-scseely) で同じ実験を実行する方法、モデリングで外部サービスを利用する方法の順に説明します。 [銀行業](https://docs.microsoft.com/azure/industry/financial/risk-grid-banking-solution-guide?WT.mc_id=fsiriskmodelr-docs-scseely)と[保険業](https://docs.microsoft.com/azure/industry/financial/actuarial-risk-analysis-and-financial-modeling-solution-guide?WT.mc_id=fsiriskmodelr-docs-scseely)に焦点を当てたこれらの記事では、定義されたモデルを Azure で実行するためのオプションおよび考慮事項について説明しています。
 
-## <a name="analyst-modelling-in-r"></a>R でのアナリスト モデリング 
+## <a name="analyst-modelling-in-r"></a>R でのアナリスト モデリング
 
 まず、簡略化された代表的な資本市場のシナリオでアナリストが R をどのように使用できるかを見てみましょう。 これは、既存の計算用 R ライブラリを参照するか、またはゼロからコードを記述することによって構築できます。 この例では、外部の値付けデータも取得する必要があります。 シンプルながらも分かりやすい例にするために、普通株先渡契約の潜在的将来エクスポージャー (PFE) を計算します。
 この例では、リスクのライフサイクルに集中するために、複合デリバティブのような証券向けの複雑な定量的モデリング技法を避けて単一のリスク要因に焦点を当てています。 この例では次のことを行います:
 
-1.  関心のある証券を選択します。
+1. 関心のある証券を選択します。
 
-2.  証券の過去価格を入手します。
+2. 証券の過去価格を入手します。
 
-3.  幾何ブラウン運動 (GBM) を使用した単純なモンテカルロ (MC) 計算によるモデル株価:
+3. 幾何ブラウン運動 (GBM) を使用した単純なモンテカルロ (MC) 計算によるモデル株価:
 
     a.  期待リターン μ (ミュー) とボラティリティ σ (シータ) を予測します。
 
     b.  モデルを過去データに較正します。
 
-4.  結果を伝達するためにさまざまなパスを視覚化します。
+4. 結果を伝達するためにさまざまなパスを視覚化します。
 
-5.  max(0,株式価値) をプロットして、PFE の意味、Value at Risk (VaR: 想定最大損失額) との差を示します
+5. max(0,株式価値) をプロットして、PFE の意味、Value at Risk (VaR: 想定最大損失額) との差を示します
 
     a.  解説: PFE = 株価 (T) -- 先渡契約価格 K
 
-6.  タイム ステップごとに/シミュレーション期間の終了時点で 0.95 分位点を取って PFE 価値を得ます
+6. タイム ステップごとに/シミュレーション期間の終了時点で 0.95 分位点を取って PFE 価値を得ます
 
 MSFT 株式をベースに、株式先渡の潜在的将来エクスポージャーを計算することにします。 前述のように、株価をモデル化するためには、モデルを過去データに較正できるように MSFT 株式の過去価格が必要です。 過去の株価を取得するには多くの方法があります。 この例では、外部のサービス事業者 [Quandl](https://www.quandl.com/) の株価サービスの無料版を使用します。
 
@@ -75,15 +82,15 @@ MSFT 株式をベースに、株式先渡の潜在的将来エクスポージャ
 
 データを処理して株式に関連するリスクを定義するには、次のことを行う必要があります:
 
-1.  株式の過去データを取得します。
+1. 株式の過去データを取得します。
 
-2.  過去データから予想されるリターン μ とボラティリティ σ を決定します。
+2. 過去データから予想されるリターン μ とボラティリティ σ を決定します。
 
-3.  いくつかのシミュレーションを使用して基礎株価をモデル化します。
+3. いくつかのシミュレーションを使用して基礎株価をモデル化します。
 
-4.  モデルを実行する
+4. モデルを実行する
 
-5.  将来における株式のエクスポージャーを決定します。
+5. 将来における株式のエクスポージャーを決定します。
 
 はじめに、Quandl サービスから株式を取得し、過去 180 日間の終値履歴をプロットします。
 
@@ -254,7 +261,7 @@ plot(df_pfe, t = 'l', ylab = "Potential Future Exposure in USD", xlab = "time t 
 
 ## <a name="using-azure-batch-with-r"></a>R での Azure Batch の使用 
 
-前述の R ソリューションは、Azure Batch に接続してリスク計算にクラウドを利用することができます。 これは私たちのものと違い、並列計算に追加の労力をほとんど要しません。 Azure Batch への R の接続については、[Azure Batch を使用して並列 R シミュレーションを実行する](https://docs.microsoft.com/en-us/azure/batch/tutorial-r-doazureparallel?WT.mc_id=fsiriskmodelr-docs-scseely)チュートリアルで詳しい情報を提供しています。 以下では、Azure Batch に接続するプロセスのコードと概要を示し、簡略化した PFE 計算でクラウドの拡張機能を利用する方法を示します。
+前述の R ソリューションは、Azure Batch に接続してリスク計算にクラウドを利用することができます。 これは私たちのものと違い、並列計算に追加の労力をほとんど要しません。 Azure Batch への R の接続については、[Azure Batch を使用して並列 R シミュレーションを実行する](https://docs.microsoft.com/azure/batch/tutorial-r-doazureparallel?WT.mc_id=fsiriskmodelr-docs-scseely)チュートリアルで詳しい情報を提供しています。 以下では、Azure Batch に接続するプロセスのコードと概要を示し、簡略化した PFE 計算でクラウドの拡張機能を利用する方法を示します。
 
 この例では、前述のものと同じモデルを扱います。 既に説明したように、この計算はパーソナル コンピューター上で実行できます。 モンテカルロ パスの数を増やすか、より短いタイム ステップを使用すると、実行時間が大幅に長くなります。 ほとんどすべての R コードは変更されないままです。 このセクションでは相違点に注目します。
 
@@ -330,23 +337,23 @@ stopCluster(cluster)
 最初の 2 つの例は、適切な評価モデルを開発するためにローカルとクラウドのインフラストラクチャを利用する方法を示しています。 このパラダイムは変わり始めました。 オンプレミスのインフラストラクチャがクラウドベースの IaaS および PaaS サービスに形を変えたのと同じように、関連するリスク数値のモデリングはサービス指向のプロセスに形を変えつつあります。
 今日のアナリストは 2 つの大きな課題に直面しています:
 
-1.  規制要件によってモデリングの要件が上がり、使用する計算容量が増加しています。 規制当局は、最新のリスク数値の報告をより頻繁に義務付けるようになってきています。
+1. 規制要件によってモデリングの要件が上がり、使用する計算容量が増加しています。 規制当局は、最新のリスク数値の報告をより頻繁に義務付けるようになってきています。
 
 2.  これまで有機的に発展してきた既存のリスク インフラストラクチャは、新たな要件と高度化したリスク モデリングの迅速な実装にあたって課題を突き付けています。
 
 クラウドベースのサービスは、必要な機能を提供し、リスク分析をサポートすることができます。 このアプローチにはいくつかの利点があります:
 
--   規制当局が要求する最も一般的なリスク計算は、規制下のすべての当事者が実装する必要があります。 専門のサービス事業者のサービスを利用することで、アナリストは、すぐに使えて規制要件に準拠したリスク計算の恩恵を受けます。 そのようなサービスには、市場リスク計算、取引先リスク計算、X-Value Adjustment (XVA: X 価値調整)、さらには Fundamental Review of Trading Book (FRTB: トレーディング勘定の抜本的な見直し) 計算が含まれます。
+-  規制当局が要求する最も一般的なリスク計算は、規制下のすべての当事者が実装する必要があります。 専門のサービス事業者のサービスを利用することで、アナリストは、すぐに使えて規制要件に準拠したリスク計算の恩恵を受けます。 そのようなサービスには、市場リスク計算、取引先リスク計算、X-Value Adjustment (XVA: X 価値調整)、さらには Fundamental Review of Trading Book (FRTB: トレーディング勘定の抜本的な見直し) 計算が含まれます。
 
--   これらのサービスは Web サービスを通じてインターフェイスを公開します。 こうしたその他のサービスによって既存のリスク インフラストラクチャを強化できます。
+- これらのサービスは Web サービスを通じてインターフェイスを公開します。 こうしたその他のサービスによって既存のリスク インフラストラクチャを強化できます。
 
 私たちの例では、FRTB 計算のためにクラウドベースのサービスを呼び出したいと考えています。 これらのいくつかは [AppSource](https://appsource.microsoft.com/?WT.mc_id=fsiriskmodelr-docs-scseely) に見つかります。 この記事では [Vector Risk](http://www.vectorrisk.com/) の試用版オプションを選択しました。 システムの改良を続けます。 次に、サービスを使用して金利のリスク数値を計算します。 このプロセスは次のステップで構成されます:
 
-1.  適切なリスク サービスを正しいパラメーターを与えて呼び出します。
+1. 適切なリスク サービスを正しいパラメーターを与えて呼び出します。
 
-2.  サービスが計算を終了するまで待ちます。
+2. サービスが計算を終了するまで待ちます。
 
-3.  結果を取得してリスク分析に組み込みます。
+3. 結果を取得してリスク分析に組み込みます。
 
 R コードに変換されます。この R コードは、準備された入力テンプレートにある、必要な入力値の定義によって拡張できます。
 
@@ -428,13 +435,12 @@ plot(as.numeric(df$term[df$statistic == 'PFE']) / 365, df$result[df$statistic ==
 
 ### <a name="tutorials"></a>チュートリアル
 
+- R 開発者: [Azure Batch で並列 R シミュレーションを実行する](https://docs.microsoft.com/azure/batch/tutorial-r-doazureparallel?WT.mc_id=fsiriskmodelr-docs-scseely)
 
--   R 開発者: [Azure Batch で並列 R シミュレーションを実行する](https://docs.microsoft.com/azure/batch/tutorial-r-doazureparallel?WT.mc_id=fsiriskmodelr-docs-scseely)
+- [基本的な R コマンドと RevoScaleR 関数: 25 の一般的な例](https://docs.microsoft.com/machine-learning-server/r/tutorial-r-to-revoscaler?WT.mc_id=fsiriskmodelr-docs-scseely)
 
--   [基本的な R コマンドと RevoScaleR 関数: 25 の一般的な例](https://docs.microsoft.com/machine-learning-server/r/tutorial-r-to-revoscaler?WT.mc_id=fsiriskmodelr-docs-scseely)
+- [RevoScaleR を使用したデータの視覚化と分析](https://docs.microsoft.com/machine-learning-server/r/tutorial-revoscaler-data-model-analysis?WT.mc_id=fsiriskmodelr-docs-scseely)
 
--   [RevoScaleR を使用したデータの視覚化と分析](https://docs.microsoft.com/machine-learning-server/r/tutorial-revoscaler-data-model-analysis?WT.mc_id=fsiriskmodelr-docs-scseely)
-
--   [HDInsight での ML Services とオープン ソース R の機能の概要](https://docs.microsoft.com/azure/hdinsight/r-server/r-server-overview?WT.mc_id=fsiriskmodelr-docs-scseely)
+- [HDInsight での ML Services とオープン ソース R の機能の概要](https://docs.microsoft.com/azure/hdinsight/r-server/r-server-overview?WT.mc_id=fsiriskmodelr-docs-scseely)
 
 _本記事の執筆者は Dr.Darko Mocelj および Rupert Nicolay です。_

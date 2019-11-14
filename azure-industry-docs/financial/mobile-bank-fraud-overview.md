@@ -2,19 +2,21 @@
 title: モバイル バンクでの不正行為
 author: dstarr
 ms.author: dastarr
-ms.date: 09/26/2018
+ms.date: 10/30/2018
 ms.topic: article
 ms.service: industry
 description: モバイル バンキングで発生する不正行為の概要
-ms.openlocfilehash: f1ddd07428d2abf63337d63e64b7d703a4cc345d
-ms.sourcegitcommit: 76f2862adbec59311b5888e043a120f89dc862af
+ms.openlocfilehash: e3e707c8f08b650b642a8a88330c90c328966ef1
+ms.sourcegitcommit: f42a60539bec2a7769b42b6574f09eed4d1b6c79
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "51654149"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73750552"
 ---
 # <a name="mobile-bank-fraud"></a>モバイル バンクでの不正行為
 
 これまで銀行詐欺行為はルール エンジンを使って検出していました。つまり、一連の二者択一の質問を行うことで、"これは不正なトランザクションですか" という質問に対する、単純な "はい" または "いいえ" という回答を導き出していました。 今の銀行取引はほとんどがオンラインで行われ、サイバー犯罪者が盗みに使う方法も高度です。 一度アカウントが侵害されると、わずか数分で大量の情報が盗まれます。 不正行為の検出で効果を上げるには、その検出をほぼリアルタイムで行う必要があり、ルール エンジンでは不十分です。 新しい脅威に対応するには、代わりに、高度な Data Analytics などの新しいツールを機械学習と組み合わせます。 不快感を与えないと思われるデータを使って、ユーザーが本物かどうかを判断できます。たとえば、"このデバイスまたはコンシューマーはどのくらい頻度でログインしていますか" といった質問 を使用することによって不正行為を特定できます。
 
 モバイル バンクの不正行為に関するソリューション ガイドでは、その課題と、不正行為検出ソリューション、つまり "はい" または "いいえ" の答えを 2 秒で出すソリューションの構築に使用できる戦略について説明します。
+
+[モバイル バンクでの不正行為ソリューション ガイド](https://download.microsoft.com/download/0/1/5/0150425C-14C7-41F4-97EA-3DE57B678C51/IndSG_FraudDetection.pdf)

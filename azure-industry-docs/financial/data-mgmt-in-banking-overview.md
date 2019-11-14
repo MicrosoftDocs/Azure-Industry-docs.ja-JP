@@ -2,16 +2,16 @@
 title: 銀行業におけるデータ管理の概要
 author: dstarr
 ms.author: dastarr
-ms.date: 05/21/2018
+ms.date: 10/30/2019
 ms.topic: article
 ms.service: industry
 description: Microsoft Azure を使用して、規制対象となる銀行環境でのデータを管理する手法について説明します。
-ms.openlocfilehash: 69b0abfc4908431397e47752bcbe56a440703406
-ms.sourcegitcommit: 76f2862adbec59311b5888e043a120f89dc862af
+ms.openlocfilehash: 1314054018c04e45b6450604febbf0142ead380d
+ms.sourcegitcommit: f42a60539bec2a7769b42b6574f09eed4d1b6c79
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "51654249"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73750532"
 ---
 # <a name="data-management-in-banking-overview"></a>銀行業におけるデータ管理の概要
 
@@ -49,7 +49,7 @@ ms.locfileid: "51654249"
 
 ## <a name="data-ingest"></a>データの取り込み
 
-金融機関には、既に収集されており、現在のアプリケーションで使用されているデータが必要になります。 このデータを Azure に移動するには、いくつかのオプションがあります。 多くの場合、既存のアプリケーションは、最小限の変更でオンプレミスと同様に Azure 内のデータに接続できます。 Microsoft [Azure SQL Database](/azure/sql-database/?WT.mc_id=bankdm-docs-dastarr) を使用する場合は特にこれが当てはまりますが、[Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/databases?WT.mc_id=bankdm-docs-dastarr) でも Oracle や TeraData MongoDB など向けのソリューションを見つけることができます。
+金融機関には、既に収集されており、現在のアプリケーションで使用されているデータが必要になります。 このデータを Azure に移動するには、いくつかのオプションがあります。 多くの場合、既存のアプリケーションは、最小限の変更でオンプレミスと同様に Azure 内のデータに接続できます。 Microsoft [Azure SQL Database](/azure/sql-database/?WT.mc_id=bankdm-docs-dastarr) を使用する場合は特にこれが当てはまりますが、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/databases?WT.mc_id=bankdm-docs-dastarr) でも Oracle や TeraData MongoDB など向けのソリューションを見つけることができます。
 
 オンプレミスから Azure にデータを移動するためのデータ移行戦略にはさまざまなものがあり、かかる時間も大きく異なります。 以下に示すすべての手法には、データの透明性と信頼性の高いセキュリティが備わっています。
 
@@ -78,11 +78,11 @@ Azure にデータを安全かつ迅速に転送する方法は、たくさん�
 
 ### <a name="azure-database-migration-service"></a>Azure Database Migration Service
 
-SQL Server データベースのリフト アンド シフトを行う場合、[Microsoft Azure Database Migration Service](/azure/dms/dms-overview?WT.mc_id=bankdm-docs-dastarr) を使用してデータベースを Azure に移動することができます。 このサービスは、[Data Migration Assistant](https://docs.microsoft.com/en-us/sql/dma/dma-overview?WT.mc_id=bankdm-docs-dastarr) を使用してオンプレミス データベースと Azure SQL で提供される機能の互換性を保証しています。 データベースを移行する前に必要な変更を行うかどうかは自由です。 なお、このサービスの使用には、オンプレミス ネットワークと Azure 間のサイト対サイトのインターネット接続が必要です。
+SQL Server データベースのリフト アンド シフトを行う場合、[Microsoft Azure Database Migration Service](/azure/dms/dms-overview?WT.mc_id=bankdm-docs-dastarr) を使用してデータベースを Azure に移動することができます。 このサービスは、[Data Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview?WT.mc_id=bankdm-docs-dastarr) を使用してオンプレミス データベースと Azure SQL で提供される機能の互換性を保証しています。 データベースを移行する前に必要な変更を行うかどうかは自由です。 なお、このサービスの使用には、オンプレミス ネットワークと Azure 間のサイト対サイトのインターネット接続が必要です。
 
 ### <a name="bulk-copy-program-for-sql-server"></a>SQL Server 用の一括コピー プログラム
 
-現在オンプレミスにある SQL Server を SQL Azure に移動する場合、もう 1 つの優れた手法となるのが、SQL Server Management Studio と [BCP ユーティリティ](https://azure.microsoft.com/en-us/blog/bcp-and-sql-azure/?WT.mc_id=bankdm-docs-dastarr)を使用してデータを SQL Azure 移動する方法です。 スクリプトを書いて元のオンプレミス サーバーから Azure SQL データベースを作成した後、BCP を使用して迅速にデータを SQL Azure に転送します。
+現在オンプレミスにある SQL Server を SQL Azure に移動する場合、もう 1 つの優れた手法となるのが、SQL Server Management Studio と [BCP ユーティリティ](https://azure.microsoft.com/blog/bcp-and-sql-azure/?WT.mc_id=bankdm-docs-dastarr)を使用してデータを SQL Azure 移動する方法です。 スクリプトを書いて元のオンプレミス サーバーから Azure SQL データベースを作成した後、BCP を使用して迅速にデータを SQL Azure に転送します。
 
 ### <a name="blob-and-file-storage"></a>Blob およびファイル ストレージ
 
@@ -116,7 +116,7 @@ Files ストレージに移行するもう 1 つの利点は、データ管理�
 
 多くの場合、銀行が Azure に取り込む情報は、ペタバイト単位でなかったとしてもテラバイト単位です。 幸い、Azure のデータ ストアは非常に柔軟で、高い拡張性を備えています。
 
-莫大なデータを Azure に移行にすることに重点を置いているサービスが、[Azure Data Box](https://azure.microsoft.com/en-us/services/storage/databox/?WT.mc_id=bankdm-docs-dastarr) です。 このサービスは、Azure の接続経由でデータやバックアップを転送せずにデータを移行できるように設計されています。 Azure Data Box はテラバイト単位のデータに適したアプライアンスで、Azure Portal から注文できます。 これは、皆さんの所在地に向けて出荷されます。そこでネットワークに接続して標準の NAS プロトコル経由でデータを読み込みます。読み込んだデータは、standard256 AES 暗号化によって保護されます。 データをアプライアンスに格納してから Azure データ センターに返送すると、そこでデータが Azure に取り込まれます。
+莫大なデータを Azure に移行にすることに重点を置いているサービスが、[Azure Data Box](https://azure.microsoft.com/services/storage/databox/?WT.mc_id=bankdm-docs-dastarr) です。 このサービスは、Azure の接続経由でデータやバックアップを転送せずにデータを移行できるように設計されています。 Azure Data Box はテラバイト単位のデータに適したアプライアンスで、Azure Portal から注文できます。 これは、皆さんの所在地に向けて出荷されます。そこでネットワークに接続して標準の NAS プロトコル経由でデータを読み込みます。読み込んだデータは、standard256 AES 暗号化によって保護されます。 データをアプライアンスに格納してから Azure データ センターに返送すると、そこでデータが Azure に取り込まれます。
 その後、デバイスは安全に消去されます。
 
 ## <a name="azure-information-protection"></a>Azure Information Protection
@@ -185,7 +185,7 @@ Azure SQL を使用する場合、バックアップを 10 年間保存する[�
 
 新しいデータ モデルに納得できたら、データ インジェスト戦略を決定します。 どのようなデータ ソースがあるでしょうか。 Azure にはどんなデータを格納する予定でしょうか。 いつどうやって Azure に移行する予定でしょうか。 コンテンツの種類、サイズなどにより、移行に役立つ多くのリソースがあります。 Azure Data Migration Service は、そのような例の 1 つです。
 
-データを Azure にホストしたら、役立つ期間や有効期間を過ぎたデータの消去プランを作成します。 長期 (コールド) 記憶域はアーカイブの優れたオプションですが、期限切れデータをクリーンアップすると、占有領域やストレージ全体のコストを削減できます。 バックアップおよびアーカイブ [Azure ソリューション アーキテクチャ](https://azure.microsoft.com/en-us/solutions/architecture/?solution=backup-archive?WT.mc_id=bankdm-docs-dastarr)は、全体的な戦略の計画に役立つ優れたリソースです。
+データを Azure にホストしたら、役立つ期間や有効期間を過ぎたデータの消去プランを作成します。 長期 (コールド) 記憶域はアーカイブの優れたオプションですが、期限切れデータをクリーンアップすると、占有領域やストレージ全体のコストを削減できます。 バックアップおよびアーカイブ [Azure ソリューション アーキテクチャ](https://azure.microsoft.com/solutions/architecture/?solution=backup-archive?WT.mc_id=bankdm-docs-dastarr)は、全体的な戦略の計画に役立つ優れたリソースです。
 
 ## <a name="relevant-technologies"></a>関連テクノロジ
 
@@ -207,6 +207,6 @@ Azure SQL を使用する場合、バックアップを 10 年間保存する[�
 
 Databricks や Data Factory などの Azure サービスを使用すると、運用やデータ操作を簡単にすることができます。 アーカイブ ストレージはアクセス頻度の低いデータの長期的なストレージに使用でき、必要に応じてローリング サイクルで削除できます。
 
-データ管理計画の立案を開始するには、[バックアップおよびアーカイブ ストレージ](https://azure.microsoft.com/en-us/solutions/architecture/?solution=backup-archive?WT.mc_id=bankdm-docs-dastarr)用の Azure ソリューションのライブラリを参照してください。
+データ管理計画の立案を開始するには、[バックアップおよびアーカイブ ストレージ](https://azure.microsoft.com/solutions/architecture/?solution=backup-archive?WT.mc_id=bankdm-docs-dastarr)用の Azure ソリューションのライブラリを参照してください。
 
-**作成者**: Howard Bush および David Starr
+**作成者**:Howard Bush および David Starr
