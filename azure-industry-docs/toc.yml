@@ -135,14 +135,6 @@
               href: manufacturing/predictive-maintenance-overview.md
             - name: ソリューション ガイド
               href: manufacturing/predictive-maintenance-solution.md
-            - name: その他のリソース
-              items:
-                - name: Azure Machine Learning のドキュメント
-                  href: /azure/machine-learning
-                - name: Microsoft IoT ソリューションのアーキテクチャ
-                  href: /azure/iot-suite/iot-suite-what-is-azure-iot
-                - name: ソフトウェア品質の重要な要素
-                  href: /azure/architecture/guide/pillars
         - name: IoT Data から分析情報を引き出す
           items:
             - name: 概要
@@ -153,6 +145,12 @@
           items:
             - name: Azure データ アーキテクチャ ガイド
               href: /azure/architecture
+            - name: クラウド設計パターン
+              href: /azure/architecture/patterns
+            - name: Azure でのハイ パフォーマンス コンピューティング (HPC)
+              href: /azure/architecture/topics/high-performance-computing
+            - name: Azure Databricks によるストリーム処理パイプライン
+              href: /azure/architecture/reference-architectures/data/stream-processing-databricks
         - name: トレーニング
           items:
             - name: スケジュールに基づいて定期的に実行される自動化されたワークフローを Azure Logic Apps を使用して作成する
@@ -177,6 +175,12 @@
               href: 'https://microsoft.github.io/PowerBI-JavaScript/demo/v2-demo/index.html'
         - name: その他のリソース
           items:
+            - name: Azure Machine Learning のドキュメント
+              href: /azure/machine-learning
+            - name: Microsoft IoT ソリューションのアーキテクチャ
+              href: /azure/iot-suite/iot-suite-what-is-azure-iot
+            - name: ソフトウェア品質の重要な要素
+              href: /azure/architecture/guide/pillars
             - name: HDInsight での Apache Kafka
               href: /azure/hdinsight/kafka/apache-kafka-introduction
             - name: App Service
