@@ -1,17 +1,17 @@
 ---
-title: ヘルス + ライフ サイエンス業界
+title: 業界向け Azure - ヘルス + ライフ サイエンス
 author: dstarr
 ms.author: dastarr
-ms.date: 11/07/2019
+ms.date: 11/20/2019
 ms.topic: article
 ms.service: industry
 description: Azure Industry Experiences のヘルス + ライフ サイエンス業界ユース ケース
-ms.openlocfilehash: 1cdb2710de86c07a386728de04836c5813a46566
-ms.sourcegitcommit: 385e99900bc20950f02a63c885facc1cf62c49df
+ms.openlocfilehash: b4bb5036a3d9781f46e7253c037f1c8b2784ef90
+ms.sourcegitcommit: b8f9ccc4e4453d6912b05cdd6cf04276e13d7244
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73845636"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74263471"
 ---
 # <a name="health--life-sciences"></a>ヘルス + ライフ サイエンス
 
