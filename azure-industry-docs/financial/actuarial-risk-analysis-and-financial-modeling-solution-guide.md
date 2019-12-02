@@ -1,17 +1,17 @@
 ---
-title: 保険数理リスク分析とモデリングのソリューション ガイド
+title: 保険数理リスク分析を Azure に移行するためのガイド
 author: scseely
 ms.author: scseely
-ms.date: 08/23/2018
+ms.date: 11/20/2019
 ms.topic: article
 ms.service: industry
-description: このソリューション ガイドでは、保険数理開発者が既存のソリューションとサポート インフラストラクチャを Azure にどのように移行できるかについて説明します。
-ms.openlocfilehash: 82cb53d529f6d7524ae1f9c148118b5edddc648b
-ms.sourcegitcommit: 76f2862adbec59311b5888e043a120f89dc862af
+description: 保険数理開発者が既存のソリューションとサポート インフラストラクチャを Azure に移行する方法。
+ms.openlocfilehash: 456c054cf3a6165f160005ba8ea2c155637faa07
+ms.sourcegitcommit: f030566b177715794d2ad857b150317e72d04d64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "51654289"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74234534"
 ---
 # <a name="actuarial-risk-analysis-and-financial-modeling-solution-guide"></a>保険数理リスク分析と金融モデリングのソリューション ガイド
 
@@ -31,8 +31,8 @@ ms.locfileid: "51654289"
 
 クラウドの可能性を信じてください。金融およびリスク モデルをより迅速かつ簡単に実行することができます。 多くの保険業者では、概算で問題が示されます。これらの計算を最初から最後まで順次行うのに数年、あるいは数十年も要します。 実行時の問題を解決するためのテクノロジが必要です。 戦略は次のとおりです。
 
-- データの準備: 一部のデータは徐々に変化します。 ポリシーまたはサービス契約が実施されると、要求は予測可能なペースで移行します。 データが到着したときにモデルの実行に必要なデータを準備できます。これにより、データのクレンジングと準備のために多くの時間をかける必要がなくなります。 また、クラスタリングを使用して、重み付け表現による連続データの代替を作成することもできます。 通常、レコードの数が減ると、計算時間が短縮されます。
-- 並列処理: 2 つ以上の項目に対して同じ分析を行う必要がある場合は、同時に分析できる可能性があります。
+- データの準備:一部のデータは徐々に変化します。 ポリシーまたはサービス契約が実施されると、要求は予測可能なペースで移行します。 データが到着したときにモデルの実行に必要なデータを準備できます。これにより、データのクレンジングと準備のために多くの時間をかける必要がなくなります。 また、クラスタリングを使用して、重み付け表現による連続データの代替を作成することもできます。 通常、レコードの数が減ると、計算時間が短縮されます。
+- 並列処理:2 つ以上の項目に対して同じ分析を行う必要がある場合は、同時に分析できることがあります。
 
 これらの項目を個別に見てみましょう。
 
@@ -42,7 +42,7 @@ ms.locfileid: "51654289"
 
 ところで、データはどのように準備するのでしょうか。 まず、一般的な例を見てみましょう。次に、データのさまざまな表示方法をどのように使用するのかを見ていきます。 まず、最後の同期以降に行われた変更をすべて取得するためのメカニズムが必要です。 そのメカニズムでは、並べ替え可能な値を含める必要があります。 最近の変更については、その値が以前の変更のものより大きくなければなりません。 2 つの最も一般的なメカニズムは、増え続ける ID フィールドやタイムスタンプです。 あるレコードの ID キーは増えているが、その他のレコードに更新可能なフィールドが含まれている場合、&quot;last-modified&quot; タイムスタンプなどを使用して、変更を見つける必要があります。 レコードが処理されたら、最後に更新された項目の並べ替え可能な値を記録します。 この値 (おそらく、_lastModified_ というフィールドのタイムスタンプ) は指標になり、データ ストアの後続のクエリで使用されます。 データの変更はさまざまな方法で処理できます。 最小限のリソースを使用する 2 つの一般的なメカニズムを以下に示します。
 
-1. 数百または数千ものプロセス変更がある場合: データを Blob ストレージにアップロードします。 [Azure Data Factory](https://docs.microsoft.com/azure/data-factory?WT.mc_id=riskmodel-docs-scseely) のイベント トリガーを使用して、変更セットを処理します。
+1. 処理する変更が数百または数千件ある場合:データを BLOB ストレージにアップロードします。 [Azure Data Factory](https://docs.microsoft.com/azure/data-factory?WT.mc_id=riskmodel-docs-scseely) のイベント トリガーを使用して、変更セットを処理します。
 2. プロセスの小さな変更セットがあるか、変更が発生したらすぐにデータを更新する場合は、[Service Bus](https://docs.microsoft.com/azure/service-bus-messaging?WT.mc_id=riskmodel-docs-scseely) または[ストレージ キュー](https://docs.microsoft.com/azure/storage/queues/storage-queues-introduction?WT.mc_id=riskmodel-docs-scseely)によってホストされるキュー メッセージに各変更を取り込みます。 2 つのキュー テクノロジ間のトレードオフの詳細については、[こちらの記事](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted?WT.mc_id=riskmodel-docs-scseely)を参照してください。 メッセージがキューに取り込まれたら、Azure Functions または Azure Data Factory のトリガーを使用してメッセージを処理できます。
 
 以下の図に一般的なシナリオを示します。 まず、スケジュールされたジョブでいくつかのデータ セットが収集され、ファイルがストレージに配置されます。 スケジュールされたジョブには、オンプレミスで実行される CRON ジョブ、[Scheduler タスク](https://docs.microsoft.com/azure/scheduler?WT.mc_id=riskmodel-docs-scseely)、[Logic App](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview?WT.mc_id=riskmodel-docs-scseely)、タイマーに基づいて実行されるものがあります。 ファイルがアップロードされたら、[Azure 関数](https://docs.microsoft.com/azure/azure-functions?WT.mc_id=riskmodel-docs-scseely)または **Data Factory** のインスタンスをトリガーしてデータを処理できます。 ファイルを短時間で処理できる場合は、**関数**を使用します。 処理が複雑で、AI またはその他の複合スクリプトが必要な場合、[HDInsight](https://docs.microsoft.com/azure/hdinsight?WT.mc_id=riskmodel-docs-scseely)、[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks?WT.mc_id=riskmodel-docs-scseely)、またはカスタマイズされたものが適していることがあります。 完了すると、ファイルは、データベースのレコードとして、または新しいファイルとして使用可能なフォームになります。
@@ -62,7 +62,7 @@ Azure SQL を使用してデータを集中管理し続けるのであれば、�
 
 プロセスで後から計算するときに同じデータが使用されるように、モデルの実行時にデータ同期を無効にする必要がある場合があります。 キューを使用する場合は、メッセージ プロセッサを無効にしますが、キューでデータを受信できるようにします。
 
-また、実行前の時間を利用して、経済シナリオを生成し、保険数理の前提条件を更新し、通常は他の静的データを更新することができます。 それでは、経済シナリオ ジェネレーター (ESG) について見てみましょう。 [アクチュアリー協会](https://www.soa.org/)では、米国債利回りをモデリングする ESG である、[Academy Interest Rate Generator](https://www.soa.org/tables-calcs-tools/research-scenario/) (AIRG)  が提供されます。 AIRG は、評価マニュアル 20 (VM-20) 計算などの項目で使用するために規定されています。 他の ESG では、株式市場、住宅ローン、商品価格などをモデリングする場合があります。
+また、実行前の時間を利用して、経済シナリオを生成し、保険数理の前提条件を更新し、通常は他の静的データを更新することができます。 それでは、経済シナリオ ジェネレーター (ESG) について見てみましょう。 [アクチュアリー協会](https://www.soa.org/)では、米国債利回りをモデリングする ESG である、[Academy Interest Rate Generator](https://www.soa.org/tables-calcs-tools/research-scenario/) (AIRG) が提供されます。 AIRG は、評価マニュアル 20 (VM-20) 計算などの項目で使用するために規定されています。 他の ESG では、株式市場、住宅ローン、商品価格などをモデリングする場合があります。
 
 ご利用の環境でデータを前処理するため、早い段階で他の部分を実行することもできます。 たとえば、より多くの人口を表すレコードを使用するようにモデリングするとします。 通常、これはレコードをクラスタリングすることで行います。 1 日 1 回など、散発的にデータセットが更新される場合、レコード セットを、取り込みプロセスの一部としてモデルで使用されるものに減らすことができます。
 
@@ -76,8 +76,8 @@ Azure SQL を使用してデータを集中管理し続けるのであれば、�
 
 システムを最大限に活用するには、モデルのワークフローと、計算でスケールアウトの機能を操作する方法を理解する必要があります。ソフトウェアにはジョブやタスクなどの概念がある場合があります。 その知識を活かして、作業を分割できるものを設計します。 モデルにいくつかのカスタム ステップがある場合は、入力をより小さい処理グループに分割できるように設計します。 多くの場合、これをスキャッター/ギャザー パターンといいます。
 
-- スキャッター: 自然な線に沿って入力を分割し、個別のタスクを実行できるようにします。
-- ギャザー: タスクが完了したときに、それらの出力を収集します。
+- スキャッター:自然な線に沿って入力を分割し、個別のタスクを実行できるようにします。
+- ギャザー:タスクが完了したときに、それらの出力を収集します。
 
 また、分割時に、プロセスを同期する必要がある場所を確認してから先に進みます。 一般的な分割場所はいくつかあります。 入れ子になった確率的実行の場合、100 個のシナリオの内部ループを実行する一連の変曲点がある 1,000 個の外部ループが存在する場合があります。 各外部ループは同時に実行できます。 変曲点で止め、内部ループを同時に実行し、外部ループ用にデータを調整するために情報を戻し、再び先に進みます。 次の図にワークフローを示します。 十分なコンピューティングであれば、100,000 個のコアで 100,000 個の内部ループを実行でき、処理時間は次の時間の合計になります。
 
@@ -109,7 +109,7 @@ Azure SQL を使用してデータを集中管理し続けるのであれば、�
 - 最終的な出力のスナップショット。 これには、規制機関に提示するレポートを作成するために使用されたすべてのデータが含まれます。
 - その他の重要な中間結果。 監査員は、モデルで何らかの結果が得られた理由をたずねます。 モデルである選択を行った、あるいは特定の数値が得られた理由に関する証拠を保持する必要があります。 多くの保険業者は、元の入力から最終出力を生成するために使用されたバイナリを保持することを選択します。 その後、たずねられたときに、モデルを再実行し、中間結果の最新コピーを取得します。 出力が一致した場合、中間ファイルに必要な説明も含める必要があります。
 
-モデルの実行中に、保険数理士は、実行からの要求負荷を処理できるデータ配信メカニズムを使用します。 実行が完了し、データが不要になったら、データの一部を保持します。 少なくとも、保険業者は、再現性要件の実行時構成と入力を保持する必要があります。 データベースは Azure Blob Storage 内のバックアップに保持され、サーバーはシャットダウンされます。 高速ストレージ上のデータも、より低コストの Azure Blob Storage に移行されます。 Blob Storage に移行されたら、各 BLOB で使用するデータ層 (ホット、クール、アーカイブ) を選択できます。 ホット ストレージは、頻繁にアクセスされるファイルに適しています。 クール ストレージは、頻度の低いデータ アクセス用に最適化されています。 アーカイブ ストレージは監査可能なファイルを保持するのに最適です。しかし、価格の割引により待機時間コストが発生します。アーカイブ層のデータ待機時間は時間単位で測定されます。 [Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers?WT.mc_id=riskmodel-docs-scseely)に関するページをお読みになり、さまざまなストレージ層についてよく理解してください。 ライフサイクル管理により、データを作成して削除するまでの管理を行うことができます。 BLOB の URI はそのままですが、BLOB の格納場所については、時間の経過と共にコストが低くなります。 この機能により、Azure Storage の多くのユーザーはコストを大幅に節約でき、頭痛の種を取り除くことができます。 [Azure Blob Storage のライフサイクルの管理](https://docs.microsoft.com/azure/storage/common/storage-lifecycle-managment-concepts?WT.mc_id=riskmodel-docs-scseely)に関するページで、入力と出力について学習できます。 自動的にファイルを削除できるのはすばらしいことです。つまり、ファイル自体を自動的に削除できるため、スコープ外のファイルを参照し、誤って監査を拡張することがなくなります。
+モデルの実行中に、保険数理士は、実行からの要求負荷を処理できるデータ配信メカニズムを使用します。 実行が完了し、データが不要になったら、データの一部を保持します。 少なくとも、保険業者は、再現性要件の実行時構成と入力を保持する必要があります。 データベースは Azure Blob Storage 内のバックアップに保持され、サーバーはシャットダウンされます。 高速ストレージ上のデータも、より低コストの Azure Blob Storage に移行されます。 Blob Storage に移行されたら、各 BLOB で使用するデータ層 (ホット、クール、アーカイブ) を選択できます。 ホット ストレージは、頻繁にアクセスされるファイルに適しています。 クール ストレージは、頻度の低いデータ アクセス用に最適化されています。 アーカイブ ストレージは監査可能なファイルを保持するのに最適です。しかし、価格の割引により待機時間コストが発生します。アーカイブ層のデータ待機時間は時間単位で測定されます。 「[Azure Blob Storage:ホット、クール、アーカイブ ストレージ層](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers?WT.mc_id=riskmodel-docs-scseely)」をお読みになり、さまざまなストレージ層についてよく理解してください。 ライフサイクル管理により、データを作成して削除するまでの管理を行うことができます。 BLOB の URI はそのままですが、BLOB の格納場所については、時間の経過と共にコストが低くなります。 この機能により、Azure Storage の多くのユーザーはコストを大幅に節約でき、頭痛の種を取り除くことができます。 [Azure Blob Storage のライフサイクルの管理](https://docs.microsoft.com/azure/storage/common/storage-lifecycle-managment-concepts?WT.mc_id=riskmodel-docs-scseely)に関するページで、入力と出力について学習できます。 自動的にファイルを削除できるのはすばらしいことです。つまり、ファイル自体を自動的に削除できるため、スコープ外のファイルを参照し、誤って監査を拡張することがなくなります。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -119,9 +119,9 @@ Azure SQL を使用してデータを集中管理し続けるのであれば、�
 
 ### <a name="tutorials"></a>チュートリアル
 
-- R 開発者:[Azure Batch での並列 R シミュレーションの実行](https://docs.microsoft.com/azure/batch/tutorial-r-doazureparallel?WT.mc_id=riskmodel-docs-scseely)
-- Azure 関数を使用して、ストレージを操作する方法を示すチュートリアル: [Azure Functions を使用して Blob Storage に画像をアップロードする](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database?tutorial-step=2&WT.mc_id=riskmodel-docs-scseely)
-- Databricks を使用する ETL: [Azure Databricks を使用したデータの抽出、変換、読み込み](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse?WT.mc_id=riskmodel-docs-scseely)
-- HDInsight を使用する ETL: [Azure HDInsight の Apache Hive を使用したデータの抽出、変換、読み込み](https://docs.microsoft.com/azure/hdinsight/hdinsight-analyze-flight-delay-data-linux?toc=%2Fen-us%2Fazure%2Fhdinsight%2Fhadoop%2FTOC.json&amp;bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json&WT.mc_id=riskmodel-docs-scseely)
+- R 開発者: [Azure Batch で並列 R シミュレーションを実行する](https://docs.microsoft.com/azure/batch/tutorial-r-doazureparallel?WT.mc_id=riskmodel-docs-scseely)
+- Azure 関数を使用してストレージを操作する方法を説明するチュートリアル:[Azure Functions を使用して BLOB ストレージに画像をアップロードする](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database?tutorial-step=2&WT.mc_id=riskmodel-docs-scseely)
+- Databricks を使用した ETL:[Azure Databricks を使ったデータの抽出、変換、読み込み](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse?WT.mc_id=riskmodel-docs-scseely)
+- HDInsight を使用した ETL:[Azure HDInsight の Apache Hive を使用してデータの抽出、変換、読み込みを行う](https://docs.microsoft.com/azure/hdinsight/hdinsight-analyze-flight-delay-data-linux?toc=%2Fen-us%2Fazure%2Fhdinsight%2Fhadoop%2FTOC.json&amp;bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json&WT.mc_id=riskmodel-docs-scseely)
 - データ サイエンス VM の使用方法 (Linux): [https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/linux-dsvm-walkthrough](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/linux-dsvm-walkthrough?WT.mc_id=riskmodel-docs-scseely)
 - データ サイエンス VM の使用方法 (Windows): [https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/vm-do-ten-things](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/vm-do-ten-things?WT.mc_id=riskmodel-docs-scseely)

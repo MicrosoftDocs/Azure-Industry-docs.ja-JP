@@ -1,17 +1,17 @@
 ---
-title: モバイル バンクでの不正行為ソリューション ガイド
-description: 不正なトランザクションが 2 秒以内にどのように検出されるかについて説明します
-author: mauiguitar
-ms.author: sihiga
+title: Azure と R を使用して金融サービスのリスク ライフサイクルを有効にする
+description: ''
+author: sseely
+ms.author: sseely
 ms.service: industry
 ms.topic: overview
-ms.date: 10/31/2019
-ms.openlocfilehash: c5ea4384d02548e4d681b1c13fd81066a955d6a2
-ms.sourcegitcommit: f42a60539bec2a7769b42b6574f09eed4d1b6c79
+ms.date: 11/19/2019
+ms.openlocfilehash: 03fea3996b62782c2b65e6d2edf841b5adaebcd2
+ms.sourcegitcommit: f030566b177715794d2ad857b150317e72d04d64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750530"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74234545"
 ---
 # <a name="enabling-the-financial-services-risk-lifecycle-with-azure-and-r"></a>Azure と R を使用して金融サービスのリスク ライフサイクルを有効にする
 

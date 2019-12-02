@@ -1,17 +1,17 @@
 ---
-title: モバイル バンクでの不正行為
-author: dstarr
-ms.author: dastarr
-ms.date: 10/30/2018
+title: 概要 - モバイル バンクでの不正行為に対する迅速なソリューションを Azure サービスを使用して開発する
+author: kbaroni
+ms.author: kbaroni
+ms.date: 11/20/2019
 ms.topic: article
 ms.service: industry
-description: モバイル バンキングで発生する不正行為の概要
-ms.openlocfilehash: e3e707c8f08b650b642a8a88330c90c328966ef1
-ms.sourcegitcommit: f42a60539bec2a7769b42b6574f09eed4d1b6c79
+description: 不正なトランザクションが 2 秒以内にどのように検出されるかについて説明します
+ms.openlocfilehash: 17cc8cbcfe260b0925d50223e8c9d57319d19466
+ms.sourcegitcommit: f030566b177715794d2ad857b150317e72d04d64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750552"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74234638"
 ---
 # <a name="mobile-bank-fraud"></a>モバイル バンクでの不正行為
 

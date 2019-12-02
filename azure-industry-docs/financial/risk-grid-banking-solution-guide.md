@@ -1,17 +1,17 @@
 ---
-title: ソリューション ガイドのリスク グリッド コンピューティング
+title: 概要 - Azure Batch、Azure Data Lake でのグリッド コンピューティングによるリスク分析
 author: dstarr
 ms.author: dastarr
-ms.date: 5/2/2018
+ms.date: 11/20/2019
 ms.topic: article
 ms.service: industry
 description: 銀行取引におけるリスク グリッド コンピューティング向け Azure Batch 実装の技術的な側面を紹介します。
-ms.openlocfilehash: d3470a2e546e73f4c0f1478413ca4b1af7433a66
-ms.sourcegitcommit: 76f2862adbec59311b5888e043a120f89dc862af
+ms.openlocfilehash: 542fb820870048ac2ec2cb67c2bbf13988588ea1
+ms.sourcegitcommit: f030566b177715794d2ad857b150317e72d04d64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "51654299"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74234663"
 ---
 # <a name="risk-grid-computing-in-banking-solution-guide"></a>銀行取引におけるリスク グリッド コンピューティングのソリューション ガイド
 
@@ -45,7 +45,7 @@ worker アプリケーションは、その作成時に計算ノードにイン�
 
 ![プール、ジョブ、タスク](./assets/risk-grid-compute-assets/06-pool-job-logical-model.png)
 
-**図 2:** Bath の概念の論理モデル
+**図 2:** Batch の概念の論理モデル
 
 ジョブ実行時、プールによって、必要な worker VM がプロビジョニングされ、worker アプリケーションがインストールされます。 ジョブによってそれらの計算ノードにタスクが割り当てられると、コマンド ライン命令が実行され、通常はそれによって、インストールされているアプリケーションまたはスクリプトが呼び出されます。
 Batch の使用は通常、次に示す典型的なパターンに従います。
@@ -112,7 +112,7 @@ Azure Batch にはスケジューラが組み込まれているため、ポー�
 1. より多くの計算ノード マシンを割り当ててスケール アウトします。
 2. より能力の高い計算ノード マシンを割り当ててスケール アップします。 コア数やメモリについて、また GPU 処理能力についても、より高いパフォーマンスのニーズを満たす Azure マシンをプロビジョニングします。
 
-> 注: Microsoft HPC Pack の Batch との併用は、より複雑なモデルであり、この記事では説明しません。
+> 注:Microsoft HPC Pack の Batch との併用は、より複雑なモデルであり、この記事では説明しません。
 
 Batch 処理クラスター内にある処理 VM は、2 つだけと少ない場合もあれば、数千の同期タスクが、数万のコアを持つ数千の VM 計算ノード上で実行される場合もあります。 各 VM は、一度に 1 つのタスクを実行します。 プール内の VM の数は、負荷が増加または減少したときに、構成に従って手動または自動でスケールできます。
 
@@ -206,13 +206,13 @@ Azure には、セキュリティで保護された信頼性の高い方法で�
 
 ExpressRoute では、現在のインターネット サービス プロバイダーなどの接続パートナー (ISP?WT.mc_id=gridbanksg-docs-dastarr) によって提供されるプライベート接続を経由して、オンプレミスまたはデータセンターのネットワークを Azure に接続します。 これにより、両方のネットワークが相互に同じネットワーク インスタンスとして表示できるようになり、ネットワーク間でのシームレスなアクセスが可能になります。 既存のオンプレミス システムを Azure ネットワークに統合する場合、ネットワークの統合は不可欠であり、ExpressRoute を使用すると可能な最速の接続速度が得られます。
 
-Azure ExpressRoute の料金の詳細については、[こちらを参照してください](https://azure.microsoft.com/en-us/pricing/details/expressroute/?WT.mc_id=gridbanksg-docs-dastarr)。
+Azure ExpressRoute の料金の詳細については、[こちらを参照してください](https://azure.microsoft.com/pricing/details/expressroute/?WT.mc_id=gridbanksg-docs-dastarr)。
 
 ### <a name="vpn-gateway"></a>VPN Gateway
 
 VPN Gateway は、ネットワークを Azure に接続するもう 1 つの方法です。 このモデルの欠点は、トラフィックがインターネットを経由して転送されることです。 結果として接続の回復性が下がり、ネットワーク速度が ExpressRoute の速度に到達できない可能性がありますが、これはリスク グリッド コンピューティングのシナリオにとって障害にはならないと考えられます (通常、データ ファイルの読み込みは高速な処理であるため)。
 
-VPN Gateway の料金の詳細については、[こちらを参照してください](https://azure.microsoft.com/en-us/pricing/details/expressroute/?WT.mc_id=gridbanksg-docs-dastarr)。
+VPN Gateway の料金の詳細については、[こちらを参照してください](https://azure.microsoft.com/pricing/details/expressroute/?WT.mc_id=gridbanksg-docs-dastarr)。
 
 ### <a name="choices-for-connectivity-details"></a>接続の選択に関する詳細
 
@@ -247,12 +247,12 @@ ExpressRoute 接続モデルについては、[こちらを参照してくださ
 
 ### <a name="hybrid-network-connectivity-resources"></a>ハイブリッド ネットワーク接続のリソース
 
-ご自分の状況に複数の構成が適用できる場合があります。 ネットワーク接続と Azure への統合に関する決定とアーキテクチャに関するガイダンスとして、パターンと実践グループによる「_[オンプレミス ネットワークの Azure への接続](/azure/architecture/reference-architectures/hybrid-networking/?WT.mc_id=gridbanksg-docs-dastarr)_」の記事を参照してください。
+ご自分の状況に複数の構成が適用できる場合があります。 ネットワーク接続と Azure への統合に関する決定とアーキテクチャに関するガイダンスとして、パターンと実践グループによる「 _[オンプレミス ネットワークの Azure への接続](/azure/architecture/reference-architectures/hybrid-networking/?WT.mc_id=gridbanksg-docs-dastarr)_ 」の記事を参照してください。
 
 - 代替の VPN Gateway 構成方法については、[こちらの記事を参照してください](/azure/vpn-gateway/vpn-gateway-about-vpngateways?WT.mc_id=gridbanksg-docs-dastarr)。
 - [ExpressRoute 接続モデル](/azure/expressroute/expressroute-connectivity-models?WT.mc_id=gridbanksg-docs-dastarr)について説明します。
-- [ExpressRoute の料金](https://azure.microsoft.com/en-us/pricing/details/expressroute/?WT.mc_id=gridbanksg-docs-dastarr)を計算します。
-- [VPN Gateway の料金](https://azure.microsoft.com/en-us/pricing/details/vpn-gateway/?WT.mc_id=gridbanksg-docs-dastarr)
+- [ExpressRoute の料金](https://azure.microsoft.com/pricing/details/expressroute/?WT.mc_id=gridbanksg-docs-dastarr)を計算します。
+- [VPN Gateway の料金](https://azure.microsoft.com/pricing/details/vpn-gateway/?WT.mc_id=gridbanksg-docs-dastarr)
 
 ## <a name="security-considerations"></a>セキュリティに関する考慮事項
 

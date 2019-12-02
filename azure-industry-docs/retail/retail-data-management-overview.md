@@ -1,17 +1,17 @@
 ---
-title: 小売業におけるデータ管理の概要
+title: 小売業におけるビッグ データ管理の入門
 author: dstarr
 ms.author: dastarr
-ms.date: 06/22/2018
+ms.date: 11/20/2019
 ms.topic: article
 ms.service: industry
 description: 小売業者は、貴重な分析情報が得られる可能性のある、使用されていないデータの大規模なデータ ストアを保有しています。 この記事では、Microsoft Azure を活用して、そのデータを効果的に使用する方法について説明します。
-ms.openlocfilehash: 8a1a839a509155e67cf8da08d89ea9f7c758bc3b
-ms.sourcegitcommit: 76f2862adbec59311b5888e043a120f89dc862af
+ms.openlocfilehash: 198e0f609889eee86e005c5ee56090006ae2a413
+ms.sourcegitcommit: b8f9ccc4e4453d6912b05cdd6cf04276e13d7244
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "51654189"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74263513"
 ---
 # <a name="data-management-in-retail-overview"></a>小売業におけるデータ管理の概要
 

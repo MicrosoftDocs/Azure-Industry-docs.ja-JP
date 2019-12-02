@@ -1,17 +1,17 @@
 ---
-title: AI 用の Azure ブループリントを実装する
+title: Azure サービスを使用した医療ブループリントの実装のための AI
 author: dstarr
 ms.author: dastarr
-ms.date: 11/07/2019
+ms.date: 11/20/2019
 ms.topic: article
 ms.service: industry
 description: この記事では、AI 用の Microsoft Azure ブループリントに関するガイダンスを提供します。
-ms.openlocfilehash: 845ec2a1da335336375d90c789e0fa89bc70d23a
-ms.sourcegitcommit: 385e99900bc20950f02a63c885facc1cf62c49df
+ms.openlocfilehash: 40919ffde2c2cac11339b40348cba7a5e0e0e16d
+ms.sourcegitcommit: 2714a77488c413f01beb169a18acab45663bcfd7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73845629"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74308512"
 ---
 # <a name="implementing-the-azure-blueprint-for-ai"></a>AI 用の Azure ブループリントを実装する
 
@@ -162,7 +162,7 @@ Azure ブループリントのインストールには、AI/ML ユース ケー�
 
 その他の Azure 機能が必要な場合は、[Cosmos DB](/azure/cosmos-db/introduction?WT.mc_id=ms-docs-dastarr) や新しい [Azure Functions](/azure/azure-functions/functions-overview?WT.mc_id=ms-docs-dastarr) などの新しいリソースをソリューションに追加することもできます。 新しいリソースやサービスを追加する場合は、規制やポリシーの準拠を維持するため、確実にセキュリティとプライバシー ポリシーを満たすように構成してください。
 
-新しいリソースやサービスは、[Azure REST API](https://docs.microsoft.com/rest/api/?view=Azure&WT.mc_id=ms-docs-dastarr)、[Azure PowerShell スクリプト](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-6.6.0&WT.mc_id=ms-docs-dastarr)、または [Azure portal](http://portal.azure.com/?WT.mc_id=ms-docs-dastarr) を使用して作成することもできます。
+新しいリソースやサービスは、[Azure REST API](https://docs.microsoft.com/rest/api/?view=Azure&WT.mc_id=ms-docs-dastarr)、[Azure PowerShell スクリプト](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-6.6.0&WT.mc_id=ms-docs-dastarr)、または [Azure portal](https://portal.azure.com/?WT.mc_id=ms-docs-dastarr) を使用して作成することもできます。
 
 ## <a name="using-machine-learning-with-the-blueprint"></a>ブループリントでの機械学習の使用
 

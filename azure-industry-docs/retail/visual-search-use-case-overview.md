@@ -1,17 +1,17 @@
 ---
-title: 画像検索の概要
+title: CosmosDB を使用した小売業における画像検索の入門
 author: scseely
-ms.author: scseely, mazoroto
-ms.date: 07/16/2018
+ms.author: scseely
+ms.date: 11/20/2019
 ms.topic: article
 ms.service: industry
 description: この記事では、オンプレミスから Azure に e コマース インフラストラクチャを移行する各フェーズについて説明します。
-ms.openlocfilehash: 0c80e3068a1b23bf12d2468489fdd0b67c660dfa
-ms.sourcegitcommit: 76f2862adbec59311b5888e043a120f89dc862af
+ms.openlocfilehash: b43ea305e11ac32da58e4d0521d79f90d5c23d85
+ms.sourcegitcommit: 2714a77488c413f01beb169a18acab45663bcfd7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "51654209"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74308476"
 ---
 # <a name="visual-search-overview"></a>画像検索の概要
 
@@ -42,7 +42,7 @@ ms.locfileid: "51654209"
 
 画像検索から利益を得るために膨大な処理能力は不要です。 画像カタログを所有する企業は、Azure サービスに組み込まれた Microsoft の AI の専門知識を活用できます。
 
-[Bing Visual Search](https://azure.microsoft.com/en-us/services/cognitive-services/bing-visual-search/?WT.mc_id=vsearchgio-article-gmarchet) API を使用すると、画像からコンテキスト情報を抽出し、たとえば、家財道具、ファッション、数種類の製品などを識別できます。
+[Bing Visual Search](https://azure.microsoft.com/services/cognitive-services/bing-visual-search/?WT.mc_id=vsearchgio-article-gmarchet) API を使用すると、画像からコンテキスト情報を抽出し、たとえば、家財道具、ファッション、数種類の製品などを識別できます。
 
 この API では、独自のカタログ、関連するショッピング ソースの製品、関連検索から、見た目が似ている画像を返すこともできます。 興味深いものの、自社がこれらのソースの 1 つでない場合、これはあまり役に立ちません。
 
@@ -64,7 +64,7 @@ Bing には次の機能も用意されています。
 
  ![](./assets/visual-search-use-case-overview/visual-search-pipeline.png)
 
-*図 1: 画像検索パイプラインの例*
+"*図 1:画像検索パイプラインの例*"
 
 ### <a name="sourcing-the-pictures"></a>画像の調達
 
@@ -72,7 +72,7 @@ Bing には次の機能も用意されています。
 
  ![](./assets/visual-search-use-case-overview/deep-fashion-dataset.png)
 
-*図 2: Deep Fashion データセットの例*
+"*図 2:Deep Fashion データセットの例*"
 
 ### <a name="filtering-the-images"></a>画像のフィルター処理
 
@@ -96,11 +96,11 @@ Bing には次の機能も用意されています。
 
 また、最小数の有用なデータ ポイント (画像識別子またはキー、製品 SKU、説明、タグ フィールドなど) が必要になる場合もあります。
 
-[Azure CosmosDB](https://azure.microsoft.com/en-us/services/cosmos-db/?WT.mc_id=vsearchgio-article-gmarchet) は、その上に構築されたアプリケーションに必要な柔軟性とさまざまなアクセス メカニズムを提供します (これは、カタログ検索に役立ちます)。 ただし、最適な価格/パフォーマンス比を実現するには注意が必要です。 CosmosDB ではドキュメントの添付ファイルを保存できますが、アカウントごとに上限があり、コストのかかる問題になる可能性があります。 実際の画像ファイルは BLOB に保存し、それらへのリンクをデータベースに挿入するのが一般的です。 CosmosDB の場合、これは、その画像に関連付けられたカタログ プロパティ (SKU、タグなど) を含むドキュメントと、(Azure Blob Storage や OneDrive などにある) 画像ファイルの URL を含む添付ファイルを作成することを意味します。
+[Azure CosmosDB](https://azure.microsoft.com/services/cosmos-db/?WT.mc_id=vsearchgio-article-gmarchet) は、その上に構築されたアプリケーションに必要な柔軟性とさまざまなアクセス メカニズムを提供します (これは、カタログ検索に役立ちます)。 ただし、最適な価格/パフォーマンス比を実現するには注意が必要です。 CosmosDB ではドキュメントの添付ファイルを保存できますが、アカウントごとに上限があり、コストのかかる問題になる可能性があります。 実際の画像ファイルは BLOB に保存し、それらへのリンクをデータベースに挿入するのが一般的です。 CosmosDB の場合、これは、その画像に関連付けられたカタログ プロパティ (SKU、タグなど) を含むドキュメントと、(Azure Blob Storage や OneDrive などにある) 画像ファイルの URL を含む添付ファイルを作成することを意味します。
 
  ![](./assets/visual-search-use-case-overview/cosmosdb-data-model.png)
 
-*図 3: CosmosDB 階層型リソース モデル*
+"*図 3:CosmosDB 階層型リソース モデル*"
 
 Cosmos DB のグローバル配布を利用する場合、ドキュメントと添付ファイルはレプリケートされますが、リンクされたファイルはレプリケートされません。 これらのファイルには、コンテンツ配信ネットワークを使用することを検討してください。
 
@@ -122,13 +122,13 @@ Cosmos DB のグローバル配布を利用する場合、ドキュメントと�
 
  ![](./assets/visual-search-use-case-overview/resnet-modifications.png)
 
-*図 4: 画像検索のための ResNet の変更 - F. Yang 他 (2017 年)*
+"*図 4:画像検索のための ResNet の変更 - F. Yang 他 (2017 年)* "
 
 事前トレーニングされたモデルを選択するか、独自のモデルを開発するかに関係なく、モデル自体の特徴付けやトレーニングを実行する場所を決定する必要があります。
 
-Azure には、複数のオプション (VM、Azure Batch、[Batch AI](https://azure.microsoft.com/en-us/services/batch-ai/?WT.mc_id=vsearchgio-article-gmarchet)、Databricks クラスター) が用意されています。 ただし、どの場合も、GPU を使用することによって、最適な価格/パフォーマンス比が得られます。
+Azure には、次のような複数のオプションが用意されています。VM、Azure Batch、[Batch AI](https://azure.microsoft.com/services/batch-ai/?WT.mc_id=vsearchgio-article-gmarchet)、Databricks クラスター。 ただし、どの場合も、GPU を使用することによって、最適な価格/パフォーマンス比が得られます。
 
-最近、Microsoft はわずかな GPU コストで高速計算を実現する FPGA の提供も発表しました ([Project Brainwave](https://www.microsoft.com/en-us/research/blog/microsoft-unveils-project-brainwave/?WT.mc_id=vsearchgio-article-gmarchet))。 ただし、このドキュメントの執筆時点では、このオファリングは特定のネットワーク アーキテクチャに限定されているので、パフォーマンスを綿密に評価する必要があります。
+最近、Microsoft はわずかな GPU コストで高速計算を実現する FPGA の提供も発表しました ([Project Brainwave](https://www.microsoft.com/research/blog/microsoft-unveils-project-brainwave/?WT.mc_id=vsearchgio-article-gmarchet))。 ただし、このドキュメントの執筆時点では、このオファリングは特定のネットワーク アーキテクチャに限定されているので、パフォーマンスを綿密に評価する必要があります。
 
 ### <a name="similarity-measure-or-distance"></a>類似性測度または距離
 
@@ -144,7 +144,7 @@ Azure には、複数のオプション (VM、Azure Batch、[Batch AI](https://a
 
 類似性が定義されたら、入力として渡されたものに最も近い N 個の項目を取得し、識別子のリストを返す効率的な方法を考案する必要があります。 これは "画像ランク付け" とも呼ばれます。 大規模なデータセットでは、すべての距離の計算に膨大な時間がかかるため、近似最近傍アルゴリズムを使用します。 これらのアルゴリズムのオープン ソース ライブラリがいくつか存在するので、ゼロからコーディングする必要はありません。
 
-最後に、メモリと計算の要件によって、トレーニングされたモデルの展開テクノロジと高可用性が決まります。 通常、検索空間はパーティション分割され、ランク付けアルゴリズムの複数のインスタンスが並列実行されます。 スケーラビリティと可用性を実現する 1 つのオプションとして、[Azure Kubernetes](https://azure.microsoft.com/en-us/services/container-service/kubernetes/?WT.mc_id=vsearchgio-article-gmarchet) クラスターがあります。 その場合、ランク付けモデルを複数のコンテナー (各検索空間のパーティションを処理) および複数のノード (高可用性の確保) に展開することをお勧めします。
+最後に、メモリと計算の要件によって、トレーニングされたモデルの展開テクノロジと高可用性が決まります。 通常、検索空間はパーティション分割され、ランク付けアルゴリズムの複数のインスタンスが並列実行されます。 スケーラビリティと可用性を実現する 1 つのオプションとして、[Azure Kubernetes](https://azure.microsoft.com/services/container-service/kubernetes/?WT.mc_id=vsearchgio-article-gmarchet) クラスターがあります。 その場合、ランク付けモデルを複数のコンテナー (各検索空間のパーティションを処理) および複数のノード (高可用性の確保) に展開することをお勧めします。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -156,14 +156,14 @@ Azure には、複数のオプション (VM、Azure Batch、[Batch AI](https://a
 
 ### <a name="develop"></a>開発
 
-- カスタマイズされたサービスの作成を開始するには、[Bing Visual Search API の概要](https://docs.microsoft.com/en-us/azure/cognitive-services/bing-visual-search/overview/?WT.mc_id=vsearchgio-article-gmarchet)をご覧ください。
-- 最初の要求を作成するには、クイック スタート ([C#](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/quickstarts/csharp) | [Java](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/quickstarts/java) | [node.js](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/quickstarts/nodejs) | [Python](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/quickstarts/python)) をご覧ください。
+- カスタマイズされたサービスの作成を開始するには、[Bing Visual Search API の概要](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/overview/?WT.mc_id=vsearchgio-article-gmarchet)をご覧ください。
+- 最初の要求を作成するには、次のクイック スタートをご覧ください。[C#](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/quickstarts/csharp) | [Java](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/quickstarts/java) | [node.js](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/quickstarts/nodejs) | [Python](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/quickstarts/python)
 - [Visual Search API リファレンス](https://aka.ms/bingvisualsearchreferencedoc)を理解します。
 
 ### <a name="background"></a>バックグラウンド
 
-- [ディープ ラーニングによる画像のセグメント化](https://www.microsoft.com/developerblog/2018/04/18/deep-learning-image-segmentation-for-ecommerce-catalogue-visual-search/?WT.mc_id=vsearchgio-article-gmarchet): 画像をバックグラウンドから分離するプロセスについて説明する Microsoft の論文
-- [Visual Search at eBay (eBay での画像検索)](https://arxiv.org/abs/1706.03154): コーネル大学による研究
+- [ディープ ラーニングによる画像のセグメント化](https://www.microsoft.com/developerblog/2018/04/18/deep-learning-image-segmentation-for-ecommerce-catalogue-visual-search/?WT.mc_id=vsearchgio-article-gmarchet):画像をバックグラウンドから分離するプロセスについて説明する Microsoft の論文
+- [Ebay での画像検索](https://arxiv.org/abs/1706.03154):コーネル大学による研究
 - [Visual Discovery at Pinterest (Pinterest での画像検索)](https://arxiv.org/abs/1702.04680): コーネル大学による研究
 - [Semantic Hashing (セマンティック ハッシュ)](https://www.cs.utoronto.ca/~rsalakhu/papers/semantic_final.pdf): トロント大学による研究
 

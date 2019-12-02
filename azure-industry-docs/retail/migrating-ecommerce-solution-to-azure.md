@@ -1,17 +1,17 @@
 ---
 title: eコマース ソリューションの Azure への移行の概要
 author: scseely
-ms.author: scseely, mazoroto
-ms.date: 07/16/2018
+ms.author: scseely
+ms.date: 11/20/2019
 ms.topic: article
 ms.service: industry
-description: この記事では、オンプレミスから Azure に eコマース インフラストラクチャを移行する各フェーズについて説明します。
-ms.openlocfilehash: a440eabad6a1367ed8219c01424d21d22e441b16
-ms.sourcegitcommit: 20b001b9fb51b944ae82bf55d2d670aa852fa64b
+description: この記事では、オンプレミスから Azure に e コマース インフラストラクチャを移行する各フェーズについて説明します。
+ms.openlocfilehash: e918f1157dc2bc42a6c4d0decfef95a8daa7ccf0
+ms.sourcegitcommit: b8f9ccc4e4453d6912b05cdd6cf04276e13d7244
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52297955"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74263356"
 ---
 # <a name="migrating-your-e-commerce-solution-to-azure-overview"></a>eコマース ソリューションの Azure への移行の概要
 
@@ -41,9 +41,9 @@ ms.locfileid: "52297955"
 
 Azure にリホストするための 3 つのフェーズがあります。
 
-- **分析**: アプリケーション、ワークロード、ネットワーク、セキュリティなどのオンプレミス リソースを識別し、一覧を作成します。 このフェーズの終わりには、既存システムの完全なドキュメントが作成されています。
-- **移行**: 各サブシステムをオンプレミスから Azure に移行します。 この段階では、アプリケーションの通信を継続しながら、Azure をデータ センターの拡張機能として使用します。
-- **最適化**: システムを Azure に移行する際、適切にサイズが設定されるようにします。 一部の VM に割り当てられているリソースが多過ぎることが判明した場合、VM のタイプを CPU、メモリ、ローカル ストレージが適切に組み合わされたものに変更します。
+- **分析** :アプリケーション、ワークロード、ネットワーク、セキュリティなどのオンプレミス リソースを識別し、インベントリ管理を行います。 このフェーズの終わりには、既存システムの完全なドキュメントが作成されています。
+- **移行** :各サブシステムをオンプレミスから Azure に移行します。 この段階では、アプリケーションの通信を継続しながら、Azure をデータ センターの拡張機能として使用します。
+- **最適化** :システムを Azure に移行する際、適切にサイズが設定されるようにします。 一部の VM に割り当てられているリソースが多過ぎることが判明した場合、VM のタイプを CPU、メモリ、ローカル ストレージが適切に組み合わされたものに変更します。
 
 ### <a name="analyze"></a>分析
 
@@ -120,7 +120,7 @@ Azure には、環境を最適化するツールも用意されています。 [
 
 多くの開発チームは、技術的負債に対処し、キャパシティをより効率的に活用するために、リホストとリファクターを同時に行えないものかと模索します。 次の手順に進む前に、リホストを行うことにはメリットがいくつかあります。  新しい環境にデプロイする際に生じる問題を診断して修正するのが簡単になります。 これにより、開発チームとサポート チームに、Azure を用いた新しい環境に慣れる時間を与えることができます。 システムのリファクーとリビルドを開始するときには、安定して稼働しているアプリケーションの上に構築していくことができます。 そして、加える変更をより小さく、的を絞ったものにし、更新の頻度を増やすことができます。
 
-クラウドへの移行に関する汎用的なホワイト ペーパー「[Cloud Migration Essentials](https://azure.microsoft.com/resources/cloud-migration-essentials-e-book/?_lrsc=9618a836-9f81-4087-901f-51058783c3a8&WT.mc_id=retailecomm-docs-scseely)」を公開しました。 移行を計画する際にこれをお読みいただければ、きっとお役に立つでしょう。
+クラウドへの移行に関する汎用的なホワイトペーパーを公開しました:「[クラウド移行の基本](https://azure.microsoft.com/resources/cloud-migration-essentials-e-book/?_lrsc=9618a836-9f81-4087-901f-51058783c3a8&WT.mc_id=retailecomm-docs-scseely)」。 移行を計画する際にこれをお読みいただければ、きっとお役に立つでしょう。
 
 ## <a name="technologies-presented"></a>使用するテクノロジ
 

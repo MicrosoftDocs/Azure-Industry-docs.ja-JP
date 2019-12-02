@@ -1,17 +1,17 @@
 ---
-title: 保険数理リスク分析とモデリングのソリューション ガイド
+title: 概要 - 保険数理リスク分析を Azure に移行するためのガイド
 author: dstarr
 ms.author: dastarr
-ms.date: 08/29/2018
+ms.date: 11/20/2019
 ms.topic: article
 ms.service: industry
 description: この概要では、保険数理開発者の既存のソリューションとサポート インフラストラクチャを Azure に移行する方法について説明します。
-ms.openlocfilehash: b6bfecb27feeecf116e17f6d8eee9f1ab008576c
-ms.sourcegitcommit: 76f2862adbec59311b5888e043a120f89dc862af
+ms.openlocfilehash: cb571d996ab34da9157e9e211f354d7ce3d5f720
+ms.sourcegitcommit: b8f9ccc4e4453d6912b05cdd6cf04276e13d7244
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "51654079"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74263381"
 ---
 # <a name="actuarial-risk-analysis-and-financial-modeling"></a>保険数理リスク分析と金融モデリング
 

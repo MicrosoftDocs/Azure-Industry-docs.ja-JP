@@ -1,17 +1,17 @@
 ---
-title: 予測メンテナンス ソリューション
+title: 製造業における Azure ML と IoT を使用した予測メンテナンス
 author: ercenk
 ms.author: ercenk
-ms.date: 05/03/2018
+ms.date: 11/20/2019
 ms.topic: article
 ms.service: industry
 description: 製造業のお客様向けに Azure で予測メンテナンスを開発する方法を説明したソリューション ガイド。
-ms.openlocfilehash: 1c7b95e2da21df46465ccaf21827ae97597206a2
-ms.sourcegitcommit: 76f2862adbec59311b5888e043a120f89dc862af
+ms.openlocfilehash: c32893d534279cda35f7c6a142869d2983eaca67
+ms.sourcegitcommit: 2714a77488c413f01beb169a18acab45663bcfd7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "51654319"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74308488"
 ---
 # <a name="predictive-maintenance-in-manufacturing-solution-guide"></a>製造業における予測メンテナンスのためのソリューション ガイド
 
@@ -45,8 +45,8 @@ ms.locfileid: "51654319"
 
 ## <a name="training-the-ml-model"></a>ML モデルのトレーニング
 
-ML モデルを構築するには、十分な量の正確かつ完全なデータが必要です。 さらに、予測メンテナンスは、特有の課題をもたらします。その中で最も大きな課題は、故障データの可用性です。 故障は、比較的まれな事故です。特に、CNC マシンや石油精製所のコンポーネントなど、高額の設備投資を必要とする機器では、めったに発生しません。このため、センサー データを長期間収集しても、十分な故障データが得られない可能性があります。 “故障” をどのように定義するか、つまり、正確には何を故障とするかを検討する必要があります。 デバイスが予想外に機能を停止したときですか? 
-デバイスが、もはや期待されるレベルのパフォーマンスを発揮できない程度まで性能が低下したときですか?  故障ケースは、金属疲労に起因する部品の故障のために壊れた切断機、または大惨事が発生する前に、故障を示すその他のインジケーターですか?
+ML モデルを構築するには、十分な量の正確かつ完全なデータが必要です。 さらに、予測メンテナンスは、特有の課題をもたらします。その中で最も大きな課題は、故障データの可用性です。 故障は、比較的まれな事故です。特に、CNC マシンや石油精製所のコンポーネントなど、高額の設備投資を必要とする機器では、めったに発生しません。このため、センサー データを長期間収集しても、十分な故障データが得られない可能性があります。 “故障” をどのように定義するか、つまり、正確には何を故障とするかを検討する必要があります。 デバイスが予想外に機能を停止したときですか?
+デバイスが、もはや期待されるレベルのパフォーマンスを発揮できない程度まで性能が低下したときですか? 故障ケースは、金属疲労に起因する部品の故障のために壊れた切断機、または大惨事が発生する前に、故障を示すその他のインジケーターですか?
 
 ## <a name="considering-the-data-needed-for-ml"></a>ML に必要なデータについて検討する
 
@@ -64,14 +64,14 @@ ML モデルを構築するには、十分な量の正確かつ完全なデー�
 
 ![ML モデル構築の段階](assets/pdm-assets/mlmodelbuildingstages.png)
 
-Microsoft は、データを準備し、機械学習モデルをトレーニングする方法について[詳細なガイド](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/cortana-analytics-playbook-predictive-maintenance?WT.mc_id=pdmsolution-docs-ercenk)を発行しています。 メンテナンスのための 3 つの一般的な質問とそれに関連する機械学習アルゴリズムがあります。
+Microsoft は、データを準備し、機械学習モデルをトレーニングする方法について[詳細なガイド](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-analytics-playbook-predictive-maintenance?WT.mc_id=pdmsolution-docs-ercenk)を発行しています。 メンテナンスのための 3 つの一般的な質問とそれに関連する機械学習アルゴリズムがあります。
 
-- _資産について、次の X 時間内に故障する確率はどのくらいか?_  回答: 0 から 100%
-  - **二項分類:** 二項分類は、データを使用して、2 つのクラスの一方のメンバーとして、データの項目または行のカテゴリ、タイプ、またはクラスを決定する機械学習メソッドです。 分類アルゴリズムには複数の種類があり、Microsoft は、[Machine Learning Studio モジュール](https://docs.microsoft.com/en-us/azure/machine-learning/studio-module-reference/machine-learning-initialize-model-classification?WT.mc_id=pdmsolution-docs-ercenk)として利用可能な一連のアルゴリズムを公開しています。
-- _資産の残存耐用時間数はどれくらいか?_  回答: X 時間
-  - **回帰:** 回帰は、機械学習アルゴリズムの一種で、指定された一連の他の変数から 1 つの変数の値を予測します。 Machine Learning Studio には、一連の回帰アルゴリズムが[モジュール](https://docs.microsoft.com/en-us/azure/machine-learning/studio-module-reference/machine-learning-initialize-model-regression?WT.mc_id=pdmsolution-docs-ercenk)として含まれています。
-    - **Long Short Term Memory (LSTM):** [LSTM](http://colah.github.io/posts/2015-08-Understanding-LSTMs/?WT.mc_id=pdmsolution-docs-ercenk) ネットワークは、ディープ ニューラル ネットワーク (DNN) の一種です。 DNN は、脳内の個々のニューロンの動作に着想を得て、モデル化されたものです。 Microsoft は、LSTM を予測メンテナンスに使用する方法を説明するために、[ステップ バイ ステップ ガイド](https://docs.microsoft.com/en-us/azure/machine-learning/desktop-workbench/scenario-deep-learning-for-predictive-maintenance?WT.mc_id=pdmsolution-docs-ercenk)を発行しています。
-- _最も緊急にサービスを必要としているのはどの資産か?_  回答: 資産 X
+- "_今から X 時間以内にその資産で障害が発生する確率はどのくらいですか。_ " 回答:0 ～ 100%
+  - **二項分類:** 二項分類は、データを使用して、2 つのクラスの一方のメンバーとして、データの項目または行のカテゴリ、タイプ、またはクラスを決定する機械学習メソッドです。 分類アルゴリズムには複数の種類があり、Microsoft は、[Machine Learning Studio モジュール](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/machine-learning-initialize-model-classification?WT.mc_id=pdmsolution-docs-ercenk)として利用可能な一連のアルゴリズムを公開しています。
+- "_その資産の残存耐用時間数はどのくらいですか。_ " 回答:X 時間
+  - **回帰:** 回帰は、機械学習アルゴリズムの一種で、指定された一連の他の変数から 1 つの変数の値を予測します。 Machine Learning Studio には、一連の回帰アルゴリズムが[モジュール](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/machine-learning-initialize-model-regression?WT.mc_id=pdmsolution-docs-ercenk)として含まれています。
+    - **Long Short Term Memory (LSTM):** [LSTM](https://colah.github.io/posts/2015-08-Understanding-LSTMs/?WT.mc_id=pdmsolution-docs-ercenk) ネットワークは、ディープ ニューラル ネットワーク (DNN) の一種です。 DNN は、脳内の個々のニューロンの動作に着想を得て、モデル化されたものです。 Microsoft は、LSTM を予測メンテナンスに使用する方法を説明するために、[ステップ バイ ステップ ガイド](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/scenario-deep-learning-for-predictive-maintenance?WT.mc_id=pdmsolution-docs-ercenk)を発行しています。
+- "_最も緊急に整備を必要としているのはどの資産ですか。_ " 回答:資産 X
   - **多クラス分類:** 多クラス分類は、データを使用して、3 つ以上のクラスのメンバーとして、データの項目または行のカテゴリ、タイプ、またはクラスを決定する機械学習メソッドです。
 
 データを取り込むということは、複数のチャネルを利用し、最初に一括して初期化した後、故障を予測するためにストリーミング データの受信を継続し、そのデータを以降のモデルの構築にも使用することを意味します。
@@ -80,29 +80,29 @@ Microsoft は、データを準備し、機械学習モデルをトレーニン�
 
 Microsoft Azure には、データを取り込んで格納するための各種サービスが用意されています。 Azure に転送するデータがまだない場合、データを取得するにはバッチ メソッドをお勧めします。 データをファイルとして既知の形式 (csv、json、xml など) にエクスポートできる場合、バッチ メソッドは適切な選択肢です。 また、データを圧縮してからアップロードし、クラウド側で処理するという方法を選択することもできます。
 
-- [AzCopy](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy?WT.mc_id=pdmsolution-docs-ercenk) を使用して Blob ストレージにアップロードする (Windows と Linux の両方)
+- [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy?WT.mc_id=pdmsolution-docs-ercenk) を使用して Blob ストレージにアップロードする (Windows と Linux の両方)
 
-- Linux にファイル システムとして [Blob ストレージをマウントする](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-how-to-mount-container-linux?WT.mc_id=pdmsolution-docs-ercenk)
+- Linux にファイル システムとして [Blob ストレージをマウントする](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux?WT.mc_id=pdmsolution-docs-ercenk)
 
-- データ サイズが大きく、アップロードに時間がかかりすぎる場合は、[インポート/エクスポート サービス](https://docs.microsoft.com/en-us/azure/storage/common/storage-import-export-service?WT.mc_id=pdmsolution-docs-ercenk)を使用する
+- データ サイズが大きく、アップロードに時間がかかりすぎる場合は、[インポート/エクスポート サービス](https://docs.microsoft.com/azure/storage/common/storage-import-export-service?WT.mc_id=pdmsolution-docs-ercenk)を使用する
 
-- Windows、Linux、MacOS に[Azure ファイル共有をマウントする](https://docs.microsoft.com/en-us/azure/storage/files/storage-how-to-use-files-windows?WT.mc_id=pdmsolution-docs-ercenk)
+- Windows、Linux、MacOS に[Azure ファイル共有をマウントする](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows?WT.mc_id=pdmsolution-docs-ercenk)
 
-データが SQL Server データベース内にある場合、[Data Migration Assistant](https://docs.microsoft.com/en-us/sql/dma/dma-overview?WT.mc_id=pdmsolution-docs-ercenk) を使用して、データを Azure SQL Database にアップロードすることもできます。
+データが SQL Server データベース内にある場合、[Data Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview?WT.mc_id=pdmsolution-docs-ercenk) を使用して、データを Azure SQL Database にアップロードすることもできます。
 
-Azure プラットフォームには、抽出、変換、読み込み (ETL) 操作のための各種のツールおよびサービスがあります。 最もよく知られているサービスは、[Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/?WT.mc_id=pdmsolution-docs-ercenk) です。これは、データを操作するための完全な機能セットを提供します。 データを操作するためのその他のオプションは、オープン ソース ライブラリを介して Azure で使用可能な数多くの ML サービスで提供されます。
+Azure プラットフォームには、抽出、変換、読み込み (ETL) 操作のための各種のツールおよびサービスがあります。 最もよく知られているサービスは、[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/?WT.mc_id=pdmsolution-docs-ercenk) です。これは、データを操作するための完全な機能セットを提供します。 データを操作するためのその他のオプションは、オープン ソース ライブラリを介して Azure で使用可能な数多くの ML サービスで提供されます。
 
 ML モードのトレーニングについては、Microsoft Azure は数多くのオプションを提供しています。これらはすべて、さまざまに組み合わせて使用することができます。
 
-- [Azure Machine Learning サービス](https://docs.microsoft.com/en-us/azure/machine-learning/preview/?WT.mc_id=pdmsolution-docs-ercenk)
+- [Azure Machine Learning サービス](https://docs.microsoft.com/azure/machine-learning/preview/?WT.mc_id=pdmsolution-docs-ercenk)
 
-- [Azure Machine Learning Studio](https://docs.microsoft.com/en-us/azure/machine-learning/studio/?WT.mc_id=pdmsolution-docs-ercenk)
+- [Azure Machine Learning Studio](https://docs.microsoft.com/azure/machine-learning/studio/?WT.mc_id=pdmsolution-docs-ercenk)
 
-- [Data Science Virtual Machine](https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/?WT.mc_id=pdmsolution-docs-ercenk)
+- [Data Science Virtual Machine](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/?WT.mc_id=pdmsolution-docs-ercenk)
 
-- [HDInsight の Spark MLLib](https://docs.microsoft.com/en-us/azure/hdinsight/spark/apache-spark-machine-learning-mllib-ipython?WT.mc_id=pdmsolution-docs-ercenk)
+- [HDInsight の Spark MLLib](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-machine-learning-mllib-ipython?WT.mc_id=pdmsolution-docs-ercenk)
 
-- [Batch AI トレーニング サービス](https://docs.microsoft.com/en-us/azure/batch-ai/?WT.mc_id=pdmsolution-docs-ercenk)
+- [Batch AI トレーニング サービス](https://docs.microsoft.com/azure/batch-ai/?WT.mc_id=pdmsolution-docs-ercenk)
 
 どのツールを使用するかは、操作の複雑さ、チームの経験、およびデータのサイズによって決まります。
 
@@ -110,7 +110,7 @@ ML モードのトレーニングについては、Microsoft Azure は数多く�
 
 詳細な科目としては、データ分析プロセスおよびモデル公開プロセスの設計があり、これらは、使用されるテクノロジによって異なります。 これらのトピックは、この記事の範囲外ですが、 モデルの生成に使用できるプロセスと Azure サービスについて説明した一連の記事を参照することができます。 また、Microsoft は、データ サイエンティスト チームがデータのライフサイクル全体で効果的に共同作業できる、データ ソリューションを構築するための組織的なアプローチも提供しています。
 
-Microsoft の [Azure Machine Learning のドキュメント](https://docs.microsoft.com/en-us/azure/machine-learning?WT.mc_id=pdmsolution-docs-ercenk)は、ML モデルおよび AI モデルを構築し、クラウドにデプロイして管理するためのオプションを調べる出発点として適しています。
+Microsoft の [Azure Machine Learning のドキュメント](https://docs.microsoft.com/azure/machine-learning?WT.mc_id=pdmsolution-docs-ercenk)は、ML モデルおよび AI モデルを構築し、クラウドにデプロイして管理するためのオプションを調べる出発点として適しています。
 
 Microsoft Azure プラットフォームは、データを一括処理し、ML モデルを構築するための豊富な選択肢を提供しています。 クラウド プラットフォームでは、ほとんど無限でスケーラブルなコンピューティング能力とストレージ容量を利用できるため、ML モデルおよび AI モデルを構築することができます。 このため、モデルの構築に Azure サービスを利用することは、このデータ フローを実装するための合理的なオプションです。
 
@@ -124,13 +124,13 @@ ML モデルを構築したら、それを実行 (または “使用”) して
 
 Microsoft Azure プラットフォームには、データの取り込み、処理、および保存のための次のような各種サービスが用意されています。
 
-- [Azure Event Hubs](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-what-is-event-hubs?WT.mc_id=pdmsolution-docs-ercenk)
+- [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-what-is-event-hubs?WT.mc_id=pdmsolution-docs-ercenk)
 
-- [Azure Service Bus](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-messaging-overview?WT.mc_id=pdmsolution-docs-ercenk)
+- [Azure Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-overview?WT.mc_id=pdmsolution-docs-ercenk)
 
-- [Azure IoT Hub](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-what-is-iot-hub?WT.mc_id=pdmsolution-docs-ercenk)
+- [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-what-is-iot-hub?WT.mc_id=pdmsolution-docs-ercenk)
 
-- [Apache Kafka for HDInsight](https://docs.microsoft.com/en-us/azure/hdinsight/kafka/apache-kafka-introduction?WT.mc_id=pdmsolution-docs-ercenk)
+- [Apache Kafka for HDInsight](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-introduction?WT.mc_id=pdmsolution-docs-ercenk)
 
 ML モデルを構築するプロセスとは異なり、ML モデルを使用するために、大量の計算リソースは必要ありません。 ニーズに応じて、モデルをクラウド内のサービスにデプロイすることも、工場でローカルに展開することもできます。
 
@@ -144,9 +144,9 @@ ML モデルはローカルで実行されますが、データは、取り込�
 
 ## <a name="cloud-execution"></a>クラウド実行
 
-取り込み、処理、および保存と ML モデルの実行はすべて、Azure クラウドで発生します。 このオプションは、複数のテナント間または地域間で ML モデルの実行結果を共有する (さらに待ち時間が重要ではない) 場合の方が適しています。 “エッジ ゲートウェイ” と呼ばれることが多いオプションのコンポーネントは、データの集計とプロジェクト、ストリーム分析などの一部の作業を実行するために、[“アンバサダー” パターン](https://docs.microsoft.com/en-us/azure/architecture/patterns/ambassador?WT.mc_id=pdmsolution-docs-ercenk)と呼ばれるパターンに従って、ローカルで追加することができます。
+取り込み、処理、および保存と ML モデルの実行はすべて、Azure クラウドで発生します。 このオプションは、複数のテナント間または地域間で ML モデルの実行結果を共有する (さらに待ち時間が重要ではない) 場合の方が適しています。 “エッジ ゲートウェイ” と呼ばれることが多いオプションのコンポーネントは、データの集計とプロジェクト、ストリーム分析などの一部の作業を実行するために、[“アンバサダー” パターン](https://docs.microsoft.com/azure/architecture/patterns/ambassador?WT.mc_id=pdmsolution-docs-ercenk)と呼ばれるパターンに従って、ローカルで追加することができます。
 
-Azure でモデルを使用するには、複数の方法があります。 [Azure Machine Learning Web サービス](https://docs.microsoft.com/en-us/azure/machine-learning/studio/consume-web-services?WT.mc_id=pdmsolution-docs-ercenk)は最も簡単な方法で、モデルの作成方法として [Azure Machine Learning Studio](https://docs.microsoft.com/en-us/azure/machine-learning/studio/what-is-ml-studio?WT.mc_id=pdmsolution-docs-ercenk) を使用します。 [Azure Machine Learning モデル管理](https://docs.microsoft.com/en-us/azure/machine-learning/preview/model-management-overview?WT.mc_id=pdmsolution-docs-ercenk)を選択することもできます。これは、モデルを管理するための包括的なサービス セットを提供し、認証、負荷分散、自動スケールアウト、および暗号化の各機能とともに、REST API エンドポイントも提供します。 モデルは、単一のマシン (たとえば、Data Science Virtual Machine、IoT デバイス、ローカルの PC など) または [Azure Container Service](https://docs.microsoft.com/en-us/azure/aks/intro-kubernetes?WT.mc_id=pdmsolution-docs-ercenk) にデプロイすることができます。 モデルを REST API を通じて公開すると、それが使用される可能性は、カスタム アプリケーションからエンタープライズ ソリューション統合まで無限です。
+Azure でモデルを使用するには、複数の方法があります。 [Azure Machine Learning Web サービス](https://docs.microsoft.com/azure/machine-learning/studio/consume-web-services?WT.mc_id=pdmsolution-docs-ercenk)は最も簡単な方法で、モデルの作成方法として [Azure Machine Learning Studio](https://docs.microsoft.com/azure/machine-learning/studio/what-is-ml-studio?WT.mc_id=pdmsolution-docs-ercenk) を使用します。 [Azure Machine Learning モデル管理](https://docs.microsoft.com/azure/machine-learning/preview/model-management-overview?WT.mc_id=pdmsolution-docs-ercenk)を選択することもできます。これは、モデルを管理するための包括的なサービス セットを提供し、認証、負荷分散、自動スケールアウト、および暗号化の各機能とともに、REST API エンドポイントも提供します。 モデルは、単一のマシン (たとえば、Data Science Virtual Machine、IoT デバイス、ローカルの PC など) または [Azure Container Service](https://docs.microsoft.com/azure/aks/intro-kubernetes?WT.mc_id=pdmsolution-docs-ercenk) にデプロイすることができます。 モデルを REST API を通じて公開すると、それが使用される可能性は、カスタム アプリケーションからエンタープライズ ソリューション統合まで無限です。
 
 ![クラウドのみ](assets/pdm-assets/cloudonly.png)
 
@@ -156,7 +156,7 @@ Azure でモデルを使用するには、複数の方法があります。 [Azu
 
 多くの IoT ソリューションは、機能セットの一部としてデータを取り込んで保存します。 さらに、多くの場合、予測メンテナンス ソリューションは IoT データに依存するため、IoT ソリューションに自然に機能を追加できます。 このコンテキストで強調すべき重要な点は、故障について予測モデルをトレーニングするために、故障を既存のデータに記録させることの重要性です。
 
-一部のユース ケースには、ほぼリアルタイムのデータ処理が必要です。 このような場合、データ インジェスト率の高い機能を備えたスケーラブルな IoT ソリューションが必要です。 Microsoft Azure プラットフォームには、スケーラビリティに優れた IoT のニーズを満たすためのソリューションを実現できる数多くのサービスが用意されています。 Azure プラットフォーム上の [Microsoft の IoT ソリューション アーキテクチャ](https://docs.microsoft.com/en-us/azure/iot-suite/iot-suite-what-is-azure-iot?WT.mc_id=pdmsolution-docs-ercenk)には、次の 3 段階で論理コンポーネントが含まれています。
+一部のユース ケースには、ほぼリアルタイムのデータ処理が必要です。 このような場合、データ インジェスト率の高い機能を備えたスケーラブルな IoT ソリューションが必要です。 Microsoft Azure プラットフォームには、スケーラビリティに優れた IoT のニーズを満たすためのソリューションを実現できる数多くのサービスが用意されています。 Azure プラットフォーム上の [Microsoft の IoT ソリューション アーキテクチャ](https://docs.microsoft.com/azure/iot-suite/iot-suite-what-is-azure-iot?WT.mc_id=pdmsolution-docs-ercenk)には、次の 3 段階で論理コンポーネントが含まれています。
 
 - デバイスの接続性
 
@@ -166,30 +166,30 @@ Azure でモデルを使用するには、複数の方法があります。 [Azu
 
 ![IoT ソリューションのアーキテクチャ](assets/pdm-assets/iot.png)
 
-Azure IoT ソリューション アーキテクチャの詳細は、[オンラインで入手できます](http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf?WT.mc_id=pdmsolution-docs-ercenk)。
+Azure IoT ソリューション アーキテクチャの詳細は、[オンラインで入手できます](https://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf?WT.mc_id=pdmsolution-docs-ercenk)。
 ただし、膨大な数のデバイスがバックエンド サービスに接続される可能性があるため、特有の課題が発生する可能性があります。
 
 ## <a name="data-ingestion-and-stream-processing"></a>データ インジェストとストリーム処理
 
 デバイスからデータを取り込むのは、2 つの個別のサービス間で行われる通信の問題です。つまり、データを生成するシステム (デバイス) と、このデータを処理するシステム (ML モデルをトレーニングし、受信データ ポイントとトレーニングされたモデルを比較して、残存耐用年数を予測するシステム) との間の通信です。
 
-定義上、分散システムは、本来相互に通信する必要がある個別のコンポーネントで構成されます。 通信を可能にするための 1 つのオプションとして、関連するコンポーネントに相互に直接通信させることが考えられます。 これにより、保守とスケーリングが困難なシステムが作成されます。 コンポーネントの数が増加すると、通信リンクが複雑になります (_O(n<sup>2</sup>)_)。 これよりも適切なアプローチは、データを共通ハブに投稿し、共通ハブから読み取る方法です。
+定義上、分散システムは、本来相互に通信する必要がある個別のコンポーネントで構成されます。 通信を可能にするための 1 つのオプションとして、関連するコンポーネントに相互に直接通信させることが考えられます。 これにより、保守とスケーリングが困難なシステムが作成されます。 コンポーネントの数が増加すると、通信リンクが複雑になります (_O(n<sup>2</sup>)_ )。 これよりも適切なアプローチは、データを共通ハブに投稿し、共通ハブから読み取る方法です。
 
 ![サブコンポーネントの通信](./assets/pdm-assets/subcomponentcommunication.png)
 
 データ インジェスト用の新しいコンポーネントを挿入すると、通信の拡張性は向上します。 このコンポーネントは、データ インジェスト プロセスを地理的に分割するオプションを備えた、スケーラブルかつセキュアで、ほぼ確実に世界中からアクセスできる必要があります。 
 
 予測メンテナンスを検討することは、IoT ソリューションの機能です。 データはゲートウェイ経由でストリーミングされるため、予測メンテナンス機能と関連するサービスにルーティングする必要があります。
-もう 1 つの検討すべきパターンは、[ゲートウェイ ルーティング](https://docs.microsoft.com/en-us/azure/architecture/patterns/gateway-routing?WT.mc_id=pdmsolution-docs-ercenk)です。
+もう 1 つの検討すべきパターンは、[ゲートウェイ ルーティング](https://docs.microsoft.com/azure/architecture/patterns/gateway-routing?WT.mc_id=pdmsolution-docs-ercenk)です。
 
-どちらのパターンも、Azure サービス、[IoT ハブ](https://azure.microsoft.com/en-us/services/iot-hub/?WT.mc_id=pdmsolution-docs-ercenk)、[Azure Stream Analytics](https://azure.microsoft.com/en-us/services/stream-analytics/?WT.mc_id=pdmsolution-docs-ercenk) を使用して実現することができます。
+どちらのパターンも、Azure サービス、[IoT ハブ](https://azure.microsoft.com/services/iot-hub/?WT.mc_id=pdmsolution-docs-ercenk)、[Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/?WT.mc_id=pdmsolution-docs-ercenk) を使用して実現することができます。
 
 ## <a name="edge-and-cloud-processing-cooperation"></a>エッジとクラウドの処理の連携
 
 必ずしもすべてのデバイスや機器が、一貫してインターネットに直接アクセスできるとは限りません。
-場合によっては、それらのデータを共通ゲートウェイから抽出する必要があります。 たとえば、[MTConnect](http://www.mtconnect.org/) エージェントは、データを抽出するための REST インターフェイスを提供するだけです。
+場合によっては、それらのデータを共通ゲートウェイから抽出する必要があります。 たとえば、[MTConnect](https://www.mtconnect.org/) エージェントは、データを抽出するための REST インターフェイスを提供するだけです。
 
-他にも、待ち時間、デバイス データをクラウドに送信する前にローカルでスクラブする必要性 (マルチテナントの場合)、デバイス データに対してプロジェクションまたは集計を実行する必要性などの考慮事項が考えられます。 [アンバサダー パターン](https://docs.microsoft.com/en-us/azure/architecture/patterns/ambassador?WT.mc_id=pdmsolution-docs-ercenk)は、これらのニーズに対応するための有効なアプローチです。 [Microsoft Azure IoT Edge](https://docs.microsoft.com/en-us/azure/iot-edge/how-iot-edge-works?WT.mc_id=pdmsolution-docs-ercenk) は、[Microsoft Azure IoT Hub](https://azure.microsoft.com/en-us/services/iot-hub/?WT.mc_id=pdmsolution-docs-ercenk) のためのプロキシとして動作できるだけでなく、ローカル処理機能とリモート管理を提供することもできる実装です。
+他にも、待ち時間、デバイス データをクラウドに送信する前にローカルでスクラブする必要性 (マルチテナントの場合)、デバイス データに対してプロジェクションまたは集計を実行する必要性などの考慮事項が考えられます。 [アンバサダー パターン](https://docs.microsoft.com/azure/architecture/patterns/ambassador?WT.mc_id=pdmsolution-docs-ercenk)は、これらのニーズに対応するための有効なアプローチです。 [Microsoft Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works?WT.mc_id=pdmsolution-docs-ercenk) は、[Microsoft Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/?WT.mc_id=pdmsolution-docs-ercenk) のためのプロキシとして動作できるだけでなく、ローカル処理機能とリモート管理を提供することもできる実装です。
 
 一般的な展開には、店舗でのほぼリアルタイムのアラートが含まれますが、データは依然として、アーカイブ、モデルのトレーニング、およびタイム クリティカルではないレポート生成のためにスクラブされ、クラウド内のマルチテナント ソリューションに投稿されます。 お客様は、Azure IoT Edge と IoT Hub の機能を利用して、エッジ デバイスでのデータ フィルタリング オプションを制御できるだけでなく、他の店舗システムと対話してアラートを配信することができます。
 
@@ -203,7 +203,7 @@ Azure IoT ソリューション アーキテクチャの詳細は、[オンラ�
 
 サービスを提供する側は確実に、その顧客からの機密情報を識別し、適切にセキュリティで保護するか、スクラブする必要があります。Microsoft Azure には、使用されているストレージ サービスに応じてデータを暗号化するための機能が用意されています。
 
-デバイスがデータを生成して送信する方法も、デバイスごとの証明書、デバイスごとの有効化/無効化、TLS セキュリティ、X.509 サポート、IP のホワイトリスト登録/ブラックリスト登録、共有アクセス ポリシーなどの既知の手法を使用してセキュリティで保護する必要があります。 サービスを提供する側は確実に、顧客からの機密情報を識別し、適切にセキュリティで保護するか、スクラブする必要があります。[Azure Data Lake Store](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-encryption?WT.mc_id=pdmsolution-docs-ercenk)、[Azure Storage](https://docs.microsoft.com/en-us/azure/storage/common/storage-service-encryption?WT.mc_id=pdmsolution-docs-ercenk)、[Azure Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/database-encryption-at-rest?WT.mc_id=pdmsolution-docs-ercenk)、[Azure SQL Database](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?WT.mc_id=pdmsolution-docs-ercenk) は、保存中のデータの暗号化に使用できるサービスの例です。 ソリューション プロバイダーは、同一のリソース (たとえば、データベース) または複数のリソース内でデータをパーティション分割する方法も検討する必要があります。 
+デバイスがデータを生成して送信する方法も、デバイスごとの証明書、デバイスごとの有効化/無効化、TLS セキュリティ、X.509 サポート、IP のホワイトリスト登録/ブラックリスト登録、共有アクセス ポリシーなどの既知の手法を使用してセキュリティで保護する必要があります。 サービスを提供する側は確実に、顧客からの機密情報を識別し、適切にセキュリティで保護するか、スクラブする必要があります。[Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-encryption?WT.mc_id=pdmsolution-docs-ercenk)、[Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption?WT.mc_id=pdmsolution-docs-ercenk)、[Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/database-encryption-at-rest?WT.mc_id=pdmsolution-docs-ercenk)、[Azure SQL Database](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?WT.mc_id=pdmsolution-docs-ercenk) は、保存中のデータの暗号化に使用できるサービスの例です。 ソリューション プロバイダーは、同一のリソース (たとえば、データベース) または複数のリソース内でデータをパーティション分割する方法も検討する必要があります。 
 
 ### <a name="geographical-considerations"></a>地理的な考慮事項
 
@@ -223,7 +223,7 @@ ML モデルの構築には、柔軟にスケーリングできるコンピュ�
 
 複雑なシステムには、機能要件を満たす以外にも、追加の精査が必要です。 成功するクラウド ソリューションでは、スケーラビリティ、可用性、回復性、管理、およびセキュリティの 5 つの重要な要素に重点が置かれています。 この 5 つの重要な要素に加えて、ソリューションの費用対効果を産出することも必要です。
 
-詳細については、記事「[ソフトウェア品質の重要な要素](https://docs.microsoft.com/en-us/azure/architecture/guide/pillars?WT.mc_id=pdmsolution-docs-ercenk)」を参照してください。
+詳細については、記事「[ソフトウェア品質の重要な要素](https://docs.microsoft.com/azure/architecture/guide/pillars?WT.mc_id=pdmsolution-docs-ercenk)」を参照してください。
 
 | 重要な要素                      |                                                                                                                                                                                                                                                                                                                                                                                                 |
 |-----------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -241,12 +241,12 @@ ML モデルの構築には、柔軟にスケーリングできるコンピュ�
 
 ## <a name="further-reading"></a>参考資料
 
-1. [Future-focused: Stop thinking in the past and get ahead of the unexpected  with  IoT](https://blogs.microsoft.com/iot/2017/02/28/future-focused-stop-thinking-in-the-past-and-get-ahead-of-the-unexpected-with-iot-2/?WT.mc_id=pdmsolution-docs-ercenk) (将来を見据えて: 古い考えを捨て、不測の事態を IoT で把握する)
+1. [将来を見据えて:古い考えを捨て、IoT で不測の事態に先手を打つ](https://blogs.microsoft.com/iot/2017/02/28/future-focused-stop-thinking-in-the-past-and-get-ahead-of-the-unexpected-with-iot-2/?WT.mc_id=pdmsolution-docs-ercenk)
 
-2. [Boost equipment reliability with IoT-enabled predictive  maintenance](https://www.microsoft.com/en-us/internet-of-things/predictive-maintenance?WT.mc_id=pdmsolution-docs-ercenk) (IoT 対応の予測メンテナンスで機器の信頼性を向上)
+2. [Boost equipment reliability with IoT-enabled predictive  maintenance](https://www.microsoft.com/internet-of-things/predictive-maintenance?WT.mc_id=pdmsolution-docs-ercenk) (IoT 対応の予測メンテナンスで機器の信頼性を向上)
 
-3. [Capture value from the Internet of Things: How to approach a predictive  maintenance  project](http://download.microsoft.com/download/0/7/D/07D394CE-185D-4B96-AC3C-9B61179F7080/Capture_value_from_the_Internet%20of%20Things_with_Predictive_Maintenance.PDF?WT.mc_id=pdmsolution-docs-ercenk) (モノのインターネットから価値を得る: 予測メンテナンス プロジェクトへのアプローチ)
+3. [モノのインターネットから価値を得る:予測メンテナンス プロジェクトへのアプローチ](https://download.microsoft.com/download/0/7/D/07D394CE-185D-4B96-AC3C-9B61179F7080/Capture_value_from_the_Internet%20of%20Things_with_Predictive_Maintenance.PDF?WT.mc_id=pdmsolution-docs-ercenk)
 
-4. [Partner perspectives: Predictive maintenance on the  frontlines](https://blogs.microsoft.com/iot/2017/03/21/partner-perspectives-predictive-maintenance-on-the-frontlines/?WT.mc_id=pdmsolution-docs-ercenk) (パートナーの視点: フロントラインでの予測メンテナンス)
+4. [パートナーの視点:最前線での予測メンテナンス](https://blogs.microsoft.com/iot/2017/03/21/partner-perspectives-predictive-maintenance-on-the-frontlines/?WT.mc_id=pdmsolution-docs-ercenk)
 
-5. [From commoditization to servitization: Transforming your business to  compete in the new age of field service with  IoT](https://blogs.microsoft.com/iot/2016/11/07/from-commodization-to-servitization-transforming-your-business-to-compete-in-the-new-age-of-field-service-with-iot/?WT.mc_id=pdmsolution-docs-ercenk) (コモディティ化からサービス化へ: IoT によるビジネス変革でフィールド サービスの新時代を勝ち抜く)
+5. [コモディティ化からサービス化へ:IoT によるビジネス変革でフィールド サービスの新時代を勝ち抜く](https://blogs.microsoft.com/iot/2016/11/07/from-commodization-to-servitization-transforming-your-business-to-compete-in-the-new-age-of-field-service-with-iot/?WT.mc_id=pdmsolution-docs-ercenk)

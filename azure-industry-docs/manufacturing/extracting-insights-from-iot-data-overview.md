@@ -6,13 +6,13 @@ ms.author: ercenk
 manager: gmarchet
 ms.service: industry
 ms.topic: article
-ms.date: 09/26/2018
-ms.openlocfilehash: 9528983a06602bd469a4d651bda8478aa758152b
-ms.sourcegitcommit: 76f2862adbec59311b5888e043a120f89dc862af
+ms.date: 11/28/2019
+ms.openlocfilehash: 8ca31501d976e0b162735b7f55e2db7fae850776
+ms.sourcegitcommit: a6eefa2a605c9e1c5015ae107c9847b18d415746
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "51654119"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74540418"
 ---
 # <a name="extracting-actionable-insights-from-iot-data"></a>IoT データからアクションにつながる分析情報を抽出する
 

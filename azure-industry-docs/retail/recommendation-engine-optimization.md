@@ -1,17 +1,17 @@
 ---
-title: レコメンデーション エンジンの最適化
+title: レコメンダー システムと R のアルゴリズムの Azure での再利用
 author: kbaroni
 ms.author: kbaroni
-ms.date: 07/18/2018
+ms.date: 11/20/2019
 ms.topic: article
 ms.service: industry
 description: R 言語で記述されたレコメンデーション アプリを再利用および最適化する方法。 Azure VM 上の Machine Learning Server に依存します。
-ms.openlocfilehash: bce6d7df548e7bd80d73495dc0bec642817d8641
-ms.sourcegitcommit: 76f2862adbec59311b5888e043a120f89dc862af
+ms.openlocfilehash: c5c35de681abc52641952f8bc9e95095b9d99d97
+ms.sourcegitcommit: b8f9ccc4e4453d6912b05cdd6cf04276e13d7244
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "51654259"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74263492"
 ---
 # <a name="optimize-and-reuse-an-existing-recommendation-system"></a>既存のレコメンデーション システムの最適化と再利用  
 
@@ -19,8 +19,8 @@ ms.locfileid: "51654259"
 
 ## <a name="recommendation-systems-and-r"></a>レコメンデーション システムと R
 
-小売業者にとって、消費者の好みと購買履歴を理解することは競争上の強みです。 小売業者は長年にわたり、そのようなデータを機械学習と組み合わせて使用することで、消費者に関連する製品を識別したり、パーソナライズされたショッピング体験を提供したりしてきました。 このアプローチは**製品のレコメンデーション**と呼ばれ、小売業者にとって大きな収入の流れを生み出します。 レコメンデーション システムは次のような疑問への答えを得るために役立ちます: *この人は次に何の映画を見るか?この顧客はどのような追加サービスに興味を持ちそうか?この顧客はどこで休暇を過ごしたいか?*
-ある最近の顧客は次のことを知りたがっていました: *消費者 (サブスクライバー) は契約を更新するだろうか?* その顧客は、サブスクライバーが契約を更新する確率を予測する既存のレコメンデーション モデルを持っていました。 予測が生成されたら、追加の処理を適用して応答をはい、いいえ、可能性ありのいずれかに分類していました。 その後、モデルの応答はコール センターのビジネス プロセスに統合されました。 そのプロセスによって、サービス エージェントはパーソナライズされたレコメンデーションを消費者に提供することができました。  
+小売業者にとって、消費者の好みと購買履歴を理解することは競争上の強みです。 小売業者は長年にわたり、そのようなデータを機械学習と組み合わせて使用することで、消費者に関連する製品を識別したり、パーソナライズされたショッピング体験を提供したりしてきました。 このアプローチは**製品のレコメンデーション**と呼ばれ、小売業者にとって大きな収入の流れを生み出します。 レコメンデーション システムは、次のような疑問への答えを得るために役立ちます。*この人は次にどの映画を見るか?この顧客はどのような追加サービスに興味を持ちそうか?この顧客はどこで休暇を過ごしたいか?*
+ある最近の顧客は、次のことを知りたがっていました。*消費者 (サブスクライバー) は契約を更新するだろうか?* その顧客は、サブスクライバーが契約を更新する確率を予測する既存のレコメンデーション モデルを持っていました。 予測が生成されたら、追加の処理を適用して応答をはい、いいえ、可能性ありのいずれかに分類していました。 その後、モデルの応答はコール センターのビジネス プロセスに統合されました。 そのプロセスによって、サービス エージェントはパーソナライズされたレコメンデーションを消費者に提供することができました。  
 この顧客の初期の分析製品の多くは、レコメンデーション システムの中核の機械学習モデルを含め、[プログラミング言語 R](https://docs.microsoft.com/machine-learning-server/rebranding-microsoft-r-server) で構築されていました。 サブスクライバーの増加に伴い、データおよび計算の要件も高度化しました。 そのため今となっては、レコメンデーションのワークロードは非常に低速であり、処理が面倒です。 最近は、分析製品戦略に Python が組み込まれるようになってきています。 しかし短期的には、R への投資を維持し、より効率的な開発とデプロイのプロセスを見つける必要があります。 課題は、Azure の機能を使用して既存のアプローチを最適化することでした。 私たちは、レコメンデーションのワークロードのための概念実証テクノロジ スタックを提供し、検証するタスクに着手しました。 ここでは、類似のプロジェクトで利用できる一般的なアプローチをまとめています。  
 
 ## <a name="design-goals"></a>設計目標
@@ -57,7 +57,7 @@ ms.locfileid: "51654259"
 
 ### <a name="microsoft-machine-learning-server"></a>Microsoft Machine Learning Server
 
-R ワークロードを選択する主な理由は、**[RevoScaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler)** と **Microsoft ML** です。 データをインポートしたり、分類モデルを作成したり、それらを運用環境にデプロイしたりするために、これらのパッケージに含まれる関数をコード全体で多用していました。
+R ワークロードを選択する主な理由は、 **[RevoScaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler)** と **Microsoft ML** にあります。 データをインポートしたり、分類モデルを作成したり、それらを運用環境にデプロイしたりするために、これらのパッケージに含まれる関数をコード全体で多用していました。
 それぞれ "開発" と "運用" のために構成された、Azure の 2 つの Linux 仮想マシンに MLS がデプロイされました。 開発 VM には、数百のモデルのトレーニングとテストを促進するために、より多くのメモリと処理能力がプロビジョニングされました。 また、リモート ユーザーが RStudio IDE に容易にアクセスできるよう、RStudio Server をホストしていました。 運用サーバーはより小規模な VM 上に構成され、Web アプリケーションから REST API 経由で呼び出せる R モデルをホストするために必要な拡張機能を追加していました。
 
 ### <a name="rstudio-server"></a>RStudio Server
@@ -114,7 +114,7 @@ Web アプリケーションは 3 つの機能を担います:
 
 ### <a name="operations-vm-mls-930"></a>運用 VM (MLS 9.3.0)
 
-運用 VM はモデルの Web サービスとエンドポイントをホストし、Swagger ファイルを格納し、分類モデルのシリアライズされたバージョンを格納しました。 構成は MLS 開発サーバーによく似ています。 ただし、運用化のために構成されています。つまり、REST エンドポイントのサービスを提供するために必要な Web サービスがインストールされています。 運用 VM をデプロイするために、デプロイを迅速化する ARM テンプレートがあります。 参照: [Configuring Microsoft Machine Learning Server 9.3 to Operationalize Analytics using ARM Templates](https://blogs.msdn.microsoft.com/mlserver/2018/02/27/configuring-microsoft-machine-learning-server-9-3-to-operationalize-analytics-using-arm-templates/)\(ARM テンプレートを使用した分析を運用化するための Microsoft Machine Learning Server 9.3 の構成\)。 このプロジェクトでは、この [ARM テンプレート](https://github.com/Microsoft/microsoft-r/tree/master/mlserver-arm-templates/one-box-configuration/linux)を使用して *One-Box* 構成をデプロイしました。  
+運用 VM はモデルの Web サービスとエンドポイントをホストし、Swagger ファイルを格納し、分類モデルのシリアライズされたバージョンを格納しました。 構成は MLS 開発サーバーによく似ています。 ただし、運用化のために構成されています。つまり、REST エンドポイントのサービスを提供するために必要な Web サービスがインストールされています。 運用 VM をデプロイするために、デプロイを迅速化する ARM テンプレートがあります。 参照:[ARM テンプレートを使用した分析を運用化するための Microsoft Machine Learning Server 9.3 の構成](https://blogs.msdn.microsoft.com/mlserver/2018/02/27/configuring-microsoft-machine-learning-server-9-3-to-operationalize-analytics-using-arm-templates/)。 このプロジェクトでは、この [ARM テンプレート](https://github.com/Microsoft/microsoft-r/tree/master/mlserver-arm-templates/one-box-configuration/linux)を使用して *One-Box* 構成をデプロイしました。  
 これにより、モデル パイプラインをサポートするためのサーバー コンポーネントを準備して稼働させました。
 
 ## <a name="model-implementation"></a>モデルの実装
@@ -195,7 +195,7 @@ rxGetInfo (input_data, getVarInfo = TRUE)
 }
  ````
 
-デプロイされると、モデルはシリアライズされて運用サーバーに格納され、*標準*または*リアルタイム*のどちらかのモードで Web サービス経由で使用できます。 Web サービスが標準モードで呼び出されるたびに、R と必要なライブラリが呼び出しごとに読み込まれ、アンロードされます。 対照的に、*リアルタイム* モードでは、R とライブラリは一度しか読み込まれず、後続の Web サービス呼び出しで再利用されます。 Web サービス呼び出しのオーバーヘッドの大半は R とライブラリの読み込みであるため、リアルタイム モードではモデル スコアリングの待ち時間が大幅に短縮され、応答時間は 10 ミリ秒を切る可能性があります。 標準とリアルタイムの各オプションのドキュメントおよび参考例については、[こちら](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services)を参照してください。 リアルタイムは単一の予測に適していますが、スコアリングのために入力データ フレームを渡すこともできます。 詳しくは、[mrsdeploy を使用したバッチ処理による非同期 Web サービスの使用](https://docs.microsoft.com/machine-learning-server/operationalize/how-to-consume-web-service-asynchronously-batch)に関するこちらのリファレンスで説明しています。
+デプロイされると、モデルはシリアライズされて運用サーバーに格納され、*標準*または*リアルタイム*のどちらかのモードで Web サービス経由で使用できます。 Web サービスが標準モードで呼び出されるたびに、R と必要なライブラリが呼び出しごとに読み込まれ、アンロードされます。 対照的に、*リアルタイム* モードでは、R とライブラリは一度しか読み込まれず、後続の Web サービス呼び出しで再利用されます。 Web サービス呼び出しのオーバーヘッドの大半は R とライブラリの読み込みであるため、リアルタイム モードではモデル スコアリングの待ち時間が大幅に短縮され、応答時間は 10 ミリ秒を切る可能性があります。 標準とリアルタイムの各オプションのドキュメントおよび参考例については、[こちら](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services)を参照してください。 リアルタイムは単一の予測に適していますが、スコアリングのために入力データ フレームを渡すこともできます。 これについては、このリファレンスに説明があります。「[mrsdeploy を使用したバッチ処理による非同期 Web サービスの使用](https://docs.microsoft.com/machine-learning-server/operationalize/how-to-consume-web-service-asynchronously-batch)」。
 
 ## <a name="conclusion"></a>まとめ
 

@@ -1,17 +1,17 @@
 ---
-title: 銀行業におけるデータ管理の概要
+title: 概要 - Azure サービスを使用した銀行のデータ資産の管理
 author: dstarr
 ms.author: dastarr
-ms.date: 10/30/2019
+ms.date: 11/20/2019
 ms.topic: article
 ms.service: industry
 description: Microsoft Azure を使用して、規制対象となる銀行環境でのデータを管理する手法について説明します。
-ms.openlocfilehash: 1314054018c04e45b6450604febbf0142ead380d
-ms.sourcegitcommit: f42a60539bec2a7769b42b6574f09eed4d1b6c79
+ms.openlocfilehash: cfafd5242b6da994def2fe1470db9fd86b2675e7
+ms.sourcegitcommit: f030566b177715794d2ad857b150317e72d04d64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750532"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74234643"
 ---
 # <a name="data-management-in-banking-overview"></a>銀行業におけるデータ管理の概要
 
