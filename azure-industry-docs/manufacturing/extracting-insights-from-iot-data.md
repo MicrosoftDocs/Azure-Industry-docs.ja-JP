@@ -1,18 +1,18 @@
 ---
-title: IoT データからアクションにつながる分析情報を抽出する
+title: 製造業向けの IoT から分析情報を抽出するためのアーキテクチャ
 description: Azure サービスを使用して IoT データから分析情報を抽出します。
 author: ercenk
 ms.author: ercenk
 manager: gmarchet
 ms.service: industry
 ms.topic: article
-ms.date: 09/26/2018
-ms.openlocfilehash: e3a2f19fa584cfefa72a6b8bf3eabfe1c3af3521
-ms.sourcegitcommit: c4eb2665df40d0449bd037e7500222fc38bc53ef
+ms.date: 11/28/2019
+ms.openlocfilehash: 34577d595144c12ca9a85d1b28388a3bc84fb701
+ms.sourcegitcommit: a6eefa2a605c9e1c5015ae107c9847b18d415746
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2018
-ms.locfileid: "52820770"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74540440"
 ---
 # <a name="extracting-actionable-insights-from-iot-data"></a>IoT データからアクションにつながる分析情報を抽出する
 
@@ -83,10 +83,10 @@ IoT のデータは時系列データ、つまり一定の期間について見�
 外部からデータを使用でき、インターネットからデータにアクセスできる場合は、複数の Azure サービスを使用して、データにアクセスし、変換して、補強することができます。 次のようなオプションがあります。
 
 - [App Service](https://docs.microsoft.com/azure/app-service/?WT.mc_id=iotinsightssoln-docs-ercenk)、[Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/?WT.mc_id=iotinsightssoln-docs-ercenk) (AKS)、[Container Instances](https://docs.microsoft.com/azure/container-instances/?WT.mc_id=iotinsightssoln-docs-ercenk)、[Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview?WT.mc_id=iotinsightssoln-docs-ercenk) など、さまざまな Azure コンピューティング サービスにデプロイされたカスタム コード。
--   [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/?WT.mc_id=iotinsightssoln-docs-ercenk)
--   [Azure Data Factory アクティビティ](https://docs.microsoft.com/azure/data-factory/?WT.mc_id=iotinsightssoln-docs-ercenk)
--   [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview?WT.mc_id=iotinsightssoln-docs-ercenk)
--   [BizTalk Services](https://azure.microsoft.com/services/biztalk-services/)
+- [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/?WT.mc_id=iotinsightssoln-docs-ercenk)
+- [Azure Data Factory のパイプラインとアクティビティ](/azure/data-factory/copy-activity-overview?/WT. mc_id = iotinsightssoln-ercenk)
+- [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview?WT.mc_id=iotinsightssoln-docs-ercenk)
+- [BizTalk Services](https://azure.microsoft.com/services/biztalk-services/)
 
 上記の各サービスには、シナリオに応じて、それぞれに固有のベネフィットとコストがあります。 たとえば、Logic Apps では、[XML ドキュメントを変換する](https://docs.microsoft.com/azure/logic-apps/logic-apps-enterprise-integration-transform?WT.mc_id=iotinsightssoln-docs-ercenk)ための手段が提供されます。 ただし、データは非常に複雑な XML ドキュメントになる可能性があるため、データを変換する大規模な XSLT スクリプトを開発するのは実際的でない場合があります。 そのような場合は、さまざまな Azure サービスから複数のマイクロサービスを使用してハイブリッド ソリューションを開発することがあります。 たとえば、Azure Logic Apps に実装されたマイクロサービスでは、HTTP エンドポイントをポーリングし、生の結果を一時的に格納して、別のマイクロサービスに通知することができます。 メッセージを変換する他のマイクロサービスのカスタム コードは、[Azure Functions ホスト](https://github.com/Azure/azure-functions-host)でホストできます。  
 
@@ -100,10 +100,10 @@ IoT のデータは時系列データ、つまり一定の期間について見�
 データをストリームとして分析するには、時間枠に基づいてデータに対してクエリを実行し、パターンとリレーションシップを識別できます。 Azure プラットフォームには、高スループットでデータを取り込むことができるさまざまなサービスがあります。
 以下のどのサービスを選ぶかは、デバイスの管理、プロトコルのサポート、スケーラビリティ、チームで優先されるプログラミング モデルなど、プロジェクトのニーズに依存します。たとえば、チームによっては、経験のために Kafka の使用を優先したり、ソリューションに対して Kafka ブローカーを使用することが必要であったりする場合があります。 または、別のケースでは、取り込みポイントへのデバイスのアクセスをセキュリティで保護するために、[IoT Hub Device Provisioning Service の TPM キーの構成証明](https://docs.microsoft.com/azure/iot-dps/?WT.mc_id=iotinsightssoln-docs-ercenk)をデータ インジェスト システムで利用することがプロジェクトで要求される場合があります。
 
--   [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/?WT.mc_id=iotinsightssoln-docs-ercenk) は、IoT アプリケーションとデバイスの間に存在する双方向通信ハブです。 セキュリティで保護された通信、メッセージのルーティング、他の Azure サービスとの統合、デバイスを制御および構成するための管理機能を提供することで、完全な機能を備えた IoT ソリューションを可能にするスケーラブルなサービスです。
+- [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/?WT.mc_id=iotinsightssoln-docs-ercenk) は、IoT アプリケーションとデバイスの間に存在する双方向通信ハブです。 セキュリティで保護された通信、メッセージのルーティング、他の Azure サービスとの統合、デバイスを制御および構成するための管理機能を提供することで、完全な機能を備えた IoT ソリューションを可能にするスケーラブルなサービスです。
 
--   [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-about?WT.mc_id=iotinsightssoln-docs-ercenk) は、非常に高いスループット レートで同時実行ソースからテレメトリ データを収集するための高スケールのインジェスト専用サービスです。
--   [HDInsight での Apache Kafka](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-introduction?WT.mc_id=iotinsightssoln-docs-ercenk) は、[Apache Kafka](https://kafka.apache.org/) をホストするマネージド サービスです。 Apache Kafka は、オープンソースの分散ストリーミング プラットフォームであり、メッセージ ブローカーの機能も提供します。 ホステッド サービスでは、Kafka のアップタイムに関して 99.9% のサービス レベル アグリーメント (SLA) があります。
+- [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-about?WT.mc_id=iotinsightssoln-docs-ercenk) は、非常に高いスループット レートで同時実行ソースからテレメトリ データを収集するための高スケールのインジェスト専用サービスです。
+- [HDInsight での Apache Kafka](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-introduction?WT.mc_id=iotinsightssoln-docs-ercenk) は、[Apache Kafka](https://kafka.apache.org/) をホストするマネージド サービスです。 Apache Kafka は、オープンソースの分散ストリーミング プラットフォームであり、メッセージ ブローカーの機能も提供します。 ホステッド サービスでは、Kafka のアップタイムに関して 99.9% のサービス レベル アグリーメント (SLA) があります。
 
 ## <a name="processing-and-storing-the-data"></a>データの処理と格納
 
@@ -114,9 +114,9 @@ Microsoft の Azure IoT 参照アーキテクチャでは、ラムダ アーキ�
 
 ラムダ アーキテクチャは、データ フロー用に 2 つのパスを作成することでこの問題に対処しています。 システムに送信されるすべてのデータは、次の 2 つのパスを経由します。
 
--   バッチ レイヤー (コールド パス) は、すべての受信データを未加工の形式で保存し、データに対してバッチ処理を実行します。 この処理の結果は、バッチ ビューとして保存されます。 それは複雑な分析を実行する遅い処理のパイプラインです。たとえば、複数のソースからの長期 (時間、日、それ以上) のデータを結合し、レポートや機械学習モデルとなどの新しい情報を生成するような場合です。
--   スピード レイヤー (ホット パス) では、リアルタイムでデータを分析します。 このレイヤーは、精度と引き換えに待機時間が短くなるように設計されています。 受信メッセージをアーカイブして表示し、これらのレコードを分析して短期の重要な情報とアラームなどのアクションを生成する、高速処理パイプラインです。
--   バッチ レイヤーは "サービス レイヤー" にフィードし、サービス レイヤーはクエリに応答します。 バッチ レイヤーは、効率的なクエリのためにバッチ ビューにインデックスを付けます。 速度レイヤーは、最新のデータに基づく増分更新でサービス レイヤーを更新します。
+- バッチ レイヤー (コールド パス) は、すべての受信データを未加工の形式で保存し、データに対してバッチ処理を実行します。 この処理の結果は、バッチ ビューとして保存されます。 それは複雑な分析を実行する遅い処理のパイプラインです。たとえば、複数のソースからの長期 (時間、日、それ以上) のデータを結合し、レポートや機械学習モデルとなどの新しい情報を生成するような場合です。
+- スピード レイヤー (ホット パス) では、リアルタイムでデータを分析します。 このレイヤーは、精度と引き換えに待機時間が短くなるように設計されています。 受信メッセージをアーカイブして表示し、これらのレコードを分析して短期の重要な情報とアラームなどのアクションを生成する、高速処理パイプラインです。
+- バッチ レイヤーは "サービス レイヤー" にフィードし、サービス レイヤーはクエリに応答します。 バッチ レイヤーは、効率的なクエリのためにバッチ ビューにインデックスを付けます。 速度レイヤーは、最新のデータに基づく増分更新でサービス レイヤーを更新します。
 
 次の図では、変換のステージを表す 5 つのブロックを示します。 最初のブロックはデータ ストリームであり、スピード レイヤーとバッチ レイヤーの両方に並列でフィードします。 どちらのレイヤーもサービス レイヤーにフィードします。スピード レイヤーとサービス レイヤーはどちらも、分析クライアントにフィードします。
 ![ラムダ アーキテクチャ。](assets/extracting-insights-from-iot/lambda-schematic.png)
@@ -165,9 +165,9 @@ Cosmos DB の価格は、使用されたストレージとプロビジョニン�
   
 [Azure Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/?WT.mc_id=iotinsightssoln-docs-ercenk) (TSI) は、時系列データ用の分析、ストレージ、視覚化サービスです。 SQL に似たフィルターと集計を提供し、ユーザー定義関数の必要性を減らします。 TSI は、Event Hubs、IoT Hub、Azure Blob Storage からデータを受信できます。 TSI のすべてのデータはメモリと SSD に格納され、対話型分析でデータを常に使用できることが保証されます。 たとえば、数千万件のイベントに対する一般的な集計が、ミリ秒単位で返ります。 また、異なる時系列のオーバーレイ、ダッシュボードの比較、アクセシビリティの高い表形式ビュー、ヒート マップなどの視覚化も提供されます。 TSI の主な機能は次のとおりです。
 
--   データについてのレポートをすぐに必要としないソリューション用の組み込み視覚化サービス。 TSI では、データ レコードのクエリに対して約 30 から 60 秒の待機時間があります。 
--   大規模なデータ セットのクエリを実行する機能。
--   任意の数のユーザーが、追加コストなしで、無制限の数のクエリを実行できます。
+- データについてのレポートをすぐに必要としないソリューション用の組み込み視覚化サービス。 TSI では、データ レコードのクエリに対して約 30 から 60 秒の待機時間があります。 
+- 大規模なデータ セットのクエリを実行する機能。
+- 任意の数のユーザーが、追加コストなしで、無制限の数のクエリを実行できます。
 
 TSI の最大リテンション期間は 400 日、最大ストレージ制限は 3 TB です。 さらに長いリテンション期間、またはより多くの容量が必要な場合は、コールド ストレージ データベースを使用します (必要に応じて、クエリ用にデータを TSI にスワップします)。
 
@@ -216,20 +216,20 @@ Time Series Insights は、データの視覚化とクエリを行うための�
   - [Azure Functions でさまざまなバインドを使用する](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings?WT.mc_id=iotinsightssoln-docs-ercenk)
 
 - ホット パス
-  - Event Hubs、Azure Stream Analytics、Power BI の使用方法を示すエンド ツー エンド チュートリアル。 「[チュートリアル: Azure Event Hubs に送信されたリアルタイム イベントのデータの異常を視覚化する](https://docs.microsoft.com/azure/event-hubs/event-hubs-tutorial-visualize-anomalies?WT.mc_id=iotinsightssoln-docs-ercenk)」および「[Stream Analytics ジョブを作成し、通話データを分析して結果を Power BI ダッシュボードで視覚化する](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-manage-job?WT.mc_id=iotinsightssoln-docs-ercenk)」をご覧ください。
+  - Event Hubs、Azure Stream Analytics、Power BI の使用方法を示すエンド ツー エンド チュートリアル。 手順については、「[チュートリアル: Azure Event Hubs に送信されたリアルタイム イベントのデータの異常を視覚化する](https://docs.microsoft.com/azure/event-hubs/event-hubs-tutorial-visualize-anomalies?WT.mc_id=iotinsightssoln-docs-ercenk)」と、[Stream Analytics ジョブを作成して通話データを分析し、結果を Power BI ダッシュボードで視覚化する](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-manage-job?WT.mc_id=iotinsightssoln-docs-ercenk)に関するページをご覧ください。
   -[.NET での Azure Cosmos DB の使用](https://docs.microsoft.com/azure/cosmos-db/sql-api-get-started?WT.mc_id=iotinsightssoln-docs-ercenk)
 - コールド パス
   - Azure Data Factory で [Spark アクティビティを使用してクラウドのデータを変換する](https://docs.microsoft.com/azure/data-factory/tutorial-transform-data-spark-portal?WT.mc_id=iotinsightssoln-docs-ercenk)
-  - [Time Series Insights でシミュレートされたデバイス データを分析する](https://docs.microsoft.com/azure/time-series-insights/tutorial-create-populate-tsi-environment?WT.mc_id=iotinsightssoln-docs-ercenk)
+  - [チュートリアル:Azure Time Series Insights 環境を作成する](/azure/time-series-insights/tutorial-create-populate-tsi-environment?WT.mc_id=iotinsightssoln-docs-ercenk)
 - 分析クライアント
   - [Power BI について](https://docs.microsoft.com/power-bi/guided-learning/?WT.mc_id=iotinsightssoln-docs-ercenk)
   - [Time Series Insights SPA を作成する](https://docs.microsoft.com/azure/time-series-insights/tutorial-create-tsi-sample-spa?WT.mc_id=iotinsightssoln-docs-ercenk)
   - [Time Series Insights Java Script クライアント ライブラリを調べる](https://docs.microsoft.com/azure/time-series-insights/tutorial-explore-js-client-lib?WT.mc_id=iotinsightssoln-docs-ercenk)
   - [TSI のデモ](https://insights.timeseries.azure.com/demo)および [Power BI のデモ](https://microsoft.github.io/PowerBI-JavaScript/demo/v2-demo/index.html)をご覧ください。
 
-## <a name="appendix-pillars-of-software-quality-posq"></a>付録: ソフトウェア品質の重要な要素 (PoSQ)
+## <a name="appendix-pillars-of-software-quality-posq"></a>付録:ソフトウェア品質の重要な要素 (PoSQ)
 
-成功するクラウド アプリケーションは、[ソフトウェア品質の 5 つの重要な要素](https://docs.microsoft.com/azure/architecture/guide/pillars?WT.mc_id=iotinsightssoln-docs-ercenk)、すなわち拡張性、可用性、回復性、管理性、セキュリティに基づいて構築されています。 ここでは、必要に応じて、コンポーネントごとにこれらの要素について簡単に説明します。 可用性、回復性、管理性、および DevOps については説明しません。これらは主として実装レベルで対応されており、ここでは Azure プラットフォームが API、ツール、診断、ログによってこれらを実現するための広範な手段を提供していることを説明したいためです。 上記の要素に加えて、コスト効率についても説明します。
+成功するクラウド アプリケーションは、これらの[ソフトウェア品質の重要な要素](https://docs.microsoft.com/azure/architecture/guide/pillars?WT.mc_id=iotinsightssoln-docs-ercenk)に基づいて構築されています。拡張性、可用性、回復性、管理性、セキュリティに重点が置かれています。 ここでは、必要に応じて、コンポーネントごとにこれらの要素について簡単に説明します。 可用性、回復性、管理性、および DevOps については説明しません。これらは主として実装レベルで対応されており、ここでは Azure プラットフォームが API、ツール、診断、ログによってこれらを実現するための広範な手段を提供していることを説明したいためです。 上記の要素に加えて、コスト効率についても説明します。
 
 以下の要素について簡単に確認しておきます。
 
@@ -239,19 +239,19 @@ Time Series Insights は、データの視覚化とクエリを行うための�
 - **管理性と DevOps**。 この要素は、運用環境においてアプリケーションの稼働を維持する運用プロセスを対象とするものです。 デプロイは、信頼性が高く、予測可能である必要があります。 人的ミスの可能性を下げるために、自動化されている必要があります。 迅速かつ定期的なプロセスであるべきで、新機能やバグ修正のリリースを遅らせることはありません。 同じくらい重要なのは、　更新プログラムに問題がある場合に、ご自分で迅速にロールバックまたはロールフォワードできる必要があるということです。
 - 設計と実装から、デプロイと運用まで、ソリューションのライフ サイクル全体を通して、**セキュリティ**を主要な対象にする必要があります。 ID 管理、インフラストラクチャの保護、アプリケーションのセキュリティ、承認、データの主権と暗号化、監査はすべて、対処する必要がある広範な領域です。
 
-## <a name="posq-converting-the-data-to-a-stream"></a>PoSQ: データからストリームへの変換
+## <a name="posq-converting-the-data-to-a-stream"></a>PoSQ:データからストリームへの変換
 
-**拡張性**: 拡張性には、2 つの観点からアプローチできます。 1 つ目はコンポーネントの観点で、2 つ目はソース データを提供するシステムの観点です。
+**スケーラビリティ**:スケーラビリティには、2 つの観点からアプローチできます。 1 つ目はコンポーネントの観点で、2 つ目はソース データを提供するシステムの観点です。
 
 各 Azure サービスでは、垂直スケーリングと水平スケーリングのオプションが提供されています。 ソリューションの設計時に、拡張性の要件を検討することを強くお勧めします。
 
-ソース データを提供するシステムの場合、あまり頻繁にクエリを実行することにより、システムが過負荷になって、基本的にシステムに対するサービス拒否 (DoS) 攻撃にならないように、十分注意する必要があります。 システムをポーリングする場合は、ポーリング頻度の調整に 2 つの影響があることに留意する必要があります。つまり、データの粒度 (クエリの頻度を高くするほど、リアルタイムに近くなります) と、リモート システムにかかる負荷です。 
+ソース データを提供するシステムの場合、あまり頻繁にクエリを実行することにより、システムが過負荷になって、基本的にシステムに対するサービス拒否 (DoS) 攻撃にならないように、十分注意する必要があります。 システムをポーリングする場合は、ポーリング頻度の調整に 2 つの影響があることに留意する必要があります。つまり、データの粒度 (クエリの頻度を高くするほど、リアルタイムに近くなります) と、リモート システムにかかる負荷です。
 
 **セキュリティ**: 対称キーまたは非対称キーを使用してリモート システムにアクセスする場合、シークレットを [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/?WT.mc_id=iotinsightssoln-docs-ercenk) で保持することをお勧めします。
 
-## <a name="posq-warm-path"></a>PoSQ: ウォーム パス
+## <a name="posq-warm-path"></a>PoSQ:ウォーム パス
 
-**拡張性**: インジェスト サブシステムで Azure Event Hubs を使用する場合、メインの拡張性メカニズムは[スループット ユニット](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#throughput-units?WT.mc_id=iotinsightssoln-docs-ercenk)です。 Event Hubs では、スループット ユニットを静的に設定する機能、または[自動インフレ機能](https://docs.microsoft.com/azure/event-hubs/event-hubs-auto-inflate?WT.mc_id=iotinsightssoln-docs-ercenk)によって設定する機能が提供されます。
+**スケーラビリティ**:インジェスト サブシステムで Azure Event Hubs を使用する場合、メインのスケーラビリティ メカニズムは[スループット ユニット](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#throughput-units?WT.mc_id=iotinsightssoln-docs-ercenk)です。 Event Hubs では、スループット ユニットを静的に設定する機能、または[自動インフレ機能](https://docs.microsoft.com/azure/event-hubs/event-hubs-auto-inflate?WT.mc_id=iotinsightssoln-docs-ercenk)によって設定する機能が提供されます。
 
 Stream Analytics の[ストリーミング ユニット](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-streaming-unit-consumption?WT.mc_id=iotinsightssoln-docs-ercenk) (SU) とは、ジョブを実行するために割り当てられる計算リソースのことです。 SU 数が大きいほど、多くの CPU とメモリ リソースがジョブ用に割り当てられます。 この能力により、クエリ ロジックに集中することができ、Stream Analytics ジョブがタイミングよく実行されるようハードウェアを管理する必要がなくなります。 SU だけでなく、[クエリを適切に並列化する](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-scale-jobs?WT.mc_id=iotinsightssoln-docs-ercenk)ことで効率的に使用することが非常に重要です。
 
@@ -261,13 +261,13 @@ Azure Cosmos DB の実装は、適切なスループット パラメーターと
 
 Cosmos DB データベースのセキュリティ保護では、データに対する制御されたアクセスと、保存時の暗号化が提供されます。 詳しくは、「[Azure Cosmos DB データベースのセキュリティ](https://docs.microsoft.com/azure/cosmos-db/database-security?WT.mc_id=iotinsightssoln-docs-ercenk)」をご覧ください。
 
-**コスト効率**: Event Hubs の価格は、SKU (Standard または Premium)、受信したイベントの数 (百万単位)、およびスループット ユニットの関数です。 最適な組み合わせは、受信メッセージによって決定されるデータ取り込み率を調べることによって実現できます。
+**コスト効率**:Event Hubs の価格は、SKU (Standard または Premium)、受信したイベントの数 (百万単位)、およびスループット ユニットの関数です。 最適な組み合わせは、受信メッセージによって決定されるデータ取り込み率を調べることによって実現できます。
 
 Cosmos DB を使用するときは、RU の使用率によってストアの最適な使用を観察することをお勧めします。 Cosmos DB には、データ保持を制御するための機能もあります。前に説明したように、この機能を使用してレコードがデータベースに留まっている時間を制御し、それによってデータベースのサイズを制御することをお勧めします。
 
-## <a name="posq-cold-path"></a>PoSQ: コールド パス
+## <a name="posq-cold-path"></a>PoSQ:コールド パス
 
-**拡張性**: Azure Time Series Insights (TSI) は、"容量" という名前のメトリックによってスケーリングされます。これは、SKU に関連する受信レート、ストレージ容量、コストに適用される乗数です。 
+**スケーラビリティ**:Azure Time Series Insights (TSI) は、"容量" という名前のメトリックによってスケーリングされます。これは、SKU に関連するイングレス レート、ストレージ容量、コストに適用される乗数です。 
 
 Azure Time Series Insights には複数の SKU があり、やはり垂直スケーリングに直接影響します。 スケーリングについて詳しくは、「[Azure Time Series Insights 環境の計画](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-planning?WT.mc_id=iotinsightssoln-docs-ercenk)」をご覧ください。 他の多くの Azure サービスと同じように、TSI も "迷惑な隣人" 問題を回避するための調整の対象になります。 迷惑な隣人は、リソースを独占して他のユーザーを困らせる共有環境上 https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore?WT.mc_id=iotinsightssoln-docs-ercenk のアプリケーションです。 調整の管理については、[TSI のドキュメント](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency?WT.mc_id=iotinsightssoln-docs-ercenk)をご覧ください。 
 
@@ -281,4 +281,4 @@ Azure Data Factory サービスでは、マネージド ストアまたは Azure
 
 SQL Database では、データ アクセス、監視と監査、および保存時のデータの暗号化に関する広範なセキュリティ機能のセットが提供されています。 詳しくは、「[SQL Server Database エンジンと Azure SQL Database のセキュリティ センター](https://docs.microsoft.com/sql/relational-databases/security/security-center-for-sql-server-database-engine-and-azure-sql-database?WT.mc_id=iotinsightssoln-docs-ercenk)」をご覧ください。
 
-**コスト効率**: すべての分析ソリューションの中心にあるのはストレージです。 分析エンジンでは、大量のデータを妥当な時間で処理するための速度、効率、セキュリティ、およびスループットが必要です。 データの集計と要約により基盤プラットフォームを最適に使用するメカニズムの考案と、ポリグロットなストアの効率的な使用が、コストを効率的に管理するための手段です。 Azure はクラウド プラットフォームなので、プログラムで使用停止、使用再開、リソース サイズ変更を行うメソッドがあります。 たとえば、[作成または更新操作](https://docs.microsoft.com/rest/api/sql/databases/createorupdate?WT.mc_id=iotinsightssoln-docs-ercenk)では、Azure SQL Database のデータベースのサイズを変更する方法が提供されます。
+**コスト効率**:すべての分析ソリューションの中心にあるのはストレージです。 分析エンジンでは、大量のデータを妥当な時間で処理するための速度、効率、セキュリティ、およびスループットが必要です。 データの集計と要約により基盤プラットフォームを最適に使用するメカニズムの考案と、ポリグロットなストアの効率的な使用が、コストを効率的に管理するための手段です。 Azure はクラウド プラットフォームなので、プログラムで使用停止、使用再開、リソース サイズ変更を行うメソッドがあります。 たとえば、[作成または更新操作](https://docs.microsoft.com/rest/api/sql/databases/createorupdate?WT.mc_id=iotinsightssoln-docs-ercenk)では、Azure SQL Database のデータベースのサイズを変更する方法が提供されます。
