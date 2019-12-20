@@ -31,12 +31,6 @@
               href: health/overview-healthcare-ai-blueprint.md
             - name: ソリューション ガイド
               href: health/sg-healthcare-ai-blueprint.md
-        - name: 生体エンティティの認識
-          href: /azure/machine-learning/desktop-workbench/scenario-tdsp-biomedical-recognition
-          maintainContext: true
-        - name: HL7 FHIR 医療記録の変更
-          href: /azure/cosmos-db/change-feed-hl7-fhir-logic-apps
-          maintainContext: true
     - name: 製造
       href: manufacturing/index.md
       items:
