@@ -1,87 +1,80 @@
-items:
-- name: ドキュメント
+- name: Docs
   tocHref: /
   topicHref: /
   items:
-  - name: Azure
-    tocHref: /azure/
-    topicHref: /azure/
-    items:
-    - name: 業界
-      tocHref: /Industry/
-      topicHref: /azure/industry/
+    - name: Azure
+      tocHref: /previous-versions/azure/
+      topicHref: /previous-versions/azure/
       items:
-      - name: 金融サービス
-        tocHref: /Financial/
-        topicHref: /azure/industry/financial/
-        items:
-        - name: その他のリソース
+        - name: 業界
+          tocHref: /previous-versions/Industry/
+          topicHref: /previous-versions/azure/industry/
           items:
-          - name: Azure Batch のドキュメント
-            tocHref: /azure/batch
-          - name: Batch コード サンプル
-            tocHref: /resources/samples/?service=batch
-          - name: Batch コード サンプル リポジトリ
-            tocHref: https://github.com/Azure/azure-batch-samples
-          - name: オンプレミスの接続
-            tocHref: /azure/networking/networking-overview
-          - name: 規制対象ワークロードに対応する FFIEC
-            tocHref: /azure/security/blueprints/financial-services-regulated-workloads
-          - name: チュートリアル - AAD と Asset Bank の統合
-            tocHref: /azure/active-directory/active-directory-saas-assetbank-tutorial
-      - name: ヘルス + ライフ サイエンス
-        tocHref: /Health & Life Sciences/
-        topicHref: /azure/industry/health/
-        items:
-        - name: 生体エンティティの認識
-          tocHref: /azure/machine-learning/desktop-workbench/scenario-tdsp-biomedical-recognition
-        - name: HL7 FHIR 医療記録の変更
-          tocHref: /azure/cosmos-db/change-feed-hl7-fhir-logic-apps
-        - name: Azure Blueprint
-          items:
-          - name: Azure のセキュリティとコンプライアンス - HIPAA/HITRUST のヘルス データと AI
-            href: /azure/security/blueprints/azure-health
-          - name: Azure のセキュリティとコンプライアンス - UK NHS のデータ分析
-            href: /azure/security/blueprints/uknhs-analytics-overview
-          - name: Azure のセキュリティとコンプライアンス - UK NHS のデータ分析
-            href: /azure/security/blueprints/uknhs-analytics-overview
-          - name: Azure のセキュリティとコンプライアンス - UK NHS のデータ ウェアハウス
-            href: /azure/security/blueprints/uknhs-datawarehouse-overview
-          - name: Azure のセキュリティとコンプライアンス - UK NHS のための IaaS Web アプリケーション
-            href: /azure/security/blueprints/uknhs-iaaswa-overview
-          - name: Azure のセキュリティとコンプライアンス - UK NHS のための PaaS Web アプリケーション
-            href: /azure/security/blueprints/uknhs-paaswa-overview
-        - name: その他のリソース
-          items:
-          - name: クイック スタート - Microsoft Genomics サービス
-            tocHref: /azure/genomics/quickstart-run-genomics-workflow-portal
-          - name: セキュリティ - HIPAA/HITRUST 正常性データおよび AI
-            tocHref: /azure/security/blueprints/azure-health
-          - name: Health Bot の概要
-            tocHref: /azure/healthbot/
-      - name: 製造
-        tocHref: /Manufacturing/
-        topicHref: /azure/industry/manufacturing/
-        items:
-        - name: PdM 現実のシナリオのためのディープ ラーニング
-          tocHref: /azure/machine-learning/desktop-workbench/scenario-deep-learning-for-predictive-maintenance
-        - name: その他のリソース
-          items:
-          - name: Azure Stream Analytics を使用した IoT デバイスからのデータの処理
-            tocHref: /azure/stream-analytics/
-      - name: 小売
-        tocHref: /Retail/
-        topicHref: /azure/industry/retail/
-        items:
-        - name: PCI DSS に準拠した支払い処理
-          tocHref: /azure/security/blueprints/payment-processing-blueprint
-        - name: その他のリソース
-          items:
-          - name: 小売とマーケティングにおける Azure Cosmos DB
-            tocHref: /azure/cosmos-db/use-cases
-ms.openlocfilehash: 100dfd44f54195e97a35a3f726457e4823abb4b3
-ms.sourcegitcommit: 76f2862adbec59311b5888e043a120f89dc862af
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "51654709"
+            - name: 金融サービス
+              tocHref: /previous-versions/Financial/
+              topicHref: /previous-versions/azure/industry/financial/
+              items:
+                - name: その他のリソース
+                  items:
+                    - name: Azure Batch のドキュメント
+                      tocHref: /azure/batch
+                    - name: Batch コード サンプル
+                      tocHref: /resources/samples/?service=batch
+                    - name: Batch コード サンプル リポジトリ
+                      tocHref: 'https://github.com/Azure/azure-batch-samples'
+                    - name: オンプレミスの接続
+                      tocHref: /azure/networking/networking-overview
+                    - name: 規制対象ワークロードに対応する FFIEC
+                      tocHref: /azure/security/blueprints/financial-services-regulated-workloads
+                    - name: チュートリアル - AAD と Asset Bank の統合
+                      tocHref: /azure/active-directory/active-directory-saas-assetbank-tutorial
+            - name: ヘルス + ライフ サイエンス
+              tocHref: /previous-versions/Health & Life Sciences/
+              topicHref: /previous-versions/azure/industry/health/
+              items:
+                - name: 生体エンティティの認識
+                  tocHref: /azure/machine-learning/desktop-workbench/scenario-tdsp-biomedical-recognition
+                - name: HL7 FHIR 医療記録の変更
+                  tocHref: /azure/cosmos-db/change-feed-hl7-fhir-logic-apps
+                - name: Azure Blueprint
+                  items:
+                    - name: Azure のセキュリティとコンプライアンス - HIPAA/HITRUST のヘルス データと AI
+                      href: /azure/security/blueprints/azure-health
+                    - name: Azure のセキュリティとコンプライアンス - UK NHS のデータ分析
+                      href: /azure/security/blueprints/uknhs-analytics-overview
+                    - name: Azure のセキュリティとコンプライアンス - UK NHS のデータ分析
+                      href: /azure/security/blueprints/uknhs-analytics-overview
+                    - name: Azure のセキュリティとコンプライアンス - UK NHS のデータ ウェアハウス
+                      href: /azure/security/blueprints/uknhs-datawarehouse-overview
+                    - name: Azure のセキュリティとコンプライアンス - UK NHS のための IaaS Web アプリケーション
+                      href: /azure/security/blueprints/uknhs-iaaswa-overview
+                    - name: Azure のセキュリティとコンプライアンス - UK NHS のための PaaS Web アプリケーション
+                      href: /azure/security/blueprints/uknhs-paaswa-overview
+                - name: その他のリソース
+                  items:
+                    - name: クイック スタート - Microsoft Genomics サービス
+                      tocHref: /azure/genomics/quickstart-run-genomics-workflow-portal
+                    - name: セキュリティ - HIPAA/HITRUST 正常性データおよび AI
+                      tocHref: /azure/security/blueprints/azure-health
+                    - name: Health Bot の概要
+                      tocHref: /azure/healthbot/
+            - name: 製造
+              tocHref: /Manufacturing/
+              topicHref: /previous-versions/azure/industry/manufacturing/
+              items:
+                - name: PdM 現実のシナリオのためのディープ ラーニング
+                  tocHref: /azure/machine-learning/desktop-workbench/scenario-deep-learning-for-predictive-maintenance
+                - name: その他のリソース
+                  items:
+                    - name: Azure Stream Analytics を使用した IoT デバイスからのデータの処理
+                      tocHref: /azure/stream-analytics/
+            - name: 小売
+              tocHref: /Retail/
+              topicHref: /previous-versions/azure/industry/retail/
+              items:
+                - name: PCI DSS に準拠した支払い処理
+                  tocHref: /azure/security/blueprints/payment-processing-blueprint
+                - name: その他のリソース
+                  items:
+                    - name: 小売とマーケティングにおける Azure Cosmos DB
+                      tocHref: /azure/cosmos-db/use-cases
