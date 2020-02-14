@@ -8,11 +8,11 @@ ms.service: industry
 ms.topic: article
 ms.date: 11/28/2019
 ms.openlocfilehash: c08e6bbb1da47084122dae1ed6a9e1cea0b59473
-ms.sourcegitcommit: db3bee67c1467884af223a48a895715afba8e08c
-ms.translationtype: HT
+ms.sourcegitcommit: 3b175d73a82160c4cacec1ce00c6d804a93c765d
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2019
-ms.locfileid: "75005311"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77053404"
 ---
 # <a name="extracting-actionable-insights-from-iot-data"></a>IoT データからアクションにつながる分析情報を抽出する
 
@@ -98,7 +98,7 @@ IoT のデータは時系列データ、つまり一定の期間について見�
 ## <a name="ingesting-the-data-stream"></a>データ ストリームの取り込み
 
 データをストリームとして分析するには、時間枠に基づいてデータに対してクエリを実行し、パターンとリレーションシップを識別できます。 Azure プラットフォームには、高スループットでデータを取り込むことができるさまざまなサービスがあります。
-以下のどのサービスを選ぶかは、デバイスの管理、プロトコルのサポート、スケーラビリティ、チームで優先されるプログラミング モデルなど、プロジェクトのニーズに依存します。たとえば、チームによっては、経験のために Kafka の使用を優先したり、ソリューションに対して Kafka ブローカーを使用することが必要であったりする場合があります。 または、別のケースでは、取り込みポイントへのデバイスのアクセスをセキュリティで保護するために、[IoT Hub Device Provisioning Service の TPM キーの構成証明](/azure/iot-dps/?WT.mc_id=iotinsightssoln-docs-ercenk)をデータ インジェスト システムで利用することがプロジェクトで要求される場合があります。
+以下のサービスの選択は、プロジェクトのニーズによって異なります。たとえば、デバイス管理、プロトコルサポート、スケーラビリティ、チームによるプログラミングモデルの設定などです。たとえば、チームは、エクスペリエンスのために Kafka を使用するか、ソリューションに Kafka ブローカーを用意する必要があるかを設定できます。 または、別のケースでは、取り込みポイントへのデバイスのアクセスをセキュリティで保護するために、[IoT Hub Device Provisioning Service の TPM キーの構成証明](/azure/iot-dps/?WT.mc_id=iotinsightssoln-docs-ercenk)をデータ インジェスト システムで利用することがプロジェクトで要求される場合があります。
 
 - [Azure IoT Hub](/azure/iot-hub/?WT.mc_id=iotinsightssoln-docs-ercenk) は、IoT アプリケーションとデバイスの間に存在する双方向通信ハブです。 セキュリティで保護された通信、メッセージのルーティング、他の Azure サービスとの統合、デバイスを制御および構成するための管理機能を提供することで、完全な機能を備えた IoT ソリューションを可能にするスケーラブルなサービスです。
 
@@ -216,20 +216,20 @@ Time Series Insights は、データの視覚化とクエリを行うための�
   - [Azure Functions でさまざまなバインドを使用する](/azure/azure-functions/functions-triggers-bindings?WT.mc_id=iotinsightssoln-docs-ercenk)
 
 - ホット パス
-  - Event Hubs、Azure Stream Analytics、Power BI の使用方法を示すエンド ツー エンド チュートリアル。 手順については、「[チュートリアル: Azure Event Hubs に送信されたリアルタイム イベントのデータの異常を視覚化する](/azure/event-hubs/event-hubs-tutorial-visualize-anomalies?WT.mc_id=iotinsightssoln-docs-ercenk)」と、[Stream Analytics ジョブを作成して通話データを分析し、結果を Power BI ダッシュボードで視覚化する](/azure/stream-analytics/stream-analytics-manage-job?WT.mc_id=iotinsightssoln-docs-ercenk)に関するページをご覧ください。
+  - Event Hubs、Azure Stream Analytics、Power BI の使用方法を示すエンド ツー エンド チュートリアル。 「[チュートリアル: Azure Event Hubs に送信されたリアルタイム イベントのデータの異常を視覚化する](/azure/event-hubs/event-hubs-tutorial-visualize-anomalies?WT.mc_id=iotinsightssoln-docs-ercenk)」および「[Stream Analytics ジョブを作成し、通話データを分析して結果を Power BI ダッシュボードで視覚化する](/azure/stream-analytics/stream-analytics-manage-job?WT.mc_id=iotinsightssoln-docs-ercenk)」をご覧ください。
   -[.NET での Azure Cosmos DB の使用](/azure/cosmos-db/sql-api-get-started?WT.mc_id=iotinsightssoln-docs-ercenk)
 - コールド パス
   - Azure Data Factory で [Spark アクティビティを使用してクラウドのデータを変換する](/azure/data-factory/tutorial-transform-data-spark-portal?WT.mc_id=iotinsightssoln-docs-ercenk)
-  - [チュートリアル:Azure Time Series Insights 環境を作成する](/azure/time-series-insights/tutorial-create-populate-tsi-environment?WT.mc_id=iotinsightssoln-docs-ercenk)
+  - [チュートリアル: Azure Time Series Insights 環境を作成する](/azure/time-series-insights/tutorial-create-populate-tsi-environment?WT.mc_id=iotinsightssoln-docs-ercenk)
 - 分析クライアント
   - [Power BI について](/power-bi/guided-learning/?WT.mc_id=iotinsightssoln-docs-ercenk)
   - [Time Series Insights SPA を作成する](/azure/time-series-insights/tutorial-create-tsi-sample-spa?WT.mc_id=iotinsightssoln-docs-ercenk)
   - [Time Series Insights Java Script クライアント ライブラリを調べる](/azure/time-series-insights/tutorial-explore-js-client-lib?WT.mc_id=iotinsightssoln-docs-ercenk)
   - [TSI のデモ](https://insights.timeseries.azure.com/demo)および [Power BI のデモ](https://microsoft.github.io/PowerBI-JavaScript/demo/v2-demo/index.html)をご覧ください。
 
-## <a name="appendix-pillars-of-software-quality-posq"></a>付録:ソフトウェア品質の重要な要素 (PoSQ)
+## <a name="appendix-pillars-of-software-quality-posq"></a>付録: ソフトウェア品質の重要な要素 (PoSQ)
 
-成功するクラウド アプリケーションは、これらの[ソフトウェア品質の重要な要素](/azure/architecture/guide/pillars?WT.mc_id=iotinsightssoln-docs-ercenk)に基づいて構築されています。拡張性、可用性、回復性、管理性、セキュリティに重点が置かれています。 ここでは、必要に応じて、コンポーネントごとにこれらの要素について簡単に説明します。 可用性、回復性、管理性、および DevOps については説明しません。これらは主として実装レベルで対応されており、ここでは Azure プラットフォームが API、ツール、診断、ログによってこれらを実現するための広範な手段を提供していることを説明したいためです。 上記の要素に加えて、コスト効率についても説明します。
+成功するクラウド アプリケーションは、[ソフトウェア品質の 5 つの重要な要素](/azure/architecture/guide/pillars?WT.mc_id=iotinsightssoln-docs-ercenk)、すなわち拡張性、可用性、回復性、管理性、セキュリティに基づいて構築されています。 ここでは、必要に応じて、コンポーネントごとにこれらの要素について簡単に説明します。 可用性、回復性、管理性、および DevOps については説明しません。これらは主として実装レベルで対応されており、ここでは Azure プラットフォームが API、ツール、診断、ログによってこれらを実現するための広範な手段を提供していることを説明したいためです。 上記の要素に加えて、コスト効率についても説明します。
 
 以下の要素について簡単に確認しておきます。
 
@@ -239,9 +239,9 @@ Time Series Insights は、データの視覚化とクエリを行うための�
 - **管理性と DevOps**。 この要素は、運用環境においてアプリケーションの稼働を維持する運用プロセスを対象とするものです。 デプロイは、信頼性が高く、予測可能である必要があります。 人的ミスの可能性を下げるために、自動化されている必要があります。 迅速かつ定期的なプロセスであるべきで、新機能やバグ修正のリリースを遅らせることはありません。 同じくらい重要なのは、　更新プログラムに問題がある場合に、ご自分で迅速にロールバックまたはロールフォワードできる必要があるということです。
 - 設計と実装から、デプロイと運用まで、ソリューションのライフ サイクル全体を通して、**セキュリティ**を主要な対象にする必要があります。 ID 管理、インフラストラクチャの保護、アプリケーションのセキュリティ、承認、データの主権と暗号化、監査はすべて、対処する必要がある広範な領域です。
 
-## <a name="posq-converting-the-data-to-a-stream"></a>PoSQ:データからストリームへの変換
+## <a name="posq-converting-the-data-to-a-stream"></a>PoSQ: データからストリームへの変換
 
-**スケーラビリティ**:スケーラビリティには、2 つの観点からアプローチできます。 1 つ目はコンポーネントの観点で、2 つ目はソース データを提供するシステムの観点です。
+**拡張性**: 拡張性には、2 つの観点からアプローチできます。 1 つ目はコンポーネントの観点で、2 つ目はソース データを提供するシステムの観点です。
 
 各 Azure サービスでは、垂直スケーリングと水平スケーリングのオプションが提供されています。 ソリューションの設計時に、拡張性の要件を検討することを強くお勧めします。
 
@@ -249,9 +249,9 @@ Time Series Insights は、データの視覚化とクエリを行うための�
 
 **セキュリティ**: 対称キーまたは非対称キーを使用してリモート システムにアクセスする場合、シークレットを [Azure Key Vault](/azure/key-vault/?WT.mc_id=iotinsightssoln-docs-ercenk) で保持することをお勧めします。
 
-## <a name="posq-warm-path"></a>PoSQ:ウォーム パス
+## <a name="posq-warm-path"></a>PoSQ: ウォーム パス
 
-**スケーラビリティ**:インジェスト サブシステムで Azure Event Hubs を使用する場合、メインのスケーラビリティ メカニズムは[スループット ユニット](/azure/event-hubs/event-hubs-features#throughput-units?WT.mc_id=iotinsightssoln-docs-ercenk)です。 Event Hubs では、スループット ユニットを静的に設定する機能、または[自動インフレ機能](/azure/event-hubs/event-hubs-auto-inflate?WT.mc_id=iotinsightssoln-docs-ercenk)によって設定する機能が提供されます。
+**拡張性**: インジェスト サブシステムで Azure Event Hubs を使用する場合、メインの拡張性メカニズムは[スループット ユニット](/azure/event-hubs/event-hubs-features#throughput-units?WT.mc_id=iotinsightssoln-docs-ercenk)です。 Event Hubs では、スループット ユニットを静的に設定する機能、または[自動インフレ機能](/azure/event-hubs/event-hubs-auto-inflate?WT.mc_id=iotinsightssoln-docs-ercenk)によって設定する機能が提供されます。
 
 Stream Analytics の[ストリーミング ユニット](/azure/stream-analytics/stream-analytics-streaming-unit-consumption?WT.mc_id=iotinsightssoln-docs-ercenk) (SU) とは、ジョブを実行するために割り当てられる計算リソースのことです。 SU 数が大きいほど、多くの CPU とメモリ リソースがジョブ用に割り当てられます。 この能力により、クエリ ロジックに集中することができ、Stream Analytics ジョブがタイミングよく実行されるようハードウェアを管理する必要がなくなります。 SU だけでなく、[クエリを適切に並列化する](/azure/stream-analytics/stream-analytics-scale-jobs?WT.mc_id=iotinsightssoln-docs-ercenk)ことで効率的に使用することが非常に重要です。
 
@@ -261,13 +261,13 @@ Azure Cosmos DB の実装は、適切なスループット パラメーターと
 
 Cosmos DB データベースのセキュリティ保護では、データに対する制御されたアクセスと、保存時の暗号化が提供されます。 詳しくは、「[Azure Cosmos DB データベースのセキュリティ](/azure/cosmos-db/database-security?WT.mc_id=iotinsightssoln-docs-ercenk)」をご覧ください。
 
-**コスト効率**:Event Hubs の価格は、SKU (Standard または Premium)、受信したイベントの数 (百万単位)、およびスループット ユニットの関数です。 最適な組み合わせは、受信メッセージによって決定されるデータ取り込み率を調べることによって実現できます。
+**コスト効率**: Event Hubs の価格は、SKU (Standard または Premium)、受信したイベントの数 (百万単位)、およびスループット ユニットの関数です。 最適な組み合わせは、受信メッセージによって決定されるデータ取り込み率を調べることによって実現できます。
 
 Cosmos DB を使用するときは、RU の使用率によってストアの最適な使用を観察することをお勧めします。 Cosmos DB には、データ保持を制御するための機能もあります。前に説明したように、この機能を使用してレコードがデータベースに留まっている時間を制御し、それによってデータベースのサイズを制御することをお勧めします。
 
-## <a name="posq-cold-path"></a>PoSQ:コールド パス
+## <a name="posq-cold-path"></a>PoSQ: コールド パス
 
-**スケーラビリティ**:Azure Time Series Insights (TSI) は、"容量" という名前のメトリックによってスケーリングされます。これは、SKU に関連するイングレス レート、ストレージ容量、コストに適用される乗数です。 
+**拡張性**: Azure Time Series Insights (TSI) は、"容量" という名前のメトリックによってスケーリングされます。これは、SKU に関連する受信レート、ストレージ容量、コストに適用される乗数です。 
 
 Azure Time Series Insights には複数の SKU があり、やはり垂直スケーリングに直接影響します。 スケーリングについて詳しくは、「[Azure Time Series Insights 環境の計画](/azure/time-series-insights/time-series-insights-environment-planning?WT.mc_id=iotinsightssoln-docs-ercenk)」をご覧ください。 他の多くの Azure サービスと同じように、TSI も "迷惑な隣人" 問題を回避するための調整の対象になります。 迷惑な隣人とは、共有環境 (/azure/sql-database/sql-database-service-tiers-vcore?WT.mc_id=iotinsightssoln-docs-ercenk) でリソースを独占し、他のユーザーを枯渇させるアプリケーションのことです。 調整の管理については、[TSI のドキュメント](/azure/time-series-insights/time-series-insights-environment-mitigate-latency?WT.mc_id=iotinsightssoln-docs-ercenk)をご覧ください。 
 
@@ -281,4 +281,4 @@ Azure Data Factory サービスでは、マネージド ストアまたは Azure
 
 SQL Database では、データ アクセス、監視と監査、および保存時のデータの暗号化に関する広範なセキュリティ機能のセットが提供されています。 詳しくは、「[SQL Server Database エンジンと Azure SQL Database のセキュリティ センター](/sql/relational-databases/security/security-center-for-sql-server-database-engine-and-azure-sql-database?WT.mc_id=iotinsightssoln-docs-ercenk)」をご覧ください。
 
-**コスト効率**:すべての分析ソリューションの中心にあるのはストレージです。 分析エンジンでは、大量のデータを妥当な時間で処理するための速度、効率、セキュリティ、およびスループットが必要です。 データの集計と要約により基盤プラットフォームを最適に使用するメカニズムの考案と、ポリグロットなストアの効率的な使用が、コストを効率的に管理するための手段です。 Azure はクラウド プラットフォームなので、プログラムで使用停止、使用再開、リソース サイズ変更を行うメソッドがあります。 たとえば、[作成または更新操作](/rest/api/sql/databases/createorupdate?WT.mc_id=iotinsightssoln-docs-ercenk)では、Azure SQL Database のデータベースのサイズを変更する方法が提供されます。
+**コスト効率**: すべての分析ソリューションの中心にあるのはストレージです。 分析エンジンでは、大量のデータを妥当な時間で処理するための速度、効率、セキュリティ、およびスループットが必要です。 データの集計と要約により基盤プラットフォームを最適に使用するメカニズムの考案と、ポリグロットなストアの効率的な使用が、コストを効率的に管理するための手段です。 Azure はクラウド プラットフォームなので、プログラムで使用停止、使用再開、リソース サイズ変更を行うメソッドがあります。 たとえば、[作成または更新操作](/rest/api/sql/databases/createorupdate?WT.mc_id=iotinsightssoln-docs-ercenk)では、Azure SQL Database のデータベースのサイズを変更する方法が提供されます。

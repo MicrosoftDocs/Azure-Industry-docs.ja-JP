@@ -7,11 +7,11 @@ ms.topic: article
 ms.service: industry
 description: 小売業界の品揃えの最適化。 AI および ML からの分析情報を使用した SKU の最適化。
 ms.openlocfilehash: 22411776e830bb3c71f8c1277b30ec4331a3ef17
-ms.sourcegitcommit: 2714a77488c413f01beb169a18acab45663bcfd7
-ms.translationtype: HT
+ms.sourcegitcommit: 3b175d73a82160c4cacec1ce00c6d804a93c765d
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74308498"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77054373"
 ---
 # <a name="sku-optimization-for-consumer-brands-solution-guide"></a>コンシューマー ブランドの SKU の最適化のソリューション ガイド
 
@@ -43,7 +43,7 @@ SKU の品揃えソリューションでは、売上データを意味のある�
 
 ## <a name="descriptive-analytics"></a>記述的分析
 
-記述的モデルでは、データ ポイントを集計し、製品の売上に影響を及ぼす可能性がある要因間のリレーションシップを調べます。 この情報は、場所、天気、国勢調査のデータなど、いくつかの外部データ ポイントを使用して拡張することもできます。視覚化は、人がデータを解釈して分析情報を得るのに役立ちます。 ただし、データの更新頻度にもよりますが、この方法では、前の販売サイクルで何が起こったか、または現期間で何が起こっているかを理解することしかできません。
+記述的モデルでは、データ ポイントを集計し、製品の売上に影響を及ぼす可能性がある要因間のリレーションシップを調べます。 この情報は、場所、天気、国勢調査データなど、一部の外部データポイントで補強される場合があります。視覚エフェクトを使用すると、データを解釈して洞察を得ることができます。 ただし、データの更新頻度にもよりますが、この方法では、前の販売サイクルで何が起こったか、または現期間で何が起こっているかを理解することしかできません。
 
 たとえば、ある期間でパフォーマンスが最も高かった SKU と最も低かった SKU を把握するこのケースでは、従来のデータ ウェアハウスとレポートのアプローチで十分です。
 
@@ -63,7 +63,7 @@ SKU の品揃えソリューションでは、売上データを意味のある�
 
 **トランザクション データ**は、財務目的で定期的に収集されます。 
 
-**品揃えデータ**には、SKU に関連するすべてのものが含まれる可能性があります。必要な内容の例を次に示します。 
+**品揃えデータ**には、潜在的に SKU に関連するすべてのものが含まれます。必要なものの例を次に示します。 
 
 - SKU の数
 - SKU の説明
@@ -185,7 +185,7 @@ Azure Data Factory は、データセットを使用または生成する (ま�
 
 次の図は、パイプラインの定義を示しています。 これは同じサイズの連続する 3 つのブロックで構成されています。 最初の 2 つはデータセットとアクティビティで、データ フローを示す矢印で接続されています。 3 番目のブロックは、"パイプライン" というラベルが付いており、カプセル化を示すため、最初の 2 つを単にポイントしています。 
 
- ![Azure Data Factory の概念: アクティビティのパイプラインによって消費されるデータセット。](assets/sku-optimization-solution-guide/azure-data-factory.png)<center><font size="1">_図 3:Azure Data Factory の基本的な概念_</font></center>
+ ![Azure Data Factory の概念: アクティビティのパイプラインによって消費されるデータセット。](assets/sku-optimization-solution-guide/azure-data-factory.png)<center><font size="1">_図 3: Azure Data Factory の基本的な概念_</font></center>
 
 Neal Analytics のソリューションで使用されているデータ形式の例は、Microsoft の Appsource ページで確認できます。 このソリューションには、次のデータセットが含まれています。
 

@@ -7,11 +7,11 @@ ms.topic: article
 ms.service: industry
 description: この記事では、オンプレミスから Azure に e コマース インフラストラクチャを移行する各フェーズについて説明します。
 ms.openlocfilehash: e918f1157dc2bc42a6c4d0decfef95a8daa7ccf0
-ms.sourcegitcommit: b8f9ccc4e4453d6912b05cdd6cf04276e13d7244
-ms.translationtype: HT
+ms.sourcegitcommit: 3b175d73a82160c4cacec1ce00c6d804a93c765d
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74263356"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77054186"
 ---
 # <a name="migrating-your-e-commerce-solution-to-azure-overview"></a>eコマース ソリューションの Azure への移行の概要
 
@@ -41,13 +41,13 @@ ms.locfileid: "74263356"
 
 Azure にリホストするための 3 つのフェーズがあります。
 
-- **分析** :アプリケーション、ワークロード、ネットワーク、セキュリティなどのオンプレミス リソースを識別し、インベントリ管理を行います。 このフェーズの終わりには、既存システムの完全なドキュメントが作成されています。
-- **移行** :各サブシステムをオンプレミスから Azure に移行します。 この段階では、アプリケーションの通信を継続しながら、Azure をデータ センターの拡張機能として使用します。
-- **最適化** :システムを Azure に移行する際、適切にサイズが設定されるようにします。 一部の VM に割り当てられているリソースが多過ぎることが判明した場合、VM のタイプを CPU、メモリ、ローカル ストレージが適切に組み合わされたものに変更します。
+- **分析**: アプリケーション、ワークロード、ネットワーク、セキュリティなどのオンプレミス リソースを識別し、一覧を作成します。 このフェーズの終わりには、既存システムの完全なドキュメントが作成されています。
+- **移行**: 各サブシステムをオンプレミスから Azure に移行します。 この段階では、アプリケーションの通信を継続しながら、Azure をデータ センターの拡張機能として使用します。
+- **最適化**: システムを Azure に移行する際、適切にサイズが設定されるようにします。 一部の VM に割り当てられているリソースが多過ぎることが判明した場合、VM のタイプを CPU、メモリ、ローカル ストレージが適切に組み合わされたものに変更します。
 
 ### <a name="analyze"></a>分析
 
-以下の手順を実行します。
+次の操作を行います。
 
 1. オンプレミスのサーバーとアプリケーションのリストを作成します。 その際、エージェントまたは管理ツールを使用して、サーバー、そのサーバーで実行されているアプリケーション、現在のサーバー使用率、サーバーとアプリケーションの構成方法に関するメタデータを収集します。 結果として、環境内のすべてのサーバーとアプリケーションのレポートが生成されます。
 1. 依存関係を識別します。 ツールを使用して、相互に通信しているサーバーおよび相互に通信しているアプリケーションを識別します。 結果として、すべてのアプリケーションとワークロードのマップが生成されます。 これらのマップは、移行計画に送られ使用されます。
@@ -94,11 +94,11 @@ Azure には、環境を最適化するツールも用意されています。 [
 
 コンテナーは、アプリケーションをバンドルする方法を提供します。 コンテナーがオペレーティング システムを仮想化する手法のおかげで、1 つの VM に複数のコンテナーをまとめることができます。 まったくコードを変更せずに、またはいくつかコードを変更するだけで、アプリケーションをコンテナーに移動することができます。構成は変更しなければならない場合があります。 この作業は、アプリケーションをコンテナーにバンドルするスクリプトの記述につながります。 開発チームは、リファクタリング期間に、これらのスクリプトの記述とテストを行います。 Azure では、[Azure Kubernetes Service](/azure/aks/?WT.mc_id=retailecomm-docs-scseely) (AKS) と、コンテナー イメージを管理するために使用できる関連する [Azure Container Registry](https://azure.microsoft.com/services/container-registry/?WT.mc_id=retailecomm-docs-scseely) を介してコンテナー詰めをサポートします。
 
-アプリ サービスでは、さまざまな Azure サービスを利用できます。 たとえば、[RabbitMQ](https://www.rabbitmq.com/) のようなキューにメッセージを配置することで、既存のインフラストラクチャで顧客の注文を処理できます。 (たとえば、1 つのメッセージで顧客に請求し、2 つ目のメッセージで注文の品を出荷します)。リホストするときは、別の VM に RabbitMQ を配置します。 リファクタリング中に、[Service Bus](/azure/service-bus-messaging/service-bus-queues-topics-subscriptions?WT.mc_id=retailecomm-docs-scseely) のキューまたはトピックをソリューションに追加し、RabbitMQ コードを書き直して、キュー機能を提供する VM の使用を停止します。 この変更により、一連の VM を低コストの常時オン メッセージ キュー サービスと置き換えられます。 Azure Portal には、その他のアプリ サービスもあります。
+アプリ サービスでは、さまざまな Azure サービスを利用できます。 たとえば、[RabbitMQ](https://www.rabbitmq.com/) のようなキューにメッセージを配置することで、既存のインフラストラクチャで顧客の注文を処理できます。 (たとえば、1つのメッセージで顧客を請求する場合、もう1つは注文を発送することです)。再ホストする場合は、RabbitMQ を別の VM に配置します。 リファクタリング中に、[Service Bus](/azure/service-bus-messaging/service-bus-queues-topics-subscriptions?WT.mc_id=retailecomm-docs-scseely) のキューまたはトピックをソリューションに追加し、RabbitMQ コードを書き直して、キュー機能を提供する VM の使用を停止します。 この変更により、一連の VM を低コストの常時オン メッセージ キュー サービスと置き換えられます。 Azure Portal には、その他のアプリ サービスもあります。
 
 データベースについては、VM からサービスにデータベースを移行できます。 Azure では、[Azure SQL Database](/azure/sql-database/sql-database-cloud-migrate?WT.mc_id=retailecomm-docs-scseely) および [Azure SQL Database Managed Instance](/azure/sql-database/sql-database-managed-instance?WT.mc_id=retailecomm-docs-scseely) で SQL Server のワークロードをサポートします。 [データ移行サービス](https://azure.microsoft.com/services/database-migration/?WT.mc_id=retailecomm-docs-scseely)はご使用のデータベースを評価し、移行前に行う必要のある処理について知らせ、それからデータベースを VM からサービスに移行します。 Azure では、[MySQL](https://azure.microsoft.com/services/mysql/?WT.mc_id=retailecomm-docs-scseely)、[PostgreSQL](https://azure.microsoft.com/services/postgresql/?WT.mc_id=retailecomm-docs-scseely)、および[その他のデータベース](https://azure.microsoft.com/services/#databases?WT.mc_id=retailecomm-docs-scseely) エンジンのサービスをサポートします。
 
-## <a name="rebuild"></a>再構築
+## <a name="rebuild"></a>[再構築]
 
 ここまで、eコマース システムへの変更を最小限に留める努力をしてきました。稼働しているシステムはそのまま残してきました。 これから、クラウドのメリットを利用する方法について考慮します。 この段階では、PaaS または SaaS のサービスとアーキテクチャを積極的に採用することにより、既存のアプリケーションを変更します。 このプロセスでは、新機能を追加するか、クラウドのアプリケーションを再設計するため、大掛かりな変更が発生します。  _マネージド API_ は、クラウド システムを活用する新しい概念です。 サービス間の通信用の API を作成して、システムを簡単に更新することができます。  2 つ目のメリットは、所有しているデータから分析情報を得られることです。 _マイクロサービス プラス API_ アーキテクチャに移行し、機械学習とデータを分析するための他のツールを使用することによって、これを行います。
 
@@ -120,9 +120,9 @@ Azure には、環境を最適化するツールも用意されています。 [
 
 多くの開発チームは、技術的負債に対処し、キャパシティをより効率的に活用するために、リホストとリファクターを同時に行えないものかと模索します。 次の手順に進む前に、リホストを行うことにはメリットがいくつかあります。  新しい環境にデプロイする際に生じる問題を診断して修正するのが簡単になります。 これにより、開発チームとサポート チームに、Azure を用いた新しい環境に慣れる時間を与えることができます。 システムのリファクーとリビルドを開始するときには、安定して稼働しているアプリケーションの上に構築していくことができます。 そして、加える変更をより小さく、的を絞ったものにし、更新の頻度を増やすことができます。
 
-クラウドへの移行に関する汎用的なホワイトペーパーを公開しました:「[クラウド移行の基本](https://azure.microsoft.com/resources/cloud-migration-essentials-e-book/?_lrsc=9618a836-9f81-4087-901f-51058783c3a8&WT.mc_id=retailecomm-docs-scseely)」。 移行を計画する際にこれをお読みいただければ、きっとお役に立つでしょう。
+クラウドへの移行に関する汎用的なホワイト ペーパー「[Cloud Migration Essentials](https://azure.microsoft.com/resources/cloud-migration-essentials-e-book/?_lrsc=9618a836-9f81-4087-901f-51058783c3a8&WT.mc_id=retailecomm-docs-scseely)」を公開しました。 移行を計画する際にこれをお読みいただければ、きっとお役に立つでしょう。
 
-## <a name="technologies-presented"></a>使用するテクノロジ
+## <a name="technologies-presented"></a>提供されるテクノロジ
 
 リホスト中に以下が使用されます。
 

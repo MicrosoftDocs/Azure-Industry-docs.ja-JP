@@ -7,11 +7,11 @@ ms.topic: article
 ms.service: industry
 description: 製造業のお客様向けに Azure で予測メンテナンスを開発する方法を説明したソリューション ガイド。
 ms.openlocfilehash: c32893d534279cda35f7c6a142869d2983eaca67
-ms.sourcegitcommit: 2714a77488c413f01beb169a18acab45663bcfd7
-ms.translationtype: HT
+ms.sourcegitcommit: 3b175d73a82160c4cacec1ce00c6d804a93c765d
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74308488"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77053846"
 ---
 # <a name="predictive-maintenance-in-manufacturing-solution-guide"></a>製造業における予測メンテナンスのためのソリューション ガイド
 
@@ -66,12 +66,12 @@ ML モデルを構築するには、十分な量の正確かつ完全なデー�
 
 Microsoft は、データを準備し、機械学習モデルをトレーニングする方法について[詳細なガイド](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-analytics-playbook-predictive-maintenance?WT.mc_id=pdmsolution-docs-ercenk)を発行しています。 メンテナンスのための 3 つの一般的な質問とそれに関連する機械学習アルゴリズムがあります。
 
-- "_今から X 時間以内にその資産で障害が発生する確率はどのくらいですか。_ " 回答:0 ～ 100%
+- "_今から X 時間以内にその資産で障害が発生する確率はどのくらいですか。_ " 回答: 0 から 100%
   - **二項分類:** 二項分類は、データを使用して、2 つのクラスの一方のメンバーとして、データの項目または行のカテゴリ、タイプ、またはクラスを決定する機械学習メソッドです。 分類アルゴリズムには複数の種類があり、Microsoft は、[Machine Learning Studio モジュール](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/machine-learning-initialize-model-classification?WT.mc_id=pdmsolution-docs-ercenk)として利用可能な一連のアルゴリズムを公開しています。
-- "_その資産の残存耐用時間数はどのくらいですか。_ " 回答:X 時間
+- "_その資産の残存耐用時間数はどのくらいですか。_ " 回答: X 時間
   - **回帰:** 回帰は、機械学習アルゴリズムの一種で、指定された一連の他の変数から 1 つの変数の値を予測します。 Machine Learning Studio には、一連の回帰アルゴリズムが[モジュール](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/machine-learning-initialize-model-regression?WT.mc_id=pdmsolution-docs-ercenk)として含まれています。
-    - **Long Short Term Memory (LSTM):** [LSTM](https://colah.github.io/posts/2015-08-Understanding-LSTMs/?WT.mc_id=pdmsolution-docs-ercenk) ネットワークは、ディープ ニューラル ネットワーク (DNN) の一種です。 DNN は、脳内の個々のニューロンの動作に着想を得て、モデル化されたものです。 Microsoft は、LSTM を予測メンテナンスに使用する方法を説明するために、[ステップ バイ ステップ ガイド](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/scenario-deep-learning-for-predictive-maintenance?WT.mc_id=pdmsolution-docs-ercenk)を発行しています。
-- "_最も緊急に整備を必要としているのはどの資産ですか。_ " 回答:資産 X
+    - **長期間の短期メモリ (lstm):** [lstm](https://colah.github.io/posts/2015-08-Understanding-LSTMs/?WT.mc_id=pdmsolution-docs-ercenk)ネットワークは、ディープニューラルネットワーク (dnn) の一種です。 DNN は、脳内の個々のニューロンの動作に着想を得て、モデル化されたものです。 Microsoft は、LSTM を予測メンテナンスに使用する方法を説明するために、[ステップ バイ ステップ ガイド](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/scenario-deep-learning-for-predictive-maintenance?WT.mc_id=pdmsolution-docs-ercenk)を発行しています。
+- "_最も緊急に整備を必要としているのはどの資産ですか。_ " 回答: 資産 X
   - **多クラス分類:** 多クラス分類は、データを使用して、3 つ以上のクラスのメンバーとして、データの項目または行のカテゴリ、タイプ、またはクラスを決定する機械学習メソッドです。
 
 データを取り込むということは、複数のチャネルを利用し、最初に一括して初期化した後、故障を予測するためにストリーミング データの受信を継続し、そのデータを以降のモデルの構築にも使用することを意味します。
@@ -106,7 +106,7 @@ ML モードのトレーニングについては、Microsoft Azure は数多く�
 
 どのツールを使用するかは、操作の複雑さ、チームの経験、およびデータのサイズによって決まります。
 
-クラウド ソリューションに関するコスト方程式には、クラウド サービスのコストに加えて、追加のエンジニアリング、管理、データ転送など、数多くの変数が含まれます。コストを評価する際にはこれらの変数を使用し、十分な情報を得た上で意思決定を行う必要があります。 合計コスト方程式を構成するのは、サービスだけではありません。
+クラウドソリューションのコスト式には、追加のエンジニアリング、管理、データ転送などのクラウドサービスのコストに加えて、多くの変数が含まれています。コストを評価するときにこれらの変数を使用し、十分な情報に基づいた意思決定を行います。 合計コスト方程式を構成するのは、サービスだけではありません。
 
 詳細な科目としては、データ分析プロセスおよびモデル公開プロセスの設計があり、これらは、使用されるテクノロジによって異なります。 これらのトピックは、この記事の範囲外ですが、 モデルの生成に使用できるプロセスと Azure サービスについて説明した一連の記事を参照することができます。 また、Microsoft は、データ サイエンティスト チームがデータのライフサイクル全体で効果的に共同作業できる、データ ソリューションを構築するための組織的なアプローチも提供しています。
 
@@ -201,9 +201,9 @@ Azure IoT ソリューション アーキテクチャの詳細は、[オンラ�
 
 ### <a name="data-security-and-isolation"></a>データのセキュリティと分離
 
-サービスを提供する側は確実に、その顧客からの機密情報を識別し、適切にセキュリティで保護するか、スクラブする必要があります。Microsoft Azure には、使用されているストレージ サービスに応じてデータを暗号化するための機能が用意されています。
+サービスを提供する当事者は、顧客からの機密情報が識別され、適切に保護またはスキャンされされていることを確認する必要があります。Microsoft Azure は、使用するストレージサービスに応じてデータを暗号化するための機能を提供します。
 
-デバイスがデータを生成して送信する方法も、デバイスごとの証明書、デバイスごとの有効化/無効化、TLS セキュリティ、X.509 サポート、IP のホワイトリスト登録/ブラックリスト登録、共有アクセス ポリシーなどの既知の手法を使用してセキュリティで保護する必要があります。 サービスを提供する側は確実に、顧客からの機密情報を識別し、適切にセキュリティで保護するか、スクラブする必要があります。[Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-encryption?WT.mc_id=pdmsolution-docs-ercenk)、[Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption?WT.mc_id=pdmsolution-docs-ercenk)、[Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/database-encryption-at-rest?WT.mc_id=pdmsolution-docs-ercenk)、[Azure SQL Database](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?WT.mc_id=pdmsolution-docs-ercenk) は、保存中のデータの暗号化に使用できるサービスの例です。 ソリューション プロバイダーは、同一のリソース (たとえば、データベース) または複数のリソース内でデータをパーティション分割する方法も検討する必要があります。 
+デバイスがデータを生成して送信する方法も、デバイスごとの証明書、デバイスごとの有効化/無効化、TLS セキュリティ、X.509 サポート、IP のホワイトリスト登録/ブラックリスト登録、共有アクセス ポリシーなどの既知の手法を使用してセキュリティで保護する必要があります。 サービスを提供する当事者は、顧客からの機密情報が識別され、適切にセキュリティで保護されていることを確認する必要があります。[Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-encryption?WT.mc_id=pdmsolution-docs-ercenk)、 [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption?WT.mc_id=pdmsolution-docs-ercenk)、 [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/database-encryption-at-rest?WT.mc_id=pdmsolution-docs-ercenk)、および[Azure SQL Database](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?WT.mc_id=pdmsolution-docs-ercenk)は、保存データの暗号化に使用できるサービスの例です。 ソリューション プロバイダーは、同一のリソース (たとえば、データベース) または複数のリソース内でデータをパーティション分割する方法も検討する必要があります。 
 
 ### <a name="geographical-considerations"></a>地理的な考慮事項
 
@@ -230,7 +230,7 @@ ML モデルの構築には、柔軟にスケーリングできるコンピュ�
 | スケーラビリティ                 | ほとんどの Azure サービスは、垂直スケーリングと水平スケーリングの両方のオプションをサポートします。 Azure プラットフォームへのリソースのオンデマンドのデプロイを利用し、自動化されたサービスを介してスケール (サイズとインスタンス数) を制御します。                                                                                                                                                                   |
 | 可用性と回復性 | コンピューティング リソースとストレージ リソースは、数多くの Azure サービスを使用して、必要に応じて柔軟にプロビジョニングすることができます。 すべての Azure サービスには、さまざまなレベルの SLA が用意されていますが、ソリューションでは、適切な設計原則を使用して、SLA レベルを検討し、適宜利用する必要があります。                                                                                                                    |
 | 管理                  | Azure リソースは、ARM テンプレート、コマンド ライン ツール、PowerShell コマンドレット、Azure Management API など、さまざまな方法で展開し、管理することができます。 ツールと UI を使用する代わりに、Azure リソースを管理する際の自動化されたソリューションを構築することを検討する必要があります。                                                                                                                                |
-| セキュリティ                    | Azure IoT Hub は、TLS 上で対称キーと非対称キー (X509 証明書および TPM) をサポートします。 データ ストアは、Identity and Access Management (IAM) 設定を使用して保護され、データ ストアも保存中のデータの暗号化をサポートします。 一般的に、大まかなセキュリティ チェックリストとして、承認、認証、送信中および保存中の暗号化、監査メカニズムを検討する必要があります。 |
+| Security                    | Azure IoT Hub は、TLS 上で対称キーと非対称キー (X509 証明書および TPM) をサポートします。 データ ストアは、Identity and Access Management (IAM) 設定を使用して保護され、データ ストアも保存中のデータの暗号化をサポートします。 一般的に、大まかなセキュリティ チェックリストとして、承認、認証、送信中および保存中の暗号化、監査メカニズムを検討する必要があります。 |
 | コスト効率              | リソースを必要に応じてプロビジョニングすること、および使用しなくなったときにリソースを自動的に廃棄することを検討する必要があります。                                                                                                                                                                                                                                                                                                  |
 
 ## <a name="conclusion"></a>まとめ
@@ -241,12 +241,12 @@ ML モデルの構築には、柔軟にスケーリングできるコンピュ�
 
 ## <a name="further-reading"></a>参考資料
 
-1. [将来を見据えて:古い考えを捨て、IoT で不測の事態に先手を打つ](https://blogs.microsoft.com/iot/2017/02/28/future-focused-stop-thinking-in-the-past-and-get-ahead-of-the-unexpected-with-iot-2/?WT.mc_id=pdmsolution-docs-ercenk)
+1. [Future-focused: Stop thinking in the past and get ahead of the unexpected  with  IoT](https://blogs.microsoft.com/iot/2017/02/28/future-focused-stop-thinking-in-the-past-and-get-ahead-of-the-unexpected-with-iot-2/?WT.mc_id=pdmsolution-docs-ercenk) (将来を見据えて: 古い考えを捨て、不測の事態を IoT で把握する)
 
 2. [Boost equipment reliability with IoT-enabled predictive  maintenance](https://www.microsoft.com/internet-of-things/predictive-maintenance?WT.mc_id=pdmsolution-docs-ercenk) (IoT 対応の予測メンテナンスで機器の信頼性を向上)
 
-3. [モノのインターネットから価値を得る:予測メンテナンス プロジェクトへのアプローチ](https://download.microsoft.com/download/0/7/D/07D394CE-185D-4B96-AC3C-9B61179F7080/Capture_value_from_the_Internet%20of%20Things_with_Predictive_Maintenance.PDF?WT.mc_id=pdmsolution-docs-ercenk)
+3. [Capture value from the Internet of Things: How to approach a predictive  maintenance  project](https://download.microsoft.com/download/0/7/D/07D394CE-185D-4B96-AC3C-9B61179F7080/Capture_value_from_the_Internet%20of%20Things_with_Predictive_Maintenance.PDF?WT.mc_id=pdmsolution-docs-ercenk) (モノのインターネットから価値を得る: 予測メンテナンス プロジェクトへのアプローチ)
 
-4. [パートナーの視点:最前線での予測メンテナンス](https://blogs.microsoft.com/iot/2017/03/21/partner-perspectives-predictive-maintenance-on-the-frontlines/?WT.mc_id=pdmsolution-docs-ercenk)
+4. [Partner perspectives: Predictive maintenance on the  frontlines](https://blogs.microsoft.com/iot/2017/03/21/partner-perspectives-predictive-maintenance-on-the-frontlines/?WT.mc_id=pdmsolution-docs-ercenk) (パートナーの視点: フロントラインでの予測メンテナンス)
 
-5. [コモディティ化からサービス化へ:IoT によるビジネス変革でフィールド サービスの新時代を勝ち抜く](https://blogs.microsoft.com/iot/2016/11/07/from-commodization-to-servitization-transforming-your-business-to-compete-in-the-new-age-of-field-service-with-iot/?WT.mc_id=pdmsolution-docs-ercenk)
+5. [From commoditization to servitization: Transforming your business to  compete in the new age of field service with  IoT](https://blogs.microsoft.com/iot/2016/11/07/from-commodization-to-servitization-transforming-your-business-to-compete-in-the-new-age-of-field-service-with-iot/?WT.mc_id=pdmsolution-docs-ercenk) (コモディティ化からサービス化へ: IoT によるビジネス変革でフィールド サービスの新時代を勝ち抜く)

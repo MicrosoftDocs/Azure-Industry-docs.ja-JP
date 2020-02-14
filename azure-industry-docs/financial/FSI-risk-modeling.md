@@ -7,11 +7,11 @@ ms.service: industry
 ms.topic: overview
 ms.date: 11/19/2019
 ms.openlocfilehash: 03fea3996b62782c2b65e6d2edf841b5adaebcd2
-ms.sourcegitcommit: f030566b177715794d2ad857b150317e72d04d64
-ms.translationtype: HT
+ms.sourcegitcommit: 3b175d73a82160c4cacec1ce00c6d804a93c765d
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74234545"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77052503"
 ---
 # <a name="enabling-the-financial-services-risk-lifecycle-with-azure-and-r"></a>Azure と R を使用して金融サービスのリスク ライフサイクルを有効にする
 
@@ -78,7 +78,7 @@ ms.locfileid: "74234545"
 MSFT 株式をベースに、株式先渡の潜在的将来エクスポージャーを計算することにします。 前述のように、株価をモデル化するためには、モデルを過去データに較正できるように MSFT 株式の過去価格が必要です。 過去の株価を取得するには多くの方法があります。 この例では、外部のサービス事業者 [Quandl](https://www.quandl.com/) の株価サービスの無料版を使用します。
 
 
-> 注:この例で使用しているのは、概念の学習用途に使用できる [WIKI Prices データセット](https://www.quandl.com/databases/WIKIP)です。 実際の米国株式データを使用する場合、Quandl では [End of Day US Stock Prices (米国株価終値) データセット](https://www.quandl.com/data/EOD-End-of-Day-US-Stock-Prices)の使用を推奨しています。
+> 注: この例で使用しているのは、概念の学習用途に使用できる [WIKI Prices データセット](https://www.quandl.com/databases/WIKIP)です。 実際の米国株式データを使用する場合、Quandl では [End of Day US Stock Prices (米国株価終値) データセット](https://www.quandl.com/data/EOD-End-of-Day-US-Stock-Prices)の使用を推奨しています。
 
 データを処理して株式に関連するリスクを定義するには、次のことを行う必要があります:
 
@@ -435,12 +435,12 @@ plot(as.numeric(df$term[df$statistic == 'PFE']) / 365, df$result[df$statistic ==
 
 ### <a name="tutorials"></a>チュートリアル
 
-- R 開発者: [Azure Batch で並列 R シミュレーションを実行する](https://docs.microsoft.com/azure/batch/tutorial-r-doazureparallel?WT.mc_id=fsiriskmodelr-docs-scseely)
+- R 開発者: [Azure Batch を使用した並列 R シミュレーションの実行](https://docs.microsoft.com/azure/batch/tutorial-r-doazureparallel?WT.mc_id=fsiriskmodelr-docs-scseely)
 
-- [基本的な R コマンドと RevoScaleR 関数: 25 の一般的な例](https://docs.microsoft.com/machine-learning-server/r/tutorial-r-to-revoscaler?WT.mc_id=fsiriskmodelr-docs-scseely)
+- [基本的な R コマンドと RevoScaleR functions:25 一般的な例](https://docs.microsoft.com/machine-learning-server/r/tutorial-r-to-revoscaler?WT.mc_id=fsiriskmodelr-docs-scseely)
 
 - [RevoScaleR を使用したデータの視覚化と分析](https://docs.microsoft.com/machine-learning-server/r/tutorial-revoscaler-data-model-analysis?WT.mc_id=fsiriskmodelr-docs-scseely)
 
 - [HDInsight での ML Services とオープン ソース R の機能の概要](https://docs.microsoft.com/azure/hdinsight/r-server/r-server-overview?WT.mc_id=fsiriskmodelr-docs-scseely)
 
-_本記事の執筆者は Dr.Darko Mocelj および Rupert Nicolay です。_
+_この記事は、Darko Mocelj と Nicolay によって作成されました。_

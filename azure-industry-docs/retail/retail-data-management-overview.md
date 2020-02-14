@@ -7,11 +7,11 @@ ms.topic: article
 ms.service: industry
 description: 小売業者は、貴重な分析情報が得られる可能性のある、使用されていないデータの大規模なデータ ストアを保有しています。 この記事では、Microsoft Azure を活用して、そのデータを効果的に使用する方法について説明します。
 ms.openlocfilehash: 198e0f609889eee86e005c5ee56090006ae2a413
-ms.sourcegitcommit: b8f9ccc4e4453d6912b05cdd6cf04276e13d7244
-ms.translationtype: HT
+ms.sourcegitcommit: 3b175d73a82160c4cacec1ce00c6d804a93c765d
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74263513"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77054118"
 ---
 # <a name="data-management-in-retail-overview"></a>小売業におけるデータ管理の概要
 
@@ -106,7 +106,7 @@ Azure Data Lake サービスでは、[Data Lake Analytics](/azure/data-lake-anal
 
 モデルをトレーニングし、データ分析プロセスを実行したら、機械学習分析によって得られたデータを、データ ウェアハウスや、分析データ用の正規化されたストレージ データベースに格納できます。 Microsoft では、データ ウェアハウス内のデータを詳しく分析するために、完全な機能を備えたデータ分析ツールである [Power BI](/power-bi/?WT.mc_id=retaildm-docs-dastarr) を提供しています。
 
-## <a name="action"></a>Action
+## <a name="action"></a>アクション
 
 小売業のデータは常に変動しており、データを処理するシステムはタイムリーに処理する必要があります。 たとえば、e コマースの買い物客データは迅速に処理する必要があります。 これは、購入者のカート内のアイテムを使用して、追加のサービスを提供したり、精算プロセス中に追加アイテムを提供できるようにするためです。 この形式のデータ処理と分析はほぼすぐに行う必要があり、通常は "マイクロバッチ" トランザクションを実行するシステムによって実行されます。 つまり、データは、すでに処理されているデータにアクセスできるシステム内で分析され、モデルを介して実行されます。
 

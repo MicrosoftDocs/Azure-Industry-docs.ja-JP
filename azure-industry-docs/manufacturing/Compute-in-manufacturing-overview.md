@@ -7,11 +7,11 @@ ms.topic: article
 ms.service: industry
 description: 製造業界における高性能コンピューティングのニーズの概要。
 ms.openlocfilehash: fe5200a726b2a65efaed2bc7a8de01e97766d425
-ms.sourcegitcommit: 2714a77488c413f01beb169a18acab45663bcfd7
-ms.translationtype: HT
+ms.sourcegitcommit: 3b175d73a82160c4cacec1ce00c6d804a93c765d
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74308519"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77052537"
 ---
 # <a name="on-demand-scalable-high-power-compute"></a>オンデマンドのスケーラブルな高性能コンピューティング
 
@@ -31,7 +31,7 @@ ms.locfileid: "74308519"
 
 ### <a name="remote-desktop-protocol"></a>リモート デスクトップ プロトコル
 
-Microsoft のリモート デスクトップ プロトコル (RDP) では、長い間、TCP のみがサポートされてきました。 TCP では、UDP よりも多くのオーバーヘッドが発生します。 RDP 8.0 以降、Microsoft リモート デスクトップ サービスを実行するサーバーで UDP を使用できるようになっています。 使用できるようにするには、仮想マシン (VM) に十分なハードウェア リソースが必要です。具体的には次のものです。CPU、メモリと、最も重要であるグラフィックス処理装置 (GPU)。 (GPU は、ハイ パフォーマンス クラウド ワークステーションの最も重要なコンポーネントと言えます)。Windows Server 2016 には、基になるグラフィックス機能にアクセスするためのいくつかのオプションが用意されています。 Windows Advanced Rasterization Platform (WARP) とも呼ばれる既定の RDS GPU ソリューションは、ナレッジ ワーカーのシナリオに適したソリューションですが、提供されるリソースは、クラウド ワークステーションのシナリオには適していません。 RemoteFX vGPU は、リモート接続用に導入された、RemoteFX の機能です。サーバーあたりのユーザー密度が高いシナリオに対応し、バースト時に高い GPU 使用率を実現します。 ただし、GPU の能力を使用する場合には、GPU の能力を最大限に活用するために、Discrete Device Assignment (DDA) が必要です。
+Microsoft のリモート デスクトップ プロトコル (RDP) では、長い間、TCP のみがサポートされてきました。 TCP では、UDP よりも多くのオーバーヘッドが発生します。 RDP 8.0 以降、Microsoft リモート デスクトップ サービスを実行するサーバーで UDP を使用できるようになっています。 使用可能にするには、仮想マシン (VM) に十分なハードウェア リソースが必要です。つまり、CPU、メモリと、最も重要である GPU (グラフィックス処理装置) が必要になります (GPU は、おそらく、高パフォーマンスのクラウドワークステーションの最も重要なコンポーネントです)。Windows Server 2016 には、基になるグラフィックス機能にアクセスするためのオプションがいくつか用意されています。 Windows Advanced Rasterization Platform (WARP) とも呼ばれる既定の RDS GPU ソリューションは、ナレッジ ワーカーのシナリオに適したソリューションですが、提供されるリソースは、クラウド ワークステーションのシナリオには適していません。 RemoteFX vGPU は、リモート接続用に導入された、RemoteFX の機能です。サーバーあたりのユーザー密度が高いシナリオに対応し、バースト時に高い GPU 使用率を実現します。 ただし、GPU の能力を使用する場合には、GPU の能力を最大限に活用するために、Discrete Device Assignment (DDA) が必要です。
 
 NV シリーズ VM は、Azure N シリーズ製品の一部として、1 つまたは複数の NVDIA GPU と共に提供されます。 これらの VM は、OpenGL や DirectX などのフレームワークを使用する、リモート視覚化と VDI のシナリオに最適化されています。 最大 4 つの GPU に拡張することで、Azure 上の DDA を使用して GPU を最大限に活用するワークステーションをプロビジョニングできます。
 
@@ -43,9 +43,9 @@ NV シリーズ VM は、Azure N シリーズ製品の一部として、1 つま
 リソースのスケーラビリティを活用するには、問題解決コードを並行実行できることが重要になります。
 
 シミュレーションの問題を解決するには、大規模なコンピューティング リソースが必要です。 ハイ パフォーマンス コンピューティング (HPC) は、大規模なコンピューティングの一種です。 HPC では、高速並列計算に対応するリモート ダイレクト メモリ アクセス (RDMA) 機能を使用して、バックエンド ネットワークを低遅延にする必要があります。 Azure プラットフォームでは、ハイ パフォーマンス コンピューティング向けに構築された VM を提供します。 これらの VM は、DDR4 メモリと組み合わせた専用のプロセッサを備えており、Linux インストールと Windows インストールの両方で、コンピューティング集約型ソリューションを効果的に実行できます。 また、複数の VM サイズが用意されています。 「[ハイ パフォーマンス コンピューティング VM のサイズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json?WT.mc_id=computeinmanufacturing-docs-ercenk)」をご覧ください。
-Azure による他の方法での HPC のサポートについては、「Big Compute:[HPC & Batch](https://azure.microsoft.com/solutions/big-compute/?WT.mc_id=computeinmanufacturing-docs-ercenk)」をご覧ください。
+Azure による他の方法での HPC のサポートについては、「[Big Compute: HPC および Batch](https://azure.microsoft.com/solutions/big-compute/?WT.mc_id=computeinmanufacturing-docs-ercenk)」をご覧ください。
 
-Azure プラットフォームでは、ソリューションのスケールアップとスケールアウトが可能です。よく知られているシミュレーション用ソフトウェア パッケージの 1 つが、CD-adapco の STAR-CCM+ です。 "Le Mans 100 Million Cell" 計算流体力学 (CFD) モデルを実行する STAR-CCM+ を示す[発表された研究](https://azure.microsoft.com/blog/availability-of-star-ccm-on-microsoft-azure/?WT.mc_id=computeinmanufacturing-docs-ercenk)で、プラットフォームのスケーラビリティを垣間見ることができます。 次のグラフは、シミュレーションの実行時にコアを追加していったときの実際のスケーラビリティを示しています。
+Azure platform を使用すると、ソリューションをスケールアップおよびスケールアウトできます。シミュレーション用によく知られているソフトウェアパッケージの1つは、cd-adapco からのスター CCM + です。 "Le Mans 100 Million Cell" 計算流体力学 (CFD) モデルを実行する STAR-CCM+ を示す[発表された研究](https://azure.microsoft.com/blog/availability-of-star-ccm-on-microsoft-azure/?WT.mc_id=computeinmanufacturing-docs-ercenk)で、プラットフォームのスケーラビリティを垣間見ることができます。 次のグラフは、シミュレーションの実行時にコアを追加していったときの実際のスケーラビリティを示しています。
 
 ![https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/34f1873b-4db5-4c62-b963-8bdf3966cf60.png](assets/bigcompute-assets/starccm.png)
 
@@ -53,13 +53,13 @@ Azure プラットフォームでは、ソリューションのスケールア�
 
 ![https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/77129585-f25c-4c29-b22b-80c627d03daa.png](assets/bigcompute-assets/fluent.png)
 
-ローカル コンピューティング クラスターに投資する代わりに、並列実行が必要なソフトウェア パッケージを Azure 仮想マシンにデプロイできます。また、オールクラウド ソリューションに [HPC および GPU VM](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json?WT.mc_id=computeinmanufacturing-docs-ercenk) ファミリを使用して、[仮想マシン スケール セット (VMSS)](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview?WT.mc_id=computeinmanufacturing-docs-ercenk) にデプロイすることもできます。
+ローカル コンピューティング クラスターに投資する代わりに、並列実行が必要なソフトウェア パッケージを Azure 仮想マシンにデプロイできます。また、オールクラウド ソリューションに [HPC および GPU VM](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview?WT.mc_id=computeinmanufacturing-docs-ercenk) ファミリを使用して、[仮想マシン スケール セット (VMSS)](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json?WT.mc_id=computeinmanufacturing-docs-ercenk) にデプロイすることもできます。
 
 ### <a name="burst-to-azure"></a>Burst to Azure
 
 ローカル クラスターを使用できる場合は、別のオプションとして、クラスターを Azure に拡張することによって、ピーク時のワークロードをオフロードします ("Azure へのバースト" とも呼ばれます)。 そのためには、Azure をサポートするオンプレミスのワークロード マネージャー ([Alces Flight Compute](https://azuremarketplace.microsoft.com/marketplace/apps/alces-flight-limited.alces-flight-compute-solo?tab=Overview?WT.mc_id=computeinmanufacturing-docs-ercenk)、[TIBCO DataSynapse GridServer](https://azure.microsoft.com/blog/tibco-datasynapse-comes-to-the-azure-marketplace/?WT.mc_id=computeinmanufacturing-docs-ercenk)、[Bright Cluster Manager](http://www.brightcomputing.com/technology-partners/microsoft)、[IBM Spectrum Symphony および Symphony LSF](https://azure.microsoft.com/blog/ibm-and-microsoft-azure-support-spectrum-symphony-and-spectrum-lsf/?WT.mc_id=computeinmanufacturing-docs-ercenk)、[PBS Pro](http://pbspro.org/)、[Microsoft HPC Pack](https://technet.microsoft.com/library/mt744885.aspx?WT.mc_id=computeinmanufacturing-docs-ercenk) など) のいずれかを使用する必要があります。
 
-もう 1 つのオプションは Azure Batch です。これは、大規模な並列ジョブと HPC バッチ ジョブを効率的に実行するサービスです。 Azure Batch では、Message Passing Interface (MPI) API を使用するジョブを実行できます。 Batch では、[HPC](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc?WT.mc_id=computeinmanufacturing-docs-ercenk) および [GPU](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu?WT.mc_id=computeinmanufacturing-docs-ercenk) に 最適化された VM ファミリで、[Microsoft MPI](https://msdn.microsoft.com/library/bb524831(v=vs.85).aspx?WT.mc_id=computeinmanufacturing-docs-ercenk) と Intel MPI の 両方をサポートします。 また、Microsoft は [Cycle Computing](https://blogs.microsoft.com/blog/2017/08/15/microsoft-acquires-cycle-computing-accelerate-big-computing-cloud/?WT.mc_id=computeinmanufacturing-docs-ercenk) を買収しており、Azure でクラスターを実行するための抽象度の高いソリューションが提供されます。 [Azure Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage?WT.mc_id=computeinmanufacturing-docs-ercenk) や [Azure Data Lake](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview?WT.mc_id=computeinmanufacturing-docs-ercenk) などの補完的な Azure サービスにシームレスにアクセスして、Azure で [Cray スーパーコンピューター](https://www.cray.com/solutions/supercomputing-as-a-service/cray-in-azure)を実行することもできます。
+もう 1 つのオプションは Azure Batch です。これは、大規模な並列ジョブと HPC バッチ ジョブを効率的に実行するサービスです。 Azure Batch では、Message Passing Interface (MPI) API を使用するジョブを実行できます。 Batch では、[HPC](https://msdn.microsoft.com/library/bb524831(v=vs.85).aspx?WT.mc_id=computeinmanufacturing-docs-ercenk) および [GPU](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc?WT.mc_id=computeinmanufacturing-docs-ercenk) に 最適化された VM ファミリで、[Microsoft MPI](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu?WT.mc_id=computeinmanufacturing-docs-ercenk) と Intel MPI の 両方をサポートします。 また、Microsoft は [Cycle Computing](https://blogs.microsoft.com/blog/2017/08/15/microsoft-acquires-cycle-computing-accelerate-big-computing-cloud/?WT.mc_id=computeinmanufacturing-docs-ercenk) を買収しており、Azure でクラスターを実行するための抽象度の高いソリューションが提供されます。 [Azure Storage](https://www.cray.com/solutions/supercomputing-as-a-service/cray-in-azure) や [Azure Data Lake](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage?WT.mc_id=computeinmanufacturing-docs-ercenk) などの補完的な Azure サービスにシームレスにアクセスして、Azure で [Cray スーパーコンピューター](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview?WT.mc_id=computeinmanufacturing-docs-ercenk)を実行することもできます。
 
 ## <a name="generative-design"></a>ジェネレーティブ デザイン
 

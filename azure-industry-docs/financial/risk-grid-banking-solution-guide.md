@@ -7,11 +7,11 @@ ms.topic: article
 ms.service: industry
 description: 銀行取引におけるリスク グリッド コンピューティング向け Azure Batch 実装の技術的な側面を紹介します。
 ms.openlocfilehash: 542fb820870048ac2ec2cb67c2bbf13988588ea1
-ms.sourcegitcommit: f030566b177715794d2ad857b150317e72d04d64
-ms.translationtype: HT
+ms.sourcegitcommit: 3b175d73a82160c4cacec1ce00c6d804a93c765d
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74234663"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77053183"
 ---
 # <a name="risk-grid-computing-in-banking-solution-guide"></a>銀行取引におけるリスク グリッド コンピューティングのソリューション ガイド
 
@@ -45,7 +45,7 @@ worker アプリケーションは、その作成時に計算ノードにイン�
 
 ![プール、ジョブ、タスク](./assets/risk-grid-compute-assets/06-pool-job-logical-model.png)
 
-**図 2:** Batch の概念の論理モデル
+**図 2:** Bath の概念の論理モデル
 
 ジョブ実行時、プールによって、必要な worker VM がプロビジョニングされ、worker アプリケーションがインストールされます。 ジョブによってそれらの計算ノードにタスクが割り当てられると、コマンド ライン命令が実行され、通常はそれによって、インストールされているアプリケーションまたはスクリプトが呼び出されます。
 Batch の使用は通常、次に示す典型的なパターンに従います。
@@ -112,7 +112,7 @@ Azure Batch にはスケジューラが組み込まれているため、ポー�
 1. より多くの計算ノード マシンを割り当ててスケール アウトします。
 2. より能力の高い計算ノード マシンを割り当ててスケール アップします。 コア数やメモリについて、また GPU 処理能力についても、より高いパフォーマンスのニーズを満たす Azure マシンをプロビジョニングします。
 
-> 注:Microsoft HPC Pack の Batch との併用は、より複雑なモデルであり、この記事では説明しません。
+> 注: Microsoft HPC Pack の Batch との併用は、より複雑なモデルであり、この記事では説明しません。
 
 Batch 処理クラスター内にある処理 VM は、2 つだけと少ない場合もあれば、数千の同期タスクが、数万のコアを持つ数千の VM 計算ノード上で実行される場合もあります。 各 VM は、一度に 1 つのタスクを実行します。 プール内の VM の数は、負荷が増加または減少したときに、構成に従って手動または自動でスケールできます。
 
@@ -182,7 +182,7 @@ C:\> Enable-AzureBatchAutoScale -Id "RiskGridPool" -AutoScaleFormula $Formula -B
 
 Batch 診断ログによって、バッチ実行のトラブルシューティングと最適化に役立つ大量のデータが提供されます。 ジョブとタスクの開始時刻と終了時刻、コア数、合計ノード数、その他多くのメトリック。
 
-Batch ログ記録には、プールの作成、ジョブの実行、タスクの実行など、バッチ実行によって生成されたイベントを格納するために、生成されたログの送信先となるストレージが必要です。診断ログ イベントを Azure ストレージ アカウントに格納することに加えて、Batch サービス ログ イベントを [Azure イベント ハブ](/azure/event-hubs/event-hubs-what-is-event-hubs?WT.mc_id=gridbanksg-docs-dastarr)にストリーミングし、[Azure Log Analytics](/azure/log-analytics/log-analytics-overview?WT.mc_id=gridbanksg-docs-dastarr) に送信することができます。
+バッチログには、生成されたログの保存先が必要です。これには、プールの作成、ジョブの実行、タスクの実行など、バッチの実行によって生成されるイベントが格納されます。Azure Storage アカウントに診断ログイベントを格納するだけでなく、Batch サービスのログイベントを[Azure Event Hub](/azure/event-hubs/event-hubs-what-is-event-hubs?WT.mc_id=gridbanksg-docs-dastarr)にストリーミングして、 [azure Log Analytics](/azure/log-analytics/log-analytics-overview?WT.mc_id=gridbanksg-docs-dastarr)に送信することもできます。
 
 このようなデータを使用して、中核となる計算ノード アプリケーションとヘッド ノード アプリケーションを最適化できます。 そうすることで、必要なくなった worker VM のプロビジョニング解除を迅速化すること (バッチ実行が最後まで完了するのを待つのではなく) などによって、コストを削減できます。
 
@@ -284,7 +284,7 @@ Azure Batch は無料でご利用いただけます。 仮想マシン稼働時�
 
 Batch 診断ログ サービスの使用時、Azure ストレージに出力されるデータには料金が発生します。 これは他のデータと同様のストレージ データであり、保持される診断データの量が料金に影響します。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 
 リスク グリッド コンピューティング用の Batch コンピューティングのように複雑な領域では、使用を開始するための場所が多数ありますが、ここでは、Batch テクノロジをよりよく理解するための論理的な出発点をいくつか示します。
 

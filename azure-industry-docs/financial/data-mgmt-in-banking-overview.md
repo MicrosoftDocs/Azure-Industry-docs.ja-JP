@@ -7,11 +7,11 @@ ms.topic: article
 ms.service: industry
 description: Microsoft Azure を使用して、規制対象となる銀行環境でのデータを管理する手法について説明します。
 ms.openlocfilehash: cfafd5242b6da994def2fe1470db9fd86b2675e7
-ms.sourcegitcommit: f030566b177715794d2ad857b150317e72d04d64
-ms.translationtype: HT
+ms.sourcegitcommit: 3b175d73a82160c4cacec1ce00c6d804a93c765d
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74234643"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77052928"
 ---
 # <a name="data-management-in-banking-overview"></a>銀行業におけるデータ管理の概要
 
@@ -178,7 +178,7 @@ Azure SQL を使用する場合、バックアップを 10 年間保存する[�
 
 不要なデータを削除するための効果的な戦略は、一定の間隔で削除することです。最も一般的なのは、夜間または毎週です。 [時間によってトリガーされる Azure 関数](/azure/azure-functions/functions-bindings-timer?WT.mc_id=bankdm-docs-dastarr)を書くと、このジョブを効率よく実行することができます。 お客様がデータを削除すると、Microsoft Azure によって、キャッシュされたデータやバックアップ コピーも含めて、データが削除されます。
 
-## <a name="getting-started"></a>Getting Started (概要)
+## <a name="getting-started"></a>作業の開始
 
 現在の使用量や現在使われているデータ モデルの成熟度に基づいて使用を開始する方法はたくさんあります。 すべての場合で、これがデータ ストレージ、処理、データ ストアごとに必要なリテンション期間モデルの確認を行う最適なタイミングです。 これは、規制に対するコンプライアンス シナリオでデータ管理システムを構築する際に重要です。
 クラウドは、現在のオンプレミスにはない新しいチャンスを提供します。 既存のデータ モデルがある場合、その更新が必要かもしれません。
@@ -203,10 +203,10 @@ Azure SQL を使用する場合、バックアップを 10 年間保存する[�
 
 銀行および金融業界のデジタル ランドスケープは急速に変化しています。それにともない、顧客は即座に利用でき、ランプ アップ タイムが遅くないソリューションやパートナーを求めるようになっています。 データ インジェストが指数関数的に増加するにつれて、銀行には重要なデータを格納、分析、使用する高速かつ革新的で安全な方法が必要となります。
 
-いくつかのテクノロジと戦略を使用している Azure は、データ インジェスト、処理、アーカイブ、および削除の要件に役立ちます。 データを Azure に取り込むことは簡単です。種類や構造などに応じて、データを格納するさまざまなデータ ストアを利用できます。サード パーティのデータベースも含めれば、SQL Server や SQL Azure 以外のデータ ソリューションも利用できます。
+いくつかのテクノロジと戦略を使用している Azure は、データ インジェスト、処理、アーカイブ、および削除の要件に役立ちます。 Azure へのデータの取り込みはシンプルで、さまざまなデータストアを使用して、その種類や構造などに応じてデータを格納することができます。データソリューションは SQL Server を超えて使用でき、サードパーティのデータベースを含めること SQL Azure できます。
 
 Databricks や Data Factory などの Azure サービスを使用すると、運用やデータ操作を簡単にすることができます。 アーカイブ ストレージはアクセス頻度の低いデータの長期的なストレージに使用でき、必要に応じてローリング サイクルで削除できます。
 
 データ管理計画の立案を開始するには、[バックアップおよびアーカイブ ストレージ](https://azure.microsoft.com/solutions/architecture/?solution=backup-archive?WT.mc_id=bankdm-docs-dastarr)用の Azure ソリューションのライブラリを参照してください。
 
-**作成者**:Howard Bush および David Starr
+**作成者**: Howard Bush および David Starr

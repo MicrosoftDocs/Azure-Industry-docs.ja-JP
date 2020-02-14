@@ -7,11 +7,11 @@ ms.topic: article
 ms.service: industry
 description: Azure で銀行取引にリスク グリッド コンピューティングを実装するときのビジネス上の考慮事項を示します。
 ms.openlocfilehash: 746b93e545aa8ff61a8fab4a021b6c5caa1889bb
-ms.sourcegitcommit: f030566b177715794d2ad857b150317e72d04d64
-ms.translationtype: HT
+ms.sourcegitcommit: 3b175d73a82160c4cacec1ce00c6d804a93c765d
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74234657"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77053098"
 ---
 # <a name="risk-grid-computing-in-banking-overview"></a>銀行取引のリスク グリッド コンピューティングの概要
 
@@ -108,9 +108,9 @@ Azure Batch 処理モデルには、リスク グリッド コンピューティ
 
 リスク グリッド コンピューティングで注目すべき考慮事項は、[Azure VNet 内でバッチ処理を実行する](/azure/batch/batch-virtual-network?WT.mc_id=gridbank-docs-dastarr)ということです。 これによってプール コンピューティング ノードが他のコンピューティング ノードやオンプレミス ネットワークと安全に通信できます。 適切なサービス アカウントと Network Service Groups (NSG) 作成し、バッチ コンピューティング ノードで使用する必要があります。 転送するデータと Azure Storage に保管しているデータの暗号化についても [Azure ではソリューションを用意しています](/azure/security/blueprints/financial-services-regulated-workloads?WT.mc_id=gridbank-docs-dastarr)。
 
-考慮すべき領域は次のとおりです。Active Directory (AD) に参加している/参加していないコンピューティング ノード (Windows Server ノード?WT.mc_id=gridbank-docs-dastarr)、[VM ディスク暗号化](/azure/security/azure-security-disk-encryption?WT.mc_id=gridbank-docs-dastarr)、保存中と転送中の計算入出力データのセキュリティ、Azure ネットワーク構成、アクセス許可などがあります。 認証は秘密鍵を通して REST API レベルで処理されることもあります。
+考慮すべき領域には、Active Directory (AD) に参加している/参加していないコンピューティング ノード (Windows Server ノード?WT.mc_id=gridbank-docs-dastarr)、[VM ディスク暗号化](/azure/security/azure-security-disk-encryption?WT.mc_id=gridbank-docs-dastarr)、保存中と転送中の計算入力/出力データのセキュリティ、Azure ネットワーク構成、アクセス許可などがあります。 認証は秘密鍵を通して REST API レベルで処理されることもあります。
 
-## <a name="getting-started"></a>Getting Started (概要)
+## <a name="getting-started"></a>作業の開始
 
 お客様の多くは、社内リスク コンピューティング グリッドを既に使用しています。 会社がグリッドを内部で開発した場合、そのグリッドを延長するものとして Azure Batch を検討してください。 Azure Batch の出発点としてお勧めなのが現行のオンプレミス ソリューションの拡張です。具体的には、現行の処理アプリケーション ロジックを複製し、それを Azure でバッチ ジョブとして実行します。 これには、アプリケーションの機能にもよりますが、Azure Batch コンピューティング ノードをオンプレミス ネットワークに参加させるネットワーク ソリューションが必要な場合があります。
 
