@@ -57,12 +57,12 @@
           href: retail/retail-data-management-overview.md
         - name: eコマース ソリューションの Azure への移行の概要
           href: retail/migrating-ecommerce-solution-to-azure.md
-        - name: 既存の推奨システムの最適化と再利用
+        - name: 既存のレコメンデーション システムの最適化と再利用
           href: retail/recommendation-engine-optimization.md
         - name: PCI DSS に準拠した支払い処理
           href: /azure/security/blueprints/payment-processing-blueprint
           maintainContext: true
-        - name: Visual Search の概要
+        - name: 画像検索の概要
           href: retail/visual-search-use-case-overview.md
         - name: コンシューマー ブランドの SKU の最適化
           items:
